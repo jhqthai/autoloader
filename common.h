@@ -26,24 +26,12 @@ extern int P1_value, P2_value, P3_value, P4_value, P5_value, P6_value;
 
 
 /* LCD tasks*/
-extern int lcd_flash_count, fill_cntr, lamp_tmr; // scrn_hdr, scrn_ftr;
-extern char lampState, uiState, uiTasks, hmiTask, comTasks, cmdTasks, cmdBuff, sysState, rxIndx, txIndx, rxMsg, txMsg;
-
-
-///* Lamp parameters */
-//#define STATE_ON        (1)
-//#define STATE_OFF       (0)
-//#define LAMP_GRN        0x01
-//#define LAMP_RED        0x02
-//#define LAMPSTACK       0x03
-//#define RLY_FILL        0x04
-//#define RLY_GATE        0x08
-//#define SOLENOIDS       0x0C
-//
+extern int fill_cntr; //,lcd_flash_count,  lamp_tmr; // scrn_hdr, scrn_ftr;
+extern char lampState, uiState, hmiTask, comTasks, cmdTasks, cmdBuff, sysState, rxIndx, txIndx, rxMsg, txMsg; //uiTasks,
+extern char lamp_flash_count, scrn_state, lmp_state; //scrn_hdr, scrn_ftr; //, led_state
 
 /* Serial Comm's*/
 extern volatile unsigned long t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14;
-extern char lamp_flash_count, scrn_state, lmp_state, scrn_hdr, scrn_ftr; //, led_state
 
 /* Machine states */
 typedef enum{
@@ -68,6 +56,15 @@ extern char runTasks, devState, flashRate;
 #define INPUT_2         0x02
 #define INPUT_1         0x01
 
+/* hmi_ConfigSystemState parameters */
+typedef enum{
+    HMI_BOOT = 0,
+    HMI_READY,
+    HMI_RUN,
+    HMI_SETUP,
+    HMI_ERROR
+}UI_STATE;
+
 /* I/O buffers?*/
 extern char outputDevices, buff, inputDevices; 
 
@@ -80,6 +77,8 @@ extern void device_outputState(char device, char state);
  * Caller: hmi_lcdController(), hmi_setLxKeyCommand(), system_userInterface()
  */
 extern void word2DecConverter(unsigned int data, char *output, char digits);
+
+extern void hmi_ConfigSystemState(char state); // Since we are just calling it.
     
 
 #ifdef	__cplusplus

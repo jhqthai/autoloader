@@ -934,150 +934,150 @@ static void process_SerialComs()
 /****************************
  * TODO: POTENTIAL UNUSED FUNCTIONS
  ****************************/
-
-/* TODO: UNUSED FUNCTION! */
-static void hmi_StateUpdate(char currentState, char newState)
-{
-    char i, x;
-    i = newState;
-    x = currentState;
-    if(i != x)
-    {
-        scrn_state = 0;
-        hmiTask = x;
-        return;
-    }
-}
-
-static void mem_clearDisplayL1_RAM()
-{
-    memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_CLEAR,LCD_CHARS);
-}
-
-static void mem_clearDisplayL2_RAM()
-{
-    memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
-}
-
-static void mem_saveDisplayL1_RAM()
-{
-    memcpy(msgBuff+MSG_STOREL1,lcdBuff+LCD_LINE1,LCD_CHARS);
-}
-
-static void mem_saveDisplayL2_RAM()
-{
-    memcpy(msgBuff+MSG_STOREL2,lcdBuff+LCD_LINE2,LCD_CHARS);
-}
-
-static void mem_readDisplayL1_RAM()
-{
-    memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_STOREL1,LCD_CHARS);
-}
-
-static void mem_readDisplayL2_RAM()
-{
-    memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_STOREL2,LCD_CHARS);
-}
-
-/* TODO: UNUSED FUNCTION */
-static void hmi_TemperatureAlert()
-{
-    char i;
-    i = (inputDevices & INPUT_TEMP_OK);
-    if(i != INPUT_TEMP_OK)
-    {
-        memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_HOPPER,LCD_CHARS);
-        memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_GLUECOLD,LCD_CHARS); 
-    }
-    else
-    {
-        memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);  
-    }
-}
-
-static void display_FlashUpdate(char line)
-{
-    char i;
-    i = line;
-    switch(msg_flash)
-    {
-        case 0:
-        msg_flash = 1;
-        if(i == (1))                    //LCD_SCREEN)
-        {
-            mem_saveDisplayL1_RAM();
-        }
-        if(i == (2))
-        {
-            mem_saveDisplayL2_RAM();
-        }
-        if(i == (3))
-        {
-            mem_saveDisplayL1_RAM();
-            mem_saveDisplayL2_RAM();
-        }
-        case 1:
-        msg_flash = 2;
-        if(i == (1))                    //LCD_SCREEN)
-        {
-            mem_readDisplayL1_RAM();
-        }
-        if(i == (2))
-        {
-            mem_readDisplayL2_RAM();
-        }
-        if(i == (3))
-        {
-            mem_readDisplayL1_RAM();
-            mem_readDisplayL2_RAM();
-        }
-        break;
-
-        case 2:
-        lcd_flash_count++;
-        msg_flash = 1;
-        if(i == (1))                    //LCD_SCREEN)
-        {
-            mem_clearDisplayL1_RAM();
-        }
-        if(i == (2))
-        {
-            mem_clearDisplayL2_RAM();
-        }
-        if(i == (3))
-        {
-            mem_clearDisplayL1_RAM();
-            mem_clearDisplayL2_RAM();
-        }
-        break;
-    }
-    refresh_display();
-}
-
-/* TODO: POTENTIAL UNUSED FUNCTION */
-static void lcd_display_flash(char line, int on, int off)
-{ 
-    char r;
-    int t,x;
-    r = line;
-    t = on, x = off;
-    if(msg_flash == 2)        //HMI_HDR_FLASHRATE1)
-    {
-        if(t8 >= t)
-        {
-            t8 = 0;
-            display_FlashUpdate(r);
-        }
-    }
-    else
-    {
-        if(t8 >= x)
-        {
-            t8 = 0;
-            display_FlashUpdate(r);
-        }
-    }
-}
+//
+///* TODO: UNUSED FUNCTION! */
+//static void hmi_StateUpdate(char currentState, char newState)
+//{
+//    char i, x;
+//    i = newState;
+//    x = currentState;
+//    if(i != x)
+//    {
+//        scrn_state = 0;
+//        hmiTask = x;
+//        return;
+//    }
+//}
+//
+//static void mem_clearDisplayL1_RAM()
+//{
+//    memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_CLEAR,LCD_CHARS);
+//}
+//
+//static void mem_clearDisplayL2_RAM()
+//{
+//    memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
+//}
+//
+//static void mem_saveDisplayL1_RAM()
+//{
+//    memcpy(msgBuff+MSG_STOREL1,lcdBuff+LCD_LINE1,LCD_CHARS);
+//}
+//
+//static void mem_saveDisplayL2_RAM()
+//{
+//    memcpy(msgBuff+MSG_STOREL2,lcdBuff+LCD_LINE2,LCD_CHARS);
+//}
+//
+//static void mem_readDisplayL1_RAM()
+//{
+//    memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_STOREL1,LCD_CHARS);
+//}
+//
+//static void mem_readDisplayL2_RAM()
+//{
+//    memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_STOREL2,LCD_CHARS);
+//}
+//
+///* TODO: UNUSED FUNCTION */
+//static void hmi_TemperatureAlert()
+//{
+//    char i;
+//    i = (inputDevices & INPUT_TEMP_OK);
+//    if(i != INPUT_TEMP_OK)
+//    {
+//        memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_HOPPER,LCD_CHARS);
+//        memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_GLUECOLD,LCD_CHARS); 
+//    }
+//    else
+//    {
+//        memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);  
+//    }
+//}
+//
+//static void display_FlashUpdate(char line)
+//{
+//    char i;
+//    i = line;
+//    switch(msg_flash)
+//    {
+//        case 0:
+//        msg_flash = 1;
+//        if(i == (1))                    //LCD_SCREEN)
+//        {
+//            mem_saveDisplayL1_RAM();
+//        }
+//        if(i == (2))
+//        {
+//            mem_saveDisplayL2_RAM();
+//        }
+//        if(i == (3))
+//        {
+//            mem_saveDisplayL1_RAM();
+//            mem_saveDisplayL2_RAM();
+//        }
+//        case 1:
+//        msg_flash = 2;
+//        if(i == (1))                    //LCD_SCREEN)
+//        {
+//            mem_readDisplayL1_RAM();
+//        }
+//        if(i == (2))
+//        {
+//            mem_readDisplayL2_RAM();
+//        }
+//        if(i == (3))
+//        {
+//            mem_readDisplayL1_RAM();
+//            mem_readDisplayL2_RAM();
+//        }
+//        break;
+//
+//        case 2:
+//        lcd_flash_count++;
+//        msg_flash = 1;
+//        if(i == (1))                    //LCD_SCREEN)
+//        {
+//            mem_clearDisplayL1_RAM();
+//        }
+//        if(i == (2))
+//        {
+//            mem_clearDisplayL2_RAM();
+//        }
+//        if(i == (3))
+//        {
+//            mem_clearDisplayL1_RAM();
+//            mem_clearDisplayL2_RAM();
+//        }
+//        break;
+//    }
+//    refresh_display();
+//}
+//
+///* TODO: POTENTIAL UNUSED FUNCTION */
+//static void lcd_display_flash(char line, int on, int off)
+//{ 
+//    char r;
+//    int t,x;
+//    r = line;
+//    t = on, x = off;
+//    if(msg_flash == 2)        //HMI_HDR_FLASHRATE1)
+//    {
+//        if(t8 >= t)
+//        {
+//            t8 = 0;
+//            display_FlashUpdate(r);
+//        }
+//    }
+//    else
+//    {
+//        if(t8 >= x)
+//        {
+//            t8 = 0;
+//            display_FlashUpdate(r);
+//        }
+//    }
+//}
 /***********************
  * END OF POTENTIAL UNUSED FUNCTIONS
  ***********************/

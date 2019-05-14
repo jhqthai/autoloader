@@ -33,6 +33,14 @@ typedef enum{
 #define KEYPRESS_DETECTED      ((PORTCbits.RC5 == 1) || (PORTCbits.RC4 == 1) || (PORTCbits.RC3 == 1) || (PORTAbits.RA9 == 1))
 #define NO_KEYS_PRESSED        ((PORTCbits.RC5 == 0) && (PORTCbits.RC4 == 0) && (PORTCbits.RC3 == 0) && (PORTAbits.RA9 == 0))
 
+extern void hmi_scanSetupCommand(char val);
+extern void hmi_setupL1KeyCommand();
+extern void hmi_setupL2KeyCommand();
+extern void hmi_setupL3KeyCommand();
+extern void hmi_setupL4KeyCommand();
+extern void hmi_setupL5KeyCommand();
+extern void hmi_setupL6KeyCommand();
+
 extern void process_KeyController();
 
 #ifdef	__cplusplus
