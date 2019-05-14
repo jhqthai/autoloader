@@ -30,16 +30,16 @@ extern int lcd_flash_count, fill_cntr, lamp_tmr; // scrn_hdr, scrn_ftr;
 extern char lampState, uiState, uiTasks, hmiTask, comTasks, cmdTasks, cmdBuff, sysState, rxIndx, txIndx, rxMsg, txMsg;
 
 
-/* Lamp parameters */
-#define STATE_ON        (1)
-#define STATE_OFF       (0)
-#define LAMP_GRN        0x01
-#define LAMP_RED        0x02
-#define LAMPSTACK       0x03
-#define RLY_FILL        0x04
-#define RLY_GATE        0x08
-#define SOLENOIDS       0x0C
-
+///* Lamp parameters */
+//#define STATE_ON        (1)
+//#define STATE_OFF       (0)
+//#define LAMP_GRN        0x01
+//#define LAMP_RED        0x02
+//#define LAMPSTACK       0x03
+//#define RLY_FILL        0x04
+//#define RLY_GATE        0x08
+//#define SOLENOIDS       0x0C
+//
 
 /* Serial Comm's*/
 extern volatile unsigned long t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14;

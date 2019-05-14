@@ -13,6 +13,7 @@
 #include "backlight.h"
 #include "tone.h"
 #include "lcd.h"
+#include "lamp.h"
 
 
 
@@ -346,6 +347,7 @@ static unsigned char memory_write()
 //    }
 //}
 
+/* TODO: UNUSED FUNCTION */
 static void device_ToggleState(char dev, int rate)
 {
     int i;

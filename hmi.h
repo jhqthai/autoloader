@@ -45,7 +45,7 @@ extern void hmi_ConfigSystemState(char state); // Since we are just calling it.
 extern void hmi_GenerateBootScreen(unsigned long tmr); // Probably don't need extern for these functions
 extern void load_defaults(); // We are not making any changes to it anyway
 //extern void hmi_lcdController();
-extern void hmi_lampStackController();
+//extern void hmi_lampStackController();
 
 /* Keypad */
 extern void hmi_scanSetupCommand(char val);

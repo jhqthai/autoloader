@@ -39,6 +39,7 @@ Command:
   build/default/production/tone.o \
   build/default/production/lcd.o \
   build/default/production/led.o \
+  build/default/production/lamp.o \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
   -Tp33EP64MC206.gld.00 \
@@ -121,9 +122,9 @@ section                    address      alignment gaps    total length  (dec)
 .ndata                      0x106e                   0            0x42  (66)
 .nbss                       0x10b0                   0            0x20  (32)
 .ndata                      0x10d0                   0             0x2  (2)
-.nbss                       0x10d2                   0             0x6  (6)
-.ndata                      0x10d8                   0             0x2  (2)
-.nbss                       0x10da                   0             0x2  (2)
+.nbss                       0x10d2                   0             0x4  (4)
+.ndata                      0x10d6                   0             0x2  (2)
+.nbss                       0x10d8                   0             0x4  (4)
 .bss                        0x10dc                   0           0x4b6  (1206)
 .data                       0x1592                   0            0x1c  (28)
 .bss                        0x15ae                   0             0x6  (6)
@@ -249,9 +250,9 @@ External Symbols in Data Memory (by address):
                     0x10cf                  _lcd_update
                     0x10d2                  _TMR4_InterruptHandler
                     0x10d4                  _TMR3_InterruptHandler
-                    0x10d6                  _lmp_update
-                    0x10d8                  _hexAscii
-                    0x10da                  _led_state
+                    0x10d6                  _hexAscii
+                    0x10d8                  _led_state
+                    0x10da                  _lmp_update
                     0x10dc                  _wav
                     0x12da                  _txbuff
                     0x135a                  _rxbuff
@@ -290,7 +291,7 @@ External Symbols in Data Memory (by name):
                     0x105e                  _fill_cntr
                     0x1069                  _flashRate
                     0x10b8                  _freq
-                    0x10d8                  _hexAscii
+                    0x10d6                  _hexAscii
                     0x1053                  _hmiTask
                     0x106c                  _inputDevices
                     0x10c4                  _keyBuff
@@ -320,9 +321,9 @@ External Symbols in Data Memory (by name):
                     0x107c                  _lcd_start
                     0x1042                  _lcd_strobe
                     0x10cf                  _lcd_update
-                    0x10da                  _led_state
+                    0x10d8                  _led_state
                     0x1064                  _lmp_state
-                    0x10d6                  _lmp_update
+                    0x10da                  _lmp_update
                     0x148c                  _msgBuff
                     0x1098                  _msg_contact
                     0x10ac                  _msg_debugCls
@@ -387,8 +388,8 @@ External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x00023c                  __psv_init
-                  0x000248                  __data_init_extended
                   0x000248                  __data_init
+                  0x000248                  __data_init_extended
                   0x0002fa                  __OscillatorFail
                   0x000302                  __StackError
                   0x00030c                  __AddressError
@@ -403,21 +404,22 @@ External Symbols in Program Memory (by address):
                   0x000414                  _strlen
                   0x000a1c                  _LCD_BLL
                   0x0012f2                  _main
-                  0x001354                  _hmi_GenerateBootScreen
-                  0x001378                  _hmi_ConfigSystemState
-                  0x001398                  _load_defaults
-                  0x00158a                  _hmi_lampStackController
-                  0x0016a0                  _hmi_scanSetupCommand
-                  0x0016c0                  _hmi_SetupStateTimeout
-                  0x0016de                  _hmi_setupL1KeyCommand
-                  0x00176e                  _hmi_setupL2KeyCommand
-                  0x0017fe                  _hmi_setupL3KeyCommand
-                  0x00188e                  _hmi_setupL4KeyCommand
-                  0x00191e                  _hmi_setupL5KeyCommand
-                  0x0019ae                  _hmi_setupL6KeyCommand
-                  0x001a3c                  _lcd_bootSeq
-                  0x001ce0                  _hmi_lcdController
-                  0x001dee                  _process_LcdController
+                  0x001310                  _lcd_bootSeq
+                  0x0015b4                  _hmi_lcdController
+                  0x0016c2                  _process_LcdController
+                  0x001826                  _hmi_GenerateBootScreen
+                  0x00184a                  _hmi_ConfigSystemState
+                  0x00186a                  _load_defaults
+                  0x0018a0                  _hmi_scanSetupCommand
+                  0x0018c0                  _hmi_SetupStateTimeout
+                  0x0018de                  _hmi_setupL1KeyCommand
+                  0x00196e                  _hmi_setupL2KeyCommand
+                  0x0019fe                  _hmi_setupL3KeyCommand
+                  0x001a8e                  _hmi_setupL4KeyCommand
+                  0x001b1e                  _hmi_setupL5KeyCommand
+                  0x001bae                  _hmi_setupL6KeyCommand
+                  0x001e10                  _hmi_lampStackController
+                  0x001f0e                  _lamp_bootSeq
                   0x001f54                  _FLASH_Unlock
                   0x001f5e                  _MEM_Unlock
                   0x001f68                  _FLASH_Lock
@@ -585,26 +587,27 @@ External Symbols in Program Memory (by name):
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
                   0x002420                  _device_outputState
-                  0x001378                  _hmi_ConfigSystemState
-                  0x001354                  _hmi_GenerateBootScreen
-                  0x0016c0                  _hmi_SetupStateTimeout
-                  0x00158a                  _hmi_lampStackController
-                  0x001ce0                  _hmi_lcdController
-                  0x0016a0                  _hmi_scanSetupCommand
-                  0x0016de                  _hmi_setupL1KeyCommand
-                  0x00176e                  _hmi_setupL2KeyCommand
-                  0x0017fe                  _hmi_setupL3KeyCommand
-                  0x00188e                  _hmi_setupL4KeyCommand
-                  0x00191e                  _hmi_setupL5KeyCommand
-                  0x0019ae                  _hmi_setupL6KeyCommand
-                  0x001a3c                  _lcd_bootSeq
+                  0x00184a                  _hmi_ConfigSystemState
+                  0x001826                  _hmi_GenerateBootScreen
+                  0x0018c0                  _hmi_SetupStateTimeout
+                  0x001e10                  _hmi_lampStackController
+                  0x0015b4                  _hmi_lcdController
+                  0x0018a0                  _hmi_scanSetupCommand
+                  0x0018de                  _hmi_setupL1KeyCommand
+                  0x00196e                  _hmi_setupL2KeyCommand
+                  0x0019fe                  _hmi_setupL3KeyCommand
+                  0x001a8e                  _hmi_setupL4KeyCommand
+                  0x001b1e                  _hmi_setupL5KeyCommand
+                  0x001bae                  _hmi_setupL6KeyCommand
+                  0x001f0e                  _lamp_bootSeq
+                  0x001310                  _lcd_bootSeq
                   0x002a00                  _led_bootSeq
-                  0x001398                  _load_defaults
+                  0x00186a                  _load_defaults
                   0x0012f2                  _main
                   0x0003fa                  _memcpy
                   0x002902                  _process_Backlight
                   0x0020ee                  _process_KeyController
-                  0x001dee                  _process_LcdController
+                  0x0016c2                  _process_LcdController
                   0x002634                  _process_ToneGenerator
                   0x0028f4                  _set_backlight_level
                   0x000408                  _strcpy
@@ -655,6 +658,7 @@ LOAD build/default/production/backlight.o
 LOAD build/default/production/tone.o
 LOAD build/default/production/lcd.o
 LOAD build/default/production/led.o
+LOAD build/default/production/lamp.o
                     0x0001                  __MPLAB_BUILD = 0x1
 LOAD p33EP64MC206
 LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libfx-elf.a
@@ -742,7 +746,7 @@ __FOSCSEL
 
 __FGS             0x00affa          0x2
  *(__FGS.sec*)
- __FGS.sec        0x00affa          0x2 /CW/_FGS(2÷
+ __FGS.sec        0x00affa          0x2 /CW/_FGSÀ’á
                   0x00affa                  __FGS.sec
 
 __FUID0
@@ -760,7 +764,7 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x8b19
+.debug_info       0x000000       0x8bec
  *(.debug_info)
  .debug_info      0x000000         0x91 build/default/production/mcc_generated_files/memory/flash.o
  .debug_info      0x000091        0x204 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -776,17 +780,18 @@ __FUID3
  .debug_info      0x003610        0x65b build/default/production/mcc_generated_files/uart2.o
  .debug_info      0x003c6b        0x536 build/default/production/mcc_generated_files/tmr4.o
  .debug_info      0x0041a1        0x69d build/default/production/mcc_generated_files/tmr3.o
- .debug_info      0x00483e        0x820 build/default/production/hmi.o
- .debug_info      0x00505e       0x16ed build/default/production/main_3.o
- .debug_info      0x00674b        0x538 build/default/production/common.o
- .debug_info      0x006c83        0x459 build/default/production/keypad.o
- .debug_info      0x0070dc        0x549 build/default/production/backlight.o
- .debug_info      0x007625        0x60d build/default/production/tone.o
- .debug_info      0x007c32        0xb95 build/default/production/lcd.o
- .debug_info      0x0087c7        0x352 build/default/production/led.o
+ .debug_info      0x00483e        0x69a build/default/production/hmi.o
+ .debug_info      0x004ed8       0x16ed build/default/production/main_3.o
+ .debug_info      0x0065c5        0x538 build/default/production/common.o
+ .debug_info      0x006afd        0x459 build/default/production/keypad.o
+ .debug_info      0x006f56        0x549 build/default/production/backlight.o
+ .debug_info      0x00749f        0x60d build/default/production/tone.o
+ .debug_info      0x007aac        0xb95 build/default/production/lcd.o
+ .debug_info      0x008641        0x352 build/default/production/led.o
+ .debug_info      0x008993        0x259 build/default/production/lamp.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000       0x16ca
+.debug_abbrev     0x000000       0x170f
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x14 build/default/production/mcc_generated_files/memory/flash.o
  .debug_abbrev    0x000014         0x73 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -803,16 +808,17 @@ __FUID3
  .debug_abbrev    0x0009f9        0x169 build/default/production/mcc_generated_files/tmr4.o
  .debug_abbrev    0x000b62        0x169 build/default/production/mcc_generated_files/tmr3.o
  .debug_abbrev    0x000ccb          0x1 build/default/production/main.o
- .debug_abbrev    0x000ccc        0x195 build/default/production/hmi.o
- .debug_abbrev    0x000e61        0x223 build/default/production/main_3.o
- .debug_abbrev    0x001084         0xa9 build/default/production/common.o
- .debug_abbrev    0x00112d         0xf5 build/default/production/keypad.o
- .debug_abbrev    0x001222        0x12d build/default/production/backlight.o
- .debug_abbrev    0x00134f        0x127 build/default/production/tone.o
- .debug_abbrev    0x001476        0x1aa build/default/production/lcd.o
- .debug_abbrev    0x001620         0xaa build/default/production/led.o
+ .debug_abbrev    0x000ccc        0x125 build/default/production/hmi.o
+ .debug_abbrev    0x000df1        0x223 build/default/production/main_3.o
+ .debug_abbrev    0x001014         0xa9 build/default/production/common.o
+ .debug_abbrev    0x0010bd         0xf5 build/default/production/keypad.o
+ .debug_abbrev    0x0011b2        0x12d build/default/production/backlight.o
+ .debug_abbrev    0x0012df        0x127 build/default/production/tone.o
+ .debug_abbrev    0x001406        0x1aa build/default/production/lcd.o
+ .debug_abbrev    0x0015b0         0xaa build/default/production/led.o
+ .debug_abbrev    0x00165a         0xb5 build/default/production/lamp.o
 
-.debug_line       0x000000       0x1bcf
+.debug_line       0x000000       0x1c0c
  *(.debug_line)
  .debug_line      0x000000        0x124 build/default/production/mcc_generated_files/memory/flash.o
  .debug_line      0x000124         0xce build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -829,16 +835,17 @@ __FUID3
  .debug_line      0x000d7f        0x125 build/default/production/mcc_generated_files/tmr4.o
  .debug_line      0x000ea4        0x129 build/default/production/mcc_generated_files/tmr3.o
  .debug_line      0x000fcd         0x1a build/default/production/main.o
- .debug_line      0x000fe7        0x1e2 build/default/production/hmi.o
- .debug_line      0x0011c9        0x2fa build/default/production/main_3.o
- .debug_line      0x0014c3         0x64 build/default/production/common.o
- .debug_line      0x001527        0x131 build/default/production/keypad.o
- .debug_line      0x001658        0x11c build/default/production/backlight.o
- .debug_line      0x001774        0x123 build/default/production/tone.o
- .debug_line      0x001897        0x21d build/default/production/lcd.o
- .debug_line      0x001ab4        0x11b build/default/production/led.o
+ .debug_line      0x000fe7        0x151 build/default/production/hmi.o
+ .debug_line      0x001138        0x2fa build/default/production/main_3.o
+ .debug_line      0x001432         0x64 build/default/production/common.o
+ .debug_line      0x001496        0x131 build/default/production/keypad.o
+ .debug_line      0x0015c7        0x11c build/default/production/backlight.o
+ .debug_line      0x0016e3        0x123 build/default/production/tone.o
+ .debug_line      0x001806        0x21d build/default/production/lcd.o
+ .debug_line      0x001a23        0x11b build/default/production/led.o
+ .debug_line      0x001b3e         0xce build/default/production/lamp.o
 
-.debug_frame      0x000000        0xfd8
+.debug_frame      0x000000        0xfec
  *(.debug_frame)
  .debug_frame     0x000000         0x30 build/default/production/mcc_generated_files/memory/flash_demo.o
  .debug_frame     0x000030        0x12c build/default/production/mcc_generated_files/reset.o
@@ -853,16 +860,17 @@ __FUID3
  .debug_frame     0x0005cc         0xbc build/default/production/mcc_generated_files/uart2.o
  .debug_frame     0x000688        0x148 build/default/production/mcc_generated_files/tmr4.o
  .debug_frame     0x0007d0        0x148 build/default/production/mcc_generated_files/tmr3.o
- .debug_frame     0x000918        0x1f0 build/default/production/hmi.o
- .debug_frame     0x000b08        0x27c build/default/production/main_3.o
- .debug_frame     0x000d84         0x4c build/default/production/common.o
- .debug_frame     0x000dd0         0x4c build/default/production/keypad.o
- .debug_frame     0x000e1c         0x68 build/default/production/backlight.o
- .debug_frame     0x000e84         0x4c build/default/production/tone.o
- .debug_frame     0x000ed0         0xd8 build/default/production/lcd.o
- .debug_frame     0x000fa8         0x30 build/default/production/led.o
+ .debug_frame     0x000918        0x164 build/default/production/hmi.o
+ .debug_frame     0x000a7c        0x27c build/default/production/main_3.o
+ .debug_frame     0x000cf8         0x4c build/default/production/common.o
+ .debug_frame     0x000d44         0x4c build/default/production/keypad.o
+ .debug_frame     0x000d90         0x68 build/default/production/backlight.o
+ .debug_frame     0x000df8         0x4c build/default/production/tone.o
+ .debug_frame     0x000e44         0xd8 build/default/production/lcd.o
+ .debug_frame     0x000f1c         0x30 build/default/production/led.o
+ .debug_frame     0x000f4c         0xa0 build/default/production/lamp.o
 
-.debug_str        0x000000        0x466
+.debug_str        0x000000        0x470
  *(.debug_str)
  .debug_str       0x000000          0xd build/default/production/mcc_generated_files/memory/flash_demo.o
  .debug_str       0x00000d         0x17 build/default/production/mcc_generated_files/reset.o
@@ -876,14 +884,15 @@ __FUID3
  .debug_str       0x0000cd         0x15 build/default/production/mcc_generated_files/uart2.o
  .debug_str       0x0000e2          0xa build/default/production/mcc_generated_files/tmr4.o
  .debug_str       0x0000ec         0x13 build/default/production/mcc_generated_files/tmr3.o
- .debug_str       0x0000ff         0xa4 build/default/production/hmi.o
- .debug_str       0x0001a3        0x17d build/default/production/main_3.o
- .debug_str       0x000320         0x17 build/default/production/common.o
- .debug_str       0x000337         0x26 build/default/production/keypad.o
- .debug_str       0x00035d         0x1c build/default/production/backlight.o
- .debug_str       0x000379         0x1c build/default/production/tone.o
- .debug_str       0x000395         0xb5 build/default/production/lcd.o
- .debug_str       0x00044a         0x1c build/default/production/led.o
+ .debug_str       0x0000ff         0x90 build/default/production/hmi.o
+ .debug_str       0x00018f        0x17d build/default/production/main_3.o
+ .debug_str       0x00030c         0x17 build/default/production/common.o
+ .debug_str       0x000323         0x26 build/default/production/keypad.o
+ .debug_str       0x000349         0x1c build/default/production/backlight.o
+ .debug_str       0x000365         0x1c build/default/production/tone.o
+ .debug_str       0x000381         0xb5 build/default/production/lcd.o
+ .debug_str       0x000436         0x1c build/default/production/led.o
+ .debug_str       0x000452         0x1e build/default/production/lamp.o
 
 .debug_loc
  *(.debug_loc)
@@ -892,7 +901,7 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0xf8a
+                  0x000000        0xfad
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x20 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -921,26 +930,28 @@ __FUID3
  .debug_pubnames
                   0x00063c        0x134 build/default/production/mcc_generated_files/tmr3.o
  .debug_pubnames
-                  0x000770        0x153 build/default/production/hmi.o
+                  0x000770        0x128 build/default/production/hmi.o
  .debug_pubnames
-                  0x0008c3        0x1a0 build/default/production/main_3.o
+                  0x000898        0x1a0 build/default/production/main_3.o
  .debug_pubnames
-                  0x000a63        0x1f8 build/default/production/common.o
+                  0x000a38        0x1f8 build/default/production/common.o
  .debug_pubnames
-                  0x000c5b         0x52 build/default/production/keypad.o
+                  0x000c30         0x52 build/default/production/keypad.o
  .debug_pubnames
-                  0x000cad         0x65 build/default/production/backlight.o
+                  0x000c82         0x65 build/default/production/backlight.o
  .debug_pubnames
-                  0x000d12         0x9a build/default/production/tone.o
+                  0x000ce7         0x9a build/default/production/tone.o
  .debug_pubnames
-                  0x000dac        0x1ae build/default/production/lcd.o
+                  0x000d81        0x1ae build/default/production/lcd.o
  .debug_pubnames
-                  0x000f5a         0x30 build/default/production/led.o
+                  0x000f2f         0x30 build/default/production/led.o
+ .debug_pubnames
+                  0x000f5f         0x4e build/default/production/lamp.o
 
 .debug_ranges
  *(.debug_ranges)
 
-.debug_aranges    0x000000        0x248
+.debug_aranges    0x000000        0x260
  *(.debug_aranges)
  .debug_aranges
                   0x000000         0x18 build/default/production/mcc_generated_files/memory/flash.o
@@ -986,6 +997,8 @@ __FUID3
                   0x000218         0x18 build/default/production/lcd.o
  .debug_aranges
                   0x000230         0x18 build/default/production/led.o
+ .debug_aranges
+                  0x000248         0x18 build/default/production/lamp.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -2206,111 +2219,115 @@ LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
 OUTPUT(dist/default/production/autoloader.X.production.elf elf32-pic30)
-LOAD /CW/_FGS(2÷
+LOAD /CW/_FGSÀ’á
 LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000248        0x822
+                  0x000260        0x834
  .debug_pubtypes
-                  0x000248         0x2c build/default/production/mcc_generated_files/memory/flash_demo.o
+                  0x000260         0x2c build/default/production/mcc_generated_files/memory/flash_demo.o
  .debug_pubtypes
-                  0x000274         0x42 build/default/production/mcc_generated_files/reset.o
+                  0x00028c         0x42 build/default/production/mcc_generated_files/reset.o
  .debug_pubtypes
-                  0x0002b6         0x4f build/default/production/mcc_generated_files/system.o
+                  0x0002ce         0x4f build/default/production/mcc_generated_files/system.o
  .debug_pubtypes
-                  0x000305         0x94 build/default/production/mcc_generated_files/traps.o
+                  0x00031d         0x94 build/default/production/mcc_generated_files/traps.o
  .debug_pubtypes
-                  0x000399         0x4c build/default/production/mcc_generated_files/clock.o
+                  0x0003b1         0x4c build/default/production/mcc_generated_files/clock.o
  .debug_pubtypes
-                  0x0003e5         0x3c build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x0003fd         0x3c build/default/production/mcc_generated_files/interrupt_manager.o
  .debug_pubtypes
-                  0x000421         0x3c build/default/production/mcc_generated_files/mcc.o
+                  0x000439         0x3c build/default/production/mcc_generated_files/mcc.o
  .debug_pubtypes
-                  0x00045d         0xa3 build/default/production/mcc_generated_files/pin_manager.o
+                  0x000475         0xa3 build/default/production/mcc_generated_files/pin_manager.o
  .debug_pubtypes
-                  0x000500         0xa4 build/default/production/mcc_generated_files/tmr2.o
+                  0x000518         0xa4 build/default/production/mcc_generated_files/tmr2.o
  .debug_pubtypes
-                  0x0005a4         0x6b build/default/production/mcc_generated_files/uart1.o
+                  0x0005bc         0x6b build/default/production/mcc_generated_files/uart1.o
  .debug_pubtypes
-                  0x00060f         0x6b build/default/production/mcc_generated_files/uart2.o
+                  0x000627         0x6b build/default/production/mcc_generated_files/uart2.o
  .debug_pubtypes
-                  0x00067a         0x6a build/default/production/mcc_generated_files/tmr4.o
+                  0x000692         0x6a build/default/production/mcc_generated_files/tmr4.o
  .debug_pubtypes
-                  0x0006e4         0x87 build/default/production/mcc_generated_files/tmr3.o
+                  0x0006fc         0x87 build/default/production/mcc_generated_files/tmr3.o
  .debug_pubtypes
-                  0x00076b         0x12 build/default/production/hmi.o
+                  0x000783         0x12 build/default/production/hmi.o
  .debug_pubtypes
-                  0x00077d         0xe0 build/default/production/main_3.o
+                  0x000795         0xe0 build/default/production/main_3.o
  .debug_pubtypes
-                  0x00085d         0x12 build/default/production/common.o
+                  0x000875         0x12 build/default/production/common.o
  .debug_pubtypes
-                  0x00086f         0x5d build/default/production/keypad.o
+                  0x000887         0x5d build/default/production/keypad.o
  .debug_pubtypes
-                  0x0008cc         0x59 build/default/production/backlight.o
+                  0x0008e4         0x59 build/default/production/backlight.o
  .debug_pubtypes
-                  0x000925         0x59 build/default/production/tone.o
+                  0x00093d         0x59 build/default/production/tone.o
  .debug_pubtypes
-                  0x00097e         0x93 build/default/production/lcd.o
+                  0x000996         0x93 build/default/production/lcd.o
  .debug_pubtypes
-                  0x000a11         0x59 build/default/production/led.o
+                  0x000a29         0x59 build/default/production/led.o
+ .debug_pubtypes
+                  0x000a82         0x12 build/default/production/lamp.o
 
 __c30_signature
-                  0x000a6a         0xa2
+                  0x000a94         0xa8
  __c30_signature
-                  0x000a6a          0x6 build/default/production/mcc_generated_files/memory/flash_demo.o
+                  0x000a94          0x6 build/default/production/mcc_generated_files/memory/flash_demo.o
  __c30_signature
-                  0x000a70          0x6 build/default/production/mcc_generated_files/reset.o
+                  0x000a9a          0x6 build/default/production/mcc_generated_files/reset.o
  __c30_signature
-                  0x000a76          0x6 build/default/production/mcc_generated_files/system.o
+                  0x000aa0          0x6 build/default/production/mcc_generated_files/system.o
  __c30_signature
-                  0x000a7c          0x6 build/default/production/mcc_generated_files/traps.o
+                  0x000aa6          0x6 build/default/production/mcc_generated_files/traps.o
  __c30_signature
-                  0x000a82          0x6 build/default/production/mcc_generated_files/clock.o
+                  0x000aac          0x6 build/default/production/mcc_generated_files/clock.o
  __c30_signature
-                  0x000a88          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x000ab2          0x6 build/default/production/mcc_generated_files/interrupt_manager.o
  __c30_signature
-                  0x000a8e          0x6 build/default/production/mcc_generated_files/mcc.o
+                  0x000ab8          0x6 build/default/production/mcc_generated_files/mcc.o
  __c30_signature
-                  0x000a94          0x6 build/default/production/mcc_generated_files/pin_manager.o
+                  0x000abe          0x6 build/default/production/mcc_generated_files/pin_manager.o
  __c30_signature
-                  0x000a9a          0x6 build/default/production/mcc_generated_files/tmr2.o
+                  0x000ac4          0x6 build/default/production/mcc_generated_files/tmr2.o
  __c30_signature
-                  0x000aa0          0x6 build/default/production/mcc_generated_files/uart1.o
+                  0x000aca          0x6 build/default/production/mcc_generated_files/uart1.o
  __c30_signature
-                  0x000aa6          0x6 build/default/production/mcc_generated_files/uart2.o
+                  0x000ad0          0x6 build/default/production/mcc_generated_files/uart2.o
  __c30_signature
-                  0x000aac          0x6 build/default/production/mcc_generated_files/tmr4.o
+                  0x000ad6          0x6 build/default/production/mcc_generated_files/tmr4.o
  __c30_signature
-                  0x000ab2          0x6 build/default/production/mcc_generated_files/tmr3.o
+                  0x000adc          0x6 build/default/production/mcc_generated_files/tmr3.o
  __c30_signature
-                  0x000ab8          0x6 build/default/production/main.o
+                  0x000ae2          0x6 build/default/production/main.o
  __c30_signature
-                  0x000abe          0x6 build/default/production/hmi.o
+                  0x000ae8          0x6 build/default/production/hmi.o
  __c30_signature
-                  0x000ac4          0x6 build/default/production/main_3.o
+                  0x000aee          0x6 build/default/production/main_3.o
  __c30_signature
-                  0x000aca          0x6 build/default/production/common.o
+                  0x000af4          0x6 build/default/production/common.o
  __c30_signature
-                  0x000ad0          0x6 build/default/production/keypad.o
+                  0x000afa          0x6 build/default/production/keypad.o
  __c30_signature
-                  0x000ad6          0x6 build/default/production/backlight.o
+                  0x000b00          0x6 build/default/production/backlight.o
  __c30_signature
-                  0x000adc          0x6 build/default/production/tone.o
+                  0x000b06          0x6 build/default/production/tone.o
  __c30_signature
-                  0x000ae2          0x6 build/default/production/lcd.o
+                  0x000b0c          0x6 build/default/production/lcd.o
  __c30_signature
-                  0x000ae8          0x6 build/default/production/led.o
+                  0x000b12          0x6 build/default/production/led.o
  __c30_signature
-                  0x000aee          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extendedep.o)
+                  0x000b18          0x6 build/default/production/lamp.o
  __c30_signature
-                  0x000af4          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.a(data_init_extended.o)
+                  0x000b1e          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extendedep.o)
  __c30_signature
-                  0x000afa          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(memcpy.EP_eo)
+                  0x000b24          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.a(data_init_extended.o)
  __c30_signature
-                  0x000b00          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(strcpy.EP_eo)
+                  0x000b2a          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(memcpy.EP_eo)
  __c30_signature
-                  0x000b06          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(strlen.EP_eo)
+                  0x000b30          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(strcpy.EP_eo)
+ __c30_signature
+                  0x000b36          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(strlen.EP_eo)
 
 .nbss               0x1000         0x6e
  .nbss              0x1000         0x44 build/default/production/mcc_generated_files/tmr2.o
@@ -2434,21 +2451,21 @@ __c30_signature
 .ndata              0x10d0          0x2
  .ndata             0x10d0          0x2 build/default/production/mcc_generated_files/traps.o
 
-.nbss               0x10d2          0x6
+.nbss               0x10d2          0x4
  .nbss              0x10d2          0x2 build/default/production/mcc_generated_files/tmr4.o
                     0x10d2                  _TMR4_InterruptHandler
  .nbss              0x10d4          0x2 build/default/production/mcc_generated_files/tmr3.o
                     0x10d4                  _TMR3_InterruptHandler
- .nbss              0x10d6          0x2 build/default/production/hmi.o
-                    0x10d6                  _lmp_update
 
-.ndata              0x10d8          0x2
- .ndata             0x10d8          0x2 build/default/production/common.o
-                    0x10d8                  _hexAscii
+.ndata              0x10d6          0x2
+ .ndata             0x10d6          0x2 build/default/production/common.o
+                    0x10d6                  _hexAscii
 
-.nbss               0x10da          0x2
- .nbss              0x10da          0x2 build/default/production/led.o
-                    0x10da                  _led_state
+.nbss               0x10d8          0x4
+ .nbss              0x10d8          0x2 build/default/production/led.o
+                    0x10d8                  _led_state
+ .nbss              0x10da          0x2 build/default/production/lamp.o
+                    0x10da                  _lmp_update
 
 .bss                0x10dc        0x4b6
  .bss               0x10dc        0x1fe build/default/production/tone.o
@@ -2542,23 +2559,25 @@ __c30_signature
 .text             0x000a44       0x150e
  .text            0x000a44        0x8cc build/default/production/main_3.o
                   0x0012f2                  _main
- .text            0x001310        0x72c build/default/production/hmi.o
-                  0x001354                  _hmi_GenerateBootScreen
-                  0x001378                  _hmi_ConfigSystemState
-                  0x001398                  _load_defaults
-                  0x00158a                  _hmi_lampStackController
-                  0x0016a0                  _hmi_scanSetupCommand
-                  0x0016c0                  _hmi_SetupStateTimeout
-                  0x0016de                  _hmi_setupL1KeyCommand
-                  0x00176e                  _hmi_setupL2KeyCommand
-                  0x0017fe                  _hmi_setupL3KeyCommand
-                  0x00188e                  _hmi_setupL4KeyCommand
-                  0x00191e                  _hmi_setupL5KeyCommand
-                  0x0019ae                  _hmi_setupL6KeyCommand
- .text            0x001a3c        0x516 build/default/production/lcd.o
-                  0x001a3c                  _lcd_bootSeq
-                  0x001ce0                  _hmi_lcdController
-                  0x001dee                  _process_LcdController
+ .text            0x001310        0x516 build/default/production/lcd.o
+                  0x001310                  _lcd_bootSeq
+                  0x0015b4                  _hmi_lcdController
+                  0x0016c2                  _process_LcdController
+ .text            0x001826        0x416 build/default/production/hmi.o
+                  0x001826                  _hmi_GenerateBootScreen
+                  0x00184a                  _hmi_ConfigSystemState
+                  0x00186a                  _load_defaults
+                  0x0018a0                  _hmi_scanSetupCommand
+                  0x0018c0                  _hmi_SetupStateTimeout
+                  0x0018de                  _hmi_setupL1KeyCommand
+                  0x00196e                  _hmi_setupL2KeyCommand
+                  0x0019fe                  _hmi_setupL3KeyCommand
+                  0x001a8e                  _hmi_setupL4KeyCommand
+                  0x001b1e                  _hmi_setupL5KeyCommand
+                  0x001bae                  _hmi_setupL6KeyCommand
+ .text            0x001c3c        0x316 build/default/production/lamp.o
+                  0x001e10                  _hmi_lampStackController
+                  0x001f0e                  _lamp_bootSeq
 
 .NVM_flash        0x001f52        0x18a
  .NVM_flash       0x001f52        0x18a build/default/production/mcc_generated_files/memory/flash.o

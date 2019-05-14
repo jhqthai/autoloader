@@ -21,4 +21,5 @@ hmi.h  \
 keypad.h  \
 backlight.h  \
  tone.h  \
-lcd.h 
+lcd.h  \
+lamp.h 

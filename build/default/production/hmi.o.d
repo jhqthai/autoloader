@@ -4,4 +4,5 @@ common.h  \
 hmi.h  \
 keypad.h  \
 lcd.h  \
-led.h 
+led.h  \
+ lamp.h 
