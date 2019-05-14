@@ -16,4 +16,5 @@ mcc_generated_files/uart2.h  \
 mcc_generated_files/tmr3.h  \
  mcc_generated_files/watchdog.h  \
 common.h  \
-lcd.h 
+lcd.h  \
+led.h 

@@ -9,48 +9,19 @@
 // Default parameters
 int P1_value, P2_value, P3_value, P4_value, P5_value, P6_value;
 
-/* LCD prints*/
-const char *lcd_frame   = "   Auto-loader  \xC0     Ver        \x02\0";
-const char *lcd_load    = "    Loading     \xC0                \x02\0";
-const char *lcd_decode  = "     DECODE     \xC0   AUTOMATION   \x02\0";
-const char *config_1602A_2L_Blk = "\x38\x38\x0D\x06\x01\x02\0";     // Configuration of the 1602A LCD display with blink
-const char *config_1602A_2LnBLK = "\x38\x38\x0C\x06\x01\x02\0";     // Configuration of the 1602A LCD display with no blink and no underscore
-const char *config_1602A_2L_UL  = "\x38\x38\x0E\x06\x01\x02\0";     // Configuration of the 1602A LCD display with underscore
-const char *lcd_ready   = "  SYSTEM READY  \xC0                \x02\0";
-const char *lcd_start   = "  Starting      \xC0                \x02\0";
-const char *lcd_setup   = "   SETUP MODE   \xC0<-  (+)  (-)  ->\x02\0";
-const char *lcd_fillMax = " Fill Timeout   \xC0                \x02\0";
-const char *lcd_lowMax  = " Low Detect     \xC0  Sec           \x02\0";
-const char *lcd_setP1   = " SET P1         \xC0 Low Debnc  Del \x02\0";
-const char *lcd_setP2   = " SET P2         \xC0 Lid Close  Del \x02\0";
-const char *lcd_setP3   = " SET P3         \xC0 Drop Away  Del \x02\0";
-const char *lcd_setP4   = " SET P4         \xC0 Slide Open Del \x02\0";
-const char *lcd_setP5   = " SET P5         \xC0 Full Debnc Del \x02\0";
-const char *lcd_setP6   = " SET P6         \xC0 Its Bob & Rosie\x02\0";
-
-char lcdBuff[LCD_BUFFER];
-char lcdState, lcd_index, lcd_msg = 0;
-
 /* LCD tasks*/
 char lampState, uiState, uiTasks, hmiTask, comTasks, cmdTasks, cmdBuff, sysState, rxIndx, txIndx, rxMsg, txMsg = 0;
 int lcd_flash_count, fill_cntr, lamp_tmr; // scrn_hdr, scrn_ftr;
-char lamp_flash_count, scrn_state, lmp_state, led_state, scrn_hdr, scrn_ftr;
+char lamp_flash_count, scrn_state, lmp_state, scrn_hdr, scrn_ftr; // , led_state
 
 /* Machine states? */
 char runTasks, devState, flashRate = 0;
 
-/* Messages */
-char msgBuff[MSG_BUFFER];
+
 
 /* I/O Buffers?*/
 char outputDevices, buff, inputDevices = 0; 
 
-/****************** 
- * Keypad section *
- ******************/
-//char keyBuff, keyValue, keyState = 0;
-
-/**** Keypad section ends *****/
 
 void device_outputState(char device, char state)
 {

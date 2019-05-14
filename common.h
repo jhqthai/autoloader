@@ -25,47 +25,6 @@ extern int P1_value, P2_value, P3_value, P4_value, P5_value, P6_value;
 #define HMI_ANIMATION   (1000)
 
 
-/* LCD States*/    
-#define LCD_LINES           (2)
-#define LCD_CHARS           (16)
-#define LCD_SCRNS           (LCD_LINES * LCD_CHARS)
-#define LCD_PAGES           (4)
-#define LCD_MESSAGES        (LCD_PAGES * LCD_SCRNS)
-#define LCD_LINE1           (0)
-#define LCD_LINE2           (17)
-#define LCD_SCREEN          (3)
-#define LCD_BUFFER          (36)
-#define LCD_WR_LATENCY      (25)
-#define LCD_PWRUP           (10000)
-#define LCD_UPDATE_RQT      (lcd_msg > 0)
-#define LCD_IDLE            (lcdState == LCD_RDY)
-#define LCD_LINE1_HM         0x02
-#define LCD_LINE2_HM         0xC0
-#define LCD_RDY_STATE      ((lcd_msg == 0) && (lcd_index == 0) && (lcdState == LCD_RDY))
-#define refresh_display()   (lcd_msg = (33))
-    
-/* LCD prints*/
-extern const char *lcd_frame;
-extern const char *lcd_load;
-extern const char *lcd_decode;
-extern const char *config_1602A_2L_Blk;     // Configuration of the 1602A LCD display with blink
-extern const char *config_1602A_2LnBLK;     // Configuration of the 1602A LCD display with no blink and no underscore
-extern const char *config_1602A_2L_UL;     // Configuration of the 1602A LCD display with underscore
-extern const char *lcd_ready;
-extern const char *lcd_start;
-extern const char *lcd_setup;
-extern const char *lcd_fillMax;
-extern const char *lcd_lowMax;
-extern const char *lcd_setP1;
-extern const char *lcd_setP2;
-extern const char *lcd_setP3;
-extern const char *lcd_setP4;
-extern const char *lcd_setP5;
-extern const char *lcd_setP6;
-
-extern char lcdBuff[]; // This might need to be declare in .c file instead?
-extern char lcdState, lcd_index, lcd_msg;
-
 /* LCD tasks*/
 extern int lcd_flash_count, fill_cntr, lamp_tmr; // scrn_hdr, scrn_ftr;
 extern char lampState, uiState, uiTasks, hmiTask, comTasks, cmdTasks, cmdBuff, sysState, rxIndx, txIndx, rxMsg, txMsg;
@@ -81,29 +40,10 @@ extern char lampState, uiState, uiTasks, hmiTask, comTasks, cmdTasks, cmdBuff, s
 #define RLY_GATE        0x08
 #define SOLENOIDS       0x0C
 
-/* Message parameters */
-#define MSG_CLEAR       (0x00)
-#define MSG_HOPPER      (MSG_CLEAR       + LCD_CHARS)
-#define MSG_IMMINENT    (MSG_HOPPER      + LCD_CHARS)
-#define MSG_FILL_CNT    (MSG_IMMINENT    + LCD_CHARS)
-#define MSG_STANDBY     (MSG_FILL_CNT    + LCD_CHARS)
-#define MSG_FILLING     (MSG_STANDBY     + LCD_CHARS)
-#define MSG_GLUECOLD    (MSG_FILLING     + LCD_CHARS)
-#define MSG_GLUELOW     (MSG_GLUECOLD    + LCD_CHARS)
-#define MSG_LIDOPEN     (MSG_GLUELOW     + LCD_CHARS)
-#define MSG_CHECK       (MSG_LIDOPEN     + LCD_CHARS)
-#define MSG_INSPECT     (MSG_CHECK       + LCD_CHARS)
-#define MSG_SYSHALT     (MSG_INSPECT     + LCD_CHARS)
-#define MSG_STOREL1     (MSG_SYSHALT     + LCD_CHARS)
-#define MSG_STOREL2     (MSG_STOREL1     + LCD_CHARS)
-#define MSG_BUFFER      (MSG_STOREL2     + LCD_CHARS + 5)
-
-extern char msgBuff[];
-
 
 /* Serial Comm's*/
 extern volatile unsigned long t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14;
-extern char lamp_flash_count, scrn_state, lmp_state, led_state, scrn_hdr, scrn_ftr;
+extern char lamp_flash_count, scrn_state, lmp_state, scrn_hdr, scrn_ftr; //, led_state
 
 /* Machine states */
 typedef enum{
@@ -141,18 +81,6 @@ extern void device_outputState(char device, char state);
  */
 extern void word2DecConverter(unsigned int data, char *output, char digits);
     
-/****************** 
- * Keypad section *
- ******************/
-//extern char keyBuff, keyValue, keyState;
-//
-//typedef enum{
-//    KEY_INI = 0,
-//    KEY_SCAN, 
-//    KEY_REL
-//}KEY_STATES;
-
-/**** Keypad section ends *****/
 
 #ifdef	__cplusplus
 }

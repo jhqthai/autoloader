@@ -1,15 +1,9 @@
 /****************************************
  * Backlight process section
  ****************************************/
-
-/* This function is currently not being used
- * However it requies BL_LEV which is used by other LCD functions
- * Therefore, move it to LCD as well
- */
 #include "mcc_generated_files/mcc.h"
 #include "common.h"
 #include "backlight.h"
-
 
 // Backlight
 char BL_LEV = 0;

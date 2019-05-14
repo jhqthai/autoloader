@@ -69,6 +69,8 @@
       <itemPath>tone.h</itemPath>
       <itemPath>lcd.c</itemPath>
       <itemPath>lcd.h</itemPath>
+      <itemPath>led.c</itemPath>
+      <itemPath>led.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
