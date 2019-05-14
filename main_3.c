@@ -12,6 +12,7 @@
 #include "keypad.h"
 #include "backlight.h"
 #include "tone.h"
+#include "lcd.h"
 
 
 
@@ -249,22 +250,22 @@ const char *msg_debugCls    = "\n\r Resuming...    Hopper lid closed  \0";
 //const char *lcd_setP4   = " SET P4         \xC0 Slide Open Del \x02\0";
 //const char *lcd_setP5   = " SET P5         \xC0 Full Debnc Del \x02\0";
 //const char *lcd_setP6   = " SET P6         \xC0 Its Bob & Rosie\x02\0";
-
-#define MSG_CLEAR       (0x00)
-#define MSG_HOPPER      (MSG_CLEAR       + LCD_CHARS)
-#define MSG_IMMINENT    (MSG_HOPPER      + LCD_CHARS)
-#define MSG_FILL_CNT    (MSG_IMMINENT    + LCD_CHARS)
-#define MSG_STANDBY     (MSG_FILL_CNT    + LCD_CHARS)
-#define MSG_FILLING     (MSG_STANDBY     + LCD_CHARS)
-#define MSG_GLUECOLD    (MSG_FILLING     + LCD_CHARS)
-#define MSG_GLUELOW     (MSG_GLUECOLD    + LCD_CHARS)
-#define MSG_LIDOPEN     (MSG_GLUELOW     + LCD_CHARS)
-#define MSG_CHECK       (MSG_LIDOPEN     + LCD_CHARS)
-#define MSG_INSPECT     (MSG_CHECK       + LCD_CHARS)
-#define MSG_SYSHALT     (MSG_INSPECT     + LCD_CHARS)
-#define MSG_STOREL1     (MSG_SYSHALT     + LCD_CHARS)
-#define MSG_STOREL2     (MSG_STOREL1     + LCD_CHARS)
-#define MSG_BUFFER      (MSG_STOREL2     + LCD_CHARS + 5)
+//
+//#define MSG_CLEAR       (0x00)
+//#define MSG_HOPPER      (MSG_CLEAR       + LCD_CHARS)
+//#define MSG_IMMINENT    (MSG_HOPPER      + LCD_CHARS)
+//#define MSG_FILL_CNT    (MSG_IMMINENT    + LCD_CHARS)
+//#define MSG_STANDBY     (MSG_FILL_CNT    + LCD_CHARS)
+//#define MSG_FILLING     (MSG_STANDBY     + LCD_CHARS)
+//#define MSG_GLUECOLD    (MSG_FILLING     + LCD_CHARS)
+//#define MSG_GLUELOW     (MSG_GLUECOLD    + LCD_CHARS)
+//#define MSG_LIDOPEN     (MSG_GLUELOW     + LCD_CHARS)
+//#define MSG_CHECK       (MSG_LIDOPEN     + LCD_CHARS)
+//#define MSG_INSPECT     (MSG_CHECK       + LCD_CHARS)
+//#define MSG_SYSHALT     (MSG_INSPECT     + LCD_CHARS)
+//#define MSG_STOREL1     (MSG_SYSHALT     + LCD_CHARS)
+//#define MSG_STOREL2     (MSG_STOREL1     + LCD_CHARS)
+//#define MSG_BUFFER      (MSG_STOREL2     + LCD_CHARS + 5)
 
 //const char *autoLoaderMsgList    =   "                  .AUTO LOADER       HALTED         OPERATING        HOPPER          EMPTY        Glue is low     Lid is open     Glue is cold     Lid is open      SETTINGS     SYSTEM HALTED!                            .                .               .               . Fill Timeout  . Fill Timeout  . Low Debn      . Fill Timeout  . Fill Timeout  . Time    XX:xx . Fill Timeout  . Fill Timeout  .     ";
 //const char *autoLoaderMsgList    =   "                .  HOPPER       . Fill Imminent .     CHECK     .   STAND-BY    .   Filling     .  Glue is low  .  Lid is open  . Glue is cold  .  Lid is open  .   SETTINGS    .  SYSTEM HALT  .                           .[1] = Exit/Save .[2]+ [3]-      .[4] = next ->  . Fill Timeout  . Empty Debn    . Inputs        . Outputs       . Time    XX:xx . Date  x/XX/xx . Outputs       .Seconds        .     ";
@@ -370,17 +371,17 @@ static void device_ToggleState(char dev, int rate)
 
 
 char display_offset, msg_flash, animation_count,animation_step = 0;
-extern volatile unsigned char lcd_strobe;
+//extern volatile unsigned char lcd_strobe;
 //extern volatile unsigned int keyDebn;
-
-typedef enum{
-    LCD_INITIALIZE = 0,
-    LCD_CONFIG, 
-    LCD_RDY,
-    LCD_BUSY,
-    LCD_WRITE,
-    LCD_LINE2HM
-}LCD_STATES;
+//
+//typedef enum{
+//    LCD_INITIALIZE = 0,
+//    LCD_CONFIG, 
+//    LCD_RDY,
+//    LCD_BUSY,
+//    LCD_WRITE,
+//    LCD_LINE2HM
+//}LCD_STATES;
 
         
 //#define INPUT_GLUELEVEL 0x80            
@@ -727,103 +728,103 @@ static void process_SerialComs()
  * LCD_PWRUP - only use by this function
  * 
  */
-static void process_LcdController()
-{
-    char i;
-    switch(lcdState)
-    {
-        case LCD_INITIALIZE:
-        if(t7 >= LCD_PWRUP)
-        {
-            lcd_index = 0, lcd_msg = 0;
-            strcpy(lcdBuff, config_1602A_2LnBLK);
-            lcd_msg = strlen(lcdBuff);
-            lcdState = LCD_CONFIG;
-            out_nWR2_SetLow();
-            lcd_RS_SetLow();
-            lcd_strobe = 0;
-            t7 = 0;
-        }
-        break;
-        
-        case LCD_CONFIG:
-        if(t7 >= (60))
-        {
-            t7 = 0;
-            i = lcdBuff[lcd_index];
-            LATB = (i & 0x00FF);
-            lcd_strobe = (30);
-            if(lcd_index++ >= lcd_msg+1)
-            {
-                lcd_msg = 0;
-                lcd_index = 0;
-                lcdState = LCD_RDY;
-            }
-            out_nWR2_SetHigh();
-        }
-        if(lcd_strobe == 0)  
-        {
-            out_nWR2_SetLow();
-        }
-        break;
-
-        case LCD_RDY:
-        if(lcd_msg > 0)
-        {
-            t7 = 0;
-            lcdState = LCD_BUSY;
-        }
-        break;
-            
-        case LCD_BUSY:  
-        switch(lcd_index)
-        {            
-            case (16):
-            lcd_index++;
-            lcd_RS_SetLow();
-            i = LCD_LINE2_HM;       // Home display line-2
-            LATB = (i & 0x00FF);
-            out_nWR2_SetHigh();
-            lcdState = LCD_WRITE;
-            lcd_strobe = LCD_WR_LATENCY;
-            break;
-                
-            case (33):
-            lcd_index++;
-            lcd_RS_SetLow();
-            i = LCD_LINE1_HM;       // Home display line-1
-            LATB = (i & 0x00FF);
-            out_nWR2_SetHigh();
-            lcdState = LCD_WRITE;
-            lcd_strobe = LCD_WR_LATENCY;
-            break;
-                
-            case (34):
-            lcd_msg = 0;
-            lcd_index = 0;
-            lcdState = LCD_RDY;
-            break;
-                
-            default:
-            lcd_RS_SetHigh();
-            i = lcdBuff[lcd_index++];
-            LATB = (i & 0x00FF);
-            out_nWR2_SetHigh();
-            lcdState = LCD_WRITE;
-            lcd_strobe = 1;
-            break;
-        }
-        break;
-        
-        case LCD_WRITE:
-        if(lcd_strobe == 0)  
-        {
-            out_nWR2_SetLow();
-            lcdState = LCD_BUSY;
-        }
-        break;
-    }
-}
+//static void process_LcdController()
+//{
+//    char i;
+//    switch(lcdState)
+//    {
+//        case LCD_INITIALIZE:
+//        if(t7 >= LCD_PWRUP)
+//        {
+//            lcd_index = 0, lcd_msg = 0;
+//            strcpy(lcdBuff, config_1602A_2LnBLK);
+//            lcd_msg = strlen(lcdBuff);
+//            lcdState = LCD_CONFIG;
+//            out_nWR2_SetLow();
+//            lcd_RS_SetLow();
+//            lcd_strobe = 0;
+//            t7 = 0;
+//        }
+//        break;
+//        
+//        case LCD_CONFIG:
+//        if(t7 >= (60))
+//        {
+//            t7 = 0;
+//            i = lcdBuff[lcd_index];
+//            LATB = (i & 0x00FF);
+//            lcd_strobe = (30);
+//            if(lcd_index++ >= lcd_msg+1)
+//            {
+//                lcd_msg = 0;
+//                lcd_index = 0;
+//                lcdState = LCD_RDY;
+//            }
+//            out_nWR2_SetHigh();
+//        }
+//        if(lcd_strobe == 0)  
+//        {
+//            out_nWR2_SetLow();
+//        }
+//        break;
+//
+//        case LCD_RDY:
+//        if(lcd_msg > 0)
+//        {
+//            t7 = 0;
+//            lcdState = LCD_BUSY;
+//        }
+//        break;
+//            
+//        case LCD_BUSY:  
+//        switch(lcd_index)
+//        {            
+//            case (16):
+//            lcd_index++;
+//            lcd_RS_SetLow();
+//            i = LCD_LINE2_HM;       // Home display line-2
+//            LATB = (i & 0x00FF);
+//            out_nWR2_SetHigh();
+//            lcdState = LCD_WRITE;
+//            lcd_strobe = LCD_WR_LATENCY;
+//            break;
+//                
+//            case (33):
+//            lcd_index++;
+//            lcd_RS_SetLow();
+//            i = LCD_LINE1_HM;       // Home display line-1
+//            LATB = (i & 0x00FF);
+//            out_nWR2_SetHigh();
+//            lcdState = LCD_WRITE;
+//            lcd_strobe = LCD_WR_LATENCY;
+//            break;
+//                
+//            case (34):
+//            lcd_msg = 0;
+//            lcd_index = 0;
+//            lcdState = LCD_RDY;
+//            break;
+//                
+//            default:
+//            lcd_RS_SetHigh();
+//            i = lcdBuff[lcd_index++];
+//            LATB = (i & 0x00FF);
+//            out_nWR2_SetHigh();
+//            lcdState = LCD_WRITE;
+//            lcd_strobe = 1;
+//            break;
+//        }
+//        break;
+//        
+//        case LCD_WRITE:
+//        if(lcd_strobe == 0)  
+//        {
+//            out_nWR2_SetLow();
+//            lcdState = LCD_BUSY;
+//        }
+//        break;
+//    }
+//}
 
 ////                  Tone generator
 //#define KEY_DUR         (200)
@@ -928,6 +929,11 @@ static void process_LcdController()
 //    }
 //}
 
+/****************************
+ * TODO: POTENTIAL UNUSED FUNCTIONS
+ ****************************/
+
+/* TODO: UNUSED FUNCTION! */
 static void hmi_StateUpdate(char currentState, char newState)
 {
     char i, x;
@@ -971,6 +977,7 @@ static void mem_readDisplayL2_RAM()
     memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_STOREL2,LCD_CHARS);
 }
 
+/* TODO: UNUSED FUNCTION */
 static void hmi_TemperatureAlert()
 {
     char i;
@@ -1045,6 +1052,7 @@ static void display_FlashUpdate(char line)
     refresh_display();
 }
 
+/* TODO: POTENTIAL UNUSED FUNCTION */
 static void lcd_display_flash(char line, int on, int off)
 { 
     char r;
@@ -1068,7 +1076,9 @@ static void lcd_display_flash(char line, int on, int off)
         }
     }
 }
-
+/***********************
+ * END OF POTENTIAL UNUSED FUNCTIONS
+ ***********************/
 
 //static void lampStack_errorSeq(unsigned long tmr)
 //{

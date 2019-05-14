@@ -175,6 +175,7 @@ void hmi_GenerateBootScreen(unsigned long tmr)
 
 /* Function to configure the system's state 
  * Calls when user interacts with key or when HMI is ready.
+ * Move: Should move this to common.h or something so there's no circular dependency
  */
 void hmi_ConfigSystemState(char state)
 {
@@ -199,254 +200,254 @@ void load_defaults()
     P6_value = DEFAULT_P6;
 }
 
-/********************************** LCD! ************************************/
-/* Display temperature to LCD I think
- * Caller: hmi_lcdController()
- * MOVE to lcd.c probably
- */
-static void displayTemperatureFunction()
-{
-    char x;
-    if((runTasks == MC_STDBY) && (t8 == (5000)))
-    {
-        x = (inputDevices & INPUT_TEMP_OK);
-        if(x != INPUT_TEMP_OK)
-        {
-            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_GLUECOLD,LCD_CHARS);
-            refresh_display();
-        }
-    }
-    if((runTasks == MC_STDBY) && (t8 >= (25000)))
-    {
-        memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
-        refresh_display();
-        t8 = 0;
-    }
-}
-/* Generate an imminent screen
- * Caller: hmi_lcdController()
- * Move: can maybe move a level lower than hmi.c may into LCD?
- */
-static void hmi_GenerateImminentScreen(unsigned long tmr)
-{
-    char x;
-    unsigned long i;
-    i = tmr;
-    if(t8 >= i)
-    {
-        t8 = 0;
-        switch(scrn_state++)
-        {
-            case 0:
-            memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_STANDBY,LCD_CHARS);
-            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_IMMINENT,LCD_CHARS);
-            refresh_display();
-            break;
-
-            case (7):           // 700mS
-            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
-            refresh_display();        
-            break;
-
-            case (10):          // 1 sec
-            scrn_state = 0; 
+///********************************** LCD! ************************************/
+///* Display temperature to LCD I think
+// * Caller: hmi_lcdController()
+// * MOVE to lcd.c probably
+// */
+//static void displayTemperatureFunction()
+//{
+//    char x;
+//    if((runTasks == MC_STDBY) && (t8 == (5000)))
+//    {
+//        x = (inputDevices & INPUT_TEMP_OK);
+//        if(x != INPUT_TEMP_OK)
+//        {
+//            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_GLUECOLD,LCD_CHARS);
+//            refresh_display();
+//        }
+//    }
+//    if((runTasks == MC_STDBY) && (t8 >= (25000)))
+//    {
+//        memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
+//        refresh_display();
+//        t8 = 0;
+//    }
+//}
+///* Generate an imminent screen
+// * Caller: hmi_lcdController()
+// * Move: can maybe move a level lower than hmi.c may into LCD?
+// */
+//static void hmi_GenerateImminentScreen(unsigned long tmr)
+//{
+//    char x;
+//    unsigned long i;
+//    i = tmr;
+//    if(t8 >= i)
+//    {
+//        t8 = 0;
+//        switch(scrn_state++)
+//        {
+//            case 0:
+//            memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_STANDBY,LCD_CHARS);
 //            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_IMMINENT,LCD_CHARS);
+//            refresh_display();
+//            break;
+//
+//            case (7):           // 700mS
+//            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
+//            refresh_display();        
+//            break;
+//
+//            case (10):          // 1 sec
+//            scrn_state = 0; 
+////            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_IMMINENT,LCD_CHARS);
+////            refresh_display();   
+//            break;
+//            
+//            default:
+//                break;
+//        }
+//    }
+//}
+//
+///* Generates Fill Screen
+// * Caller: hmi_lcdController()
+// * Move to: Probably lcd.c
+// */
+//static void hmi_GenerateFillScreen(unsigned long tmr)
+//{
+//    unsigned long i;
+//    i = tmr;                                        // Multiples of 100mS
+//    if(t8 >= i)
+//    {
+//        t8 = 0;
+//        switch(scrn_state++)
+//        {
+//            case 0:
+//            memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_STANDBY,LCD_CHARS);
+//            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_FILLING,LCD_CHARS);
+//            refresh_display();
+//            break;
+//
+//            case (4):
+//            lcdBuff[(28)] = '>';       // = '>';
+//            refresh_display();        
+//            break;
+//
+//            case (8):     
+//            lcdBuff[(29)] = '>';       // = '>';
 //            refresh_display();   
-            break;
-            
-            default:
-                break;
-        }
-    }
-}
-
-/* Generates Fill Screen
- * Caller: hmi_lcdController()
- * Move to: Probably lcd.c
- */
-static void hmi_GenerateFillScreen(unsigned long tmr)
-{
-    unsigned long i;
-    i = tmr;                                        // Multiples of 100mS
-    if(t8 >= i)
-    {
-        t8 = 0;
-        switch(scrn_state++)
-        {
-            case 0:
-            memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_STANDBY,LCD_CHARS);
-            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_FILLING,LCD_CHARS);
-            refresh_display();
-            break;
-
-            case (4):
-            lcdBuff[(28)] = '>';       // = '>';
-            refresh_display();        
-            break;
-
-            case (8):     
-            lcdBuff[(29)] = '>';       // = '>';
-            refresh_display();   
-            break;
-
-            case (12):
-            lcdBuff[(28)] = ' ';       // = ' ';
-            lcdBuff[(30)] = '>';       // = '>';
-            refresh_display(); 
-            break;
-
-            case (16):
-            lcdBuff[(29)] = ' ';       // = ' ';
-            lcdBuff[(31)] = '>';       // = '>';
-            refresh_display(); 
-            break;
-
-            case (20):
-            lcdBuff[(30)] = ' ';
-            lcdBuff[(32)] = '>';       // = '>';
-            refresh_display(); 
-            break;
-
-            case (24):
-            scrn_state = 0;    
-                break;
-                
-            default:
-                break;
-        }
-    }
-}
-
-/*
- * Generate Lid Error Screen
- * Caller: hmi_lcdController()
- * Move to: lcd.c maybe
- */
-static void hmi_GenerateLidErrorScreen(unsigned long tmr)
-{
-    unsigned long i;
-    i = tmr;                                        // Multiples of 100mS
-    if(t8 >= i)
-    {
-        t8 = 0;
-        switch(scrn_state++)
-        {
-            case 0:
-            memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_SYSHALT,LCD_CHARS);
-            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_LIDOPEN,LCD_CHARS);
-            refresh_display();    
-                break;
-
-            case (20):
-        //    memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_HOPPER,LCD_CHARS);
-            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
-            refresh_display(); 
-                break;
-
-            case (25):   
-            scrn_state = 0; 
-//            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_LIDOPEN,LCD_CHARS);
+//            break;
+//
+//            case (12):
+//            lcdBuff[(28)] = ' ';       // = ' ';
+//            lcdBuff[(30)] = '>';       // = '>';
 //            refresh_display(); 
-                break;
-
-            case (40):
-
-            default:
-                break;
-        }
-    }
-}
-
-
-
-/* THIS IS THE HIGHER LVL HMI WOOOOWWWW
- * Control what to display on the LCD
- * Caller: system_userInterface()
- * Callees: displayTemperatureFunction(), hmi_GenerateImminentScreen(),
- * hmi_GenerateFillScreen, word2DecConverter(), hmi_GenerateLidErrorScreen()
- * 
- * Variable:
- * runTasks - use by mainly controllers; set by system_eventHandler() 
- * and check_HopperLidClosed()
- */
-char lcd_update;
-void hmi_lcdController()
-{
-    char x; // DECLARED BUT NOT USED?
-    switch(runTasks)
-    {
-        case MC_READY:
-        if(runTasks != lcd_update)
-        {
-            t8 = 0;
-            scrn_state = 0;
-            lcd_update = runTasks;
-            strcpy(lcdBuff, lcd_ready);
-            lcd_msg = strlen(lcdBuff);
-        }
-        break;
-            
-        case MC_STDBY:
-        if(runTasks != lcd_update)
-        {
-            t8 = 0;
-            scrn_state = 0;
-            lcd_update = runTasks;
-            memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_STANDBY,LCD_CHARS);
-            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
-            refresh_display();
-        }
-        displayTemperatureFunction();
-        break;
-           
-        case MC_IMNT:
-        if(runTasks != lcd_update)
-        {
-            t8 = 0;
-            scrn_state = 0;
-            lcd_update = runTasks;
-        }
-        hmi_GenerateImminentScreen(HMI_ANIMATION);
-        break;
-            
-        case MC_FILL:
-        if(runTasks != lcd_update)
-        {
-            t8 = 0;
-            scrn_state = 0;
-            lcd_update = runTasks;
-        }
-        hmi_GenerateFillScreen(HMI_ANIMATION);
-        break;
-        
-        case MC_CHK:
-        if(runTasks != lcd_update)
-        {
-            t8 = 0;
-            scrn_state = 0;
-            lcd_update = runTasks;
-            memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_FILL_CNT,LCD_CHARS);
-            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
-            word2DecConverter(fill_cntr, &lcdBuff[(23)], 5);
-            refresh_display();
-        }
-        break;
-                
-        case MC_LID:            // 5
-        if(runTasks != lcd_update)
-        {
-            t8 = 0;
-            scrn_state = 0;
-            lcd_update = runTasks;
-        }
-        hmi_GenerateLidErrorScreen(HMI_ANIMATION);
-        break;
-                
-        default:
-            break;
-    }
-}
-/********************************** LCD END **********************************/
+//            break;
+//
+//            case (16):
+//            lcdBuff[(29)] = ' ';       // = ' ';
+//            lcdBuff[(31)] = '>';       // = '>';
+//            refresh_display(); 
+//            break;
+//
+//            case (20):
+//            lcdBuff[(30)] = ' ';
+//            lcdBuff[(32)] = '>';       // = '>';
+//            refresh_display(); 
+//            break;
+//
+//            case (24):
+//            scrn_state = 0;    
+//                break;
+//                
+//            default:
+//                break;
+//        }
+//    }
+//}
+//
+///*
+// * Generate Lid Error Screen
+// * Caller: hmi_lcdController()
+// * Move to: lcd.c maybe
+// */
+//static void hmi_GenerateLidErrorScreen(unsigned long tmr)
+//{
+//    unsigned long i;
+//    i = tmr;                                        // Multiples of 100mS
+//    if(t8 >= i)
+//    {
+//        t8 = 0;
+//        switch(scrn_state++)
+//        {
+//            case 0:
+//            memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_SYSHALT,LCD_CHARS);
+//            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_LIDOPEN,LCD_CHARS);
+//            refresh_display();    
+//                break;
+//
+//            case (20):
+//        //    memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_HOPPER,LCD_CHARS);
+//            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
+//            refresh_display(); 
+//                break;
+//
+//            case (25):   
+//            scrn_state = 0; 
+////            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_LIDOPEN,LCD_CHARS);
+////            refresh_display(); 
+//                break;
+//
+//            case (40):
+//
+//            default:
+//                break;
+//        }
+//    }
+//}
+//
+//
+//
+///* THIS IS THE HIGHER LVL HMI WOOOOWWWW
+// * Control what to display on the LCD
+// * Caller: system_userInterface()
+// * Callees: displayTemperatureFunction(), hmi_GenerateImminentScreen(),
+// * hmi_GenerateFillScreen, word2DecConverter(), hmi_GenerateLidErrorScreen()
+// * 
+// * Variable:
+// * runTasks - use by mainly controllers; set by system_eventHandler() 
+// * and check_HopperLidClosed()
+// */
+//char lcd_update;
+//void hmi_lcdController()
+//{
+//    char x; // DECLARED BUT NOT USED?
+//    switch(runTasks)
+//    {
+//        case MC_READY:
+//        if(runTasks != lcd_update)
+//        {
+//            t8 = 0;
+//            scrn_state = 0;
+//            lcd_update = runTasks;
+//            strcpy(lcdBuff, lcd_ready);
+//            lcd_msg = strlen(lcdBuff);
+//        }
+//        break;
+//            
+//        case MC_STDBY:
+//        if(runTasks != lcd_update)
+//        {
+//            t8 = 0;
+//            scrn_state = 0;
+//            lcd_update = runTasks;
+//            memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_STANDBY,LCD_CHARS);
+//            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
+//            refresh_display();
+//        }
+//        displayTemperatureFunction();
+//        break;
+//           
+//        case MC_IMNT:
+//        if(runTasks != lcd_update)
+//        {
+//            t8 = 0;
+//            scrn_state = 0;
+//            lcd_update = runTasks;
+//        }
+//        hmi_GenerateImminentScreen(HMI_ANIMATION);
+//        break;
+//            
+//        case MC_FILL:
+//        if(runTasks != lcd_update)
+//        {
+//            t8 = 0;
+//            scrn_state = 0;
+//            lcd_update = runTasks;
+//        }
+//        hmi_GenerateFillScreen(HMI_ANIMATION);
+//        break;
+//        
+//        case MC_CHK:
+//        if(runTasks != lcd_update)
+//        {
+//            t8 = 0;
+//            scrn_state = 0;
+//            lcd_update = runTasks;
+//            memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_FILL_CNT,LCD_CHARS);
+//            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
+//            word2DecConverter(fill_cntr, &lcdBuff[(23)], 5);
+//            refresh_display();
+//        }
+//        break;
+//                
+//        case MC_LID:            // 5
+//        if(runTasks != lcd_update)
+//        {
+//            t8 = 0;
+//            scrn_state = 0;
+//            lcd_update = runTasks;
+//        }
+//        hmi_GenerateLidErrorScreen(HMI_ANIMATION);
+//        break;
+//                
+//        default:
+//            break;
+//    }
+//}
+///********************************** LCD END **********************************/
 
 /********************************** LAMP! ************************************/
 
