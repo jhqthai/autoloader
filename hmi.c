@@ -15,6 +15,31 @@
 #include "lamp.h"
 
 
+// Local default parameters
+#define DEFAULT_P1 (5)         // Empty low time   (10 seconds)
+#define DEFAULT_P2 (1)         // Lid close time   (1 second)
+#define DEFAULT_P3 (10)        // Drop away time   (10 seconds)
+#define DEFAULT_P4 (2)         // Slide open time  (1 second)
+#define DEFAULT_P5 (3)         // Fill high time   (3 seconds)
+#define DEFAULT_P6 (6)         // Solenoid minimum ON time   (6 seconds)
+
+// Define global default parameters
+int P1_value, P2_value, P3_value, P4_value, P5_value, P6_value;
+
+/* Function to configure the system's state 
+ * Calls when user interacts with key or when HMI is ready.
+ */
+void hmi_ConfigSystemState(char state)
+{
+    char i;
+    t8 = 0;
+    t10 = 0;
+    i = state;
+    uiState = i;
+    hmiTask = 0;
+    lmp_state = 0;
+    scrn_state = 0;
+}
 
 void hmi_GenerateBootScreen(unsigned long tmr)
 {
@@ -52,6 +77,7 @@ void hmi_SetupStateTimeout(unsigned long timeout)
     }
 }
 
+/****** LCD HMI ******/
  /* Control LCD display
  * Caller: system_userInterface()
  * Callees: displayTemperatureFunction(), hmi_GenerateImminentScreen(),
@@ -131,6 +157,85 @@ void hmi_lcdController()
             lcd_update = runTasks;
         }
         hmi_GenerateLidErrorScreen(HMI_ANIMATION);
+        break;
+                
+        default:
+            break;
+    }
+}
+/***** Lamp HMI ******/
+/* Lamp control function
+ * Caller: system_userInterface()
+ */
+void hmi_lampStackController()
+{
+    static char lmp_update;
+    switch(runTasks)
+    {
+        case MC_READY:
+        if(runTasks != lmp_update)
+        {
+            t10 = 0;
+            lmp_state = 0;
+            lmp_update = runTasks;
+            device_outputState(LAMP_RED,STATE_OFF);
+            device_outputState(LAMP_GRN,STATE_ON); 
+        }
+        break;
+            
+        case MC_STDBY:
+        if(runTasks != lmp_update)
+        {
+            t10 = 0;
+            lmp_state = 0;
+            lmp_update = runTasks;
+            device_outputState(LAMP_RED,STATE_OFF);
+            device_outputState(LAMP_GRN,STATE_ON); 
+        }
+        break;
+           
+        case MC_IMNT:
+        if(runTasks != lmp_update)
+        {
+            t10 = 0;
+            lmp_state = 0;
+            lmp_update = runTasks;
+            device_outputState(LAMP_RED,STATE_OFF);
+        }
+        lampStack_imminentSeq(HMI_ANIMATION);
+        break;
+            
+        case MC_FILL:
+        if(runTasks != lmp_update)
+        {
+            t10 = 0;
+            lmp_state = 0;
+            lmp_update = runTasks;
+            device_outputState(LAMP_RED,STATE_OFF);
+        }
+        lampStack_fillSeq(HMI_ANIMATION);    
+        break;
+        
+        case MC_CHK:
+        if(runTasks != lmp_update)
+        {
+            t10 = 0;
+            lmp_state = 0;
+            lmp_update = runTasks;
+            device_outputState(LAMP_RED,STATE_OFF);
+        }
+        lampStack_fillSeq(HMI_ANIMATION);
+        break;
+                
+        case MC_LID:            // 5
+        if(runTasks != lmp_update)
+        {
+            t10 = 0;
+            lmp_state = 0;
+            lmp_update = runTasks;
+            device_outputState(LAMP_GRN,STATE_OFF);
+        }
+        lampStack_errorSeq(HMI_ANIMATION);
         break;
                 
         default:

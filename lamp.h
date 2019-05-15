@@ -22,9 +22,13 @@ extern "C" {
 #define RLY_GATE        0x08
 #define SOLENOIDS       0x0C
 
-
-extern void hmi_lampStackController();
+// Define global function
 extern void lamp_bootSeq();
+extern void lampStack_imminentSeq(unsigned long tmr);
+extern void lampStack_fillSeq(unsigned long tmr);
+extern void lampStack_errorSeq(unsigned long tmr);
+
+
 
 #ifdef	__cplusplus
 }

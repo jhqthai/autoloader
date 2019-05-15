@@ -21,6 +21,11 @@ char sysState;
 //// Toggle state variables
 //char lamp_flash_count;
 
+// Communication variables
+char comTasks, cmdTasks, rxIndx, txIndx, rxMsg, txMsg;
+
+
+
 // Serial comm's 
 #define TX_BUFFER       (128)
 #define RX_BUFFER       (255)

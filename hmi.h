@@ -5,15 +5,21 @@
 extern "C" {
 #endif
 
+// Default parameters
+extern int P1_value, P2_value, P3_value, P4_value, P5_value, P6_value;
+
+/* Declare global functions */
+// Setup state
+extern void hmi_ConfigSystemState(char state);
+extern void load_defaults();
+extern void hmi_SetupStateTimeout(unsigned long timeout);
 
 // LCD
-extern void hmi_GenerateBootScreen(unsigned long tmr); // Probably don't need extern for these functions
-extern void load_defaults(); // We are not making any changes to it anyway
+extern void hmi_GenerateBootScreen(unsigned long tmr);
 extern void hmi_lcdController(); // LCD controller
 
-
-// Setup state
-extern void hmi_SetupStateTimeout(unsigned long timeout);
+// Lamp
+extern void hmi_lampStackController();
 
 // Keypad
 extern void hmi_scanSetupCommand(char val);

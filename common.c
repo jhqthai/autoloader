@@ -6,14 +6,11 @@
 #include "common.h"
 #include "hmi.h"
 
-// Default parameters
-int P1_value, P2_value, P3_value, P4_value, P5_value, P6_value;
 
-/* LCD tasks*/
-//int fill_cntr; //,lcd_flash_count,  lamp_tmr; // scrn_hdr, scrn_ftr;
-char hmiTask, uiTasks, comTasks, cmdTasks, cmdBuff, rxIndx, txIndx, rxMsg, txMsg; //lampState
+// Global HMI variable
+char hmiTask;
 
-// System state variables
+// Global system state variables
 char scrn_state, lmp_state, uiState; //scrn_hdr, scrn_ftr; //, led_state
 
 /* Machine states? */
@@ -84,20 +81,4 @@ void word2DecConverter(unsigned int data, char *output, char digits)
     {
         output[dIndex] = ascii[(5-digits)+dIndex];
     }
-}
-
-/* Function to configure the system's state 
- * Calls when user interacts with key or when HMI is ready.
- * Move: Should move this to common.h or something so there's no circular dependency
- */
-void hmi_ConfigSystemState(char state)
-{
-    char i;
-    t8 = 0;
-    t10 = 0;
-    i = state;
-    uiState = i;
-    hmiTask = 0;
-    lmp_state = 0;
-    scrn_state = 0;
 }
