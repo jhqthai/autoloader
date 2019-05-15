@@ -2,11 +2,8 @@
 
 #include <xc.h>
 #include <string.h>
-#include <stdint.h>
-#include <stdbool.h>
-//-------------------------------------------------------------------
-// Local Includes
-//-------------------------------------------------------------------
+
+// Local includes
 #include "common.h"
 #include "hmi.h"
 #include "keypad.h"

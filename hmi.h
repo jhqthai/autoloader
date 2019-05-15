@@ -5,6 +5,9 @@
 extern "C" {
 #endif
 
+// HMI Animation - ?
+#define HMI_ANIMATION   (1000)
+
 // Default parameters
 extern int P1_value, P2_value, P3_value, P4_value, P5_value, P6_value;
 

@@ -4,22 +4,15 @@
 #include <stdbool.h>
 
 #include "common.h"
-#include "hmi.h"
-
 
 // Global HMI variable
 char hmiTask;
-
-// Global system state variables
-char scrn_state, lmp_state, uiState; //scrn_hdr, scrn_ftr; //, led_state
-
-/* Machine states? */
-char runTasks, devState, flashRate = 0;
-
-
-
-/* I/O Buffers?*/
+// Define global machine variables
+char runTasks = 0;
+// I/O variables
 char outputDevices, buff, inputDevices = 0; 
+// Global system state variables
+char scrn_state, lmp_state, uiState;
 
 
 void device_outputState(char device, char state)
