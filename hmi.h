@@ -9,6 +9,8 @@ extern "C" {
 // LCD
 extern void hmi_GenerateBootScreen(unsigned long tmr); // Probably don't need extern for these functions
 extern void load_defaults(); // We are not making any changes to it anyway
+extern void hmi_lcdController(); // LCD controller
+
 
 // Setup state
 extern void hmi_SetupStateTimeout(unsigned long timeout);

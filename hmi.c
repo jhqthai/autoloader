@@ -1,3 +1,4 @@
+// Mainly to controls hmi interactions
 
 #include <xc.h>
 #include <string.h>
@@ -48,6 +49,92 @@ void hmi_SetupStateTimeout(unsigned long timeout)
     if(t6 >= i)    
     {
         hmi_ConfigSystemState(HMI_RUN);
+    }
+}
+
+ /* Control LCD display
+ * Caller: system_userInterface()
+ * Callees: displayTemperatureFunction(), hmi_GenerateImminentScreen(),
+ * hmi_GenerateFillScreen, word2DecConverter(), hmi_GenerateLidErrorScreen()
+ * 
+ * Variable:
+ * runTasks - use by mainly controllers; set by system_eventHandler() 
+ * and check_HopperLidClosed()
+ */
+void hmi_lcdController()
+{
+    static char lcd_update;
+    switch(runTasks)
+    {
+        case MC_READY:
+        if(runTasks != lcd_update)
+        {
+            t8 = 0;
+            scrn_state = 0;
+            lcd_update = runTasks;
+            strcpy(lcdBuff, lcd_ready);
+            lcd_msg = strlen(lcdBuff);
+        }
+        break;
+            
+        case MC_STDBY:
+        if(runTasks != lcd_update)
+        {
+            t8 = 0;
+            scrn_state = 0;
+            lcd_update = runTasks;
+            memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_STANDBY,LCD_CHARS);
+            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
+            refresh_display();
+        }
+        displayTemperatureFunction();
+        break;
+           
+        case MC_IMNT:
+        if(runTasks != lcd_update)
+        {
+            t8 = 0;
+            scrn_state = 0;
+            lcd_update = runTasks;
+        }
+        hmi_GenerateImminentScreen(HMI_ANIMATION);
+        break;
+            
+        case MC_FILL:
+        if(runTasks != lcd_update)
+        {
+            t8 = 0;
+            scrn_state = 0;
+            lcd_update = runTasks;
+        }
+        hmi_GenerateFillScreen(HMI_ANIMATION);
+        break;
+        
+        case MC_CHK:
+        if(runTasks != lcd_update)
+        {
+            t8 = 0;
+            scrn_state = 0;
+            lcd_update = runTasks;
+            memcpy(lcdBuff+LCD_LINE1,msgBuff+MSG_FILL_CNT,LCD_CHARS);
+            memcpy(lcdBuff+LCD_LINE2,msgBuff+MSG_CLEAR,LCD_CHARS);
+            word2DecConverter(fill_cntr, &lcdBuff[(23)], 5);
+            refresh_display();
+        }
+        break;
+                
+        case MC_LID:            // 5
+        if(runTasks != lcd_update)
+        {
+            t8 = 0;
+            scrn_state = 0;
+            lcd_update = runTasks;
+        }
+        hmi_GenerateLidErrorScreen(HMI_ANIMATION);
+        break;
+                
+        default:
+            break;
     }
 }
 
