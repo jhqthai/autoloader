@@ -1,4 +1,5 @@
-/********************************** LAMP! ************************************/
+// Lamp driver module
+
 #include "lamp.h"
 #include "common.h"
 

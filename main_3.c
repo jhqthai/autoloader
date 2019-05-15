@@ -16,21 +16,6 @@
 #include "lcd.h"
 #include "lamp.h"
 
-/* Local main variables */
-// Event handler variables
-char sysState;
-//// Toggle state variables
-//char lamp_flash_count;
-
-//// Communication variables 
-//char comTasks, cmdTasks, rxIndx, txIndx, rxMsg, txMsg;
-
-//// Serial comm's 
-//#define TX_BUFFER       (128)
-//#define RX_BUFFER       (255)
-//#define UART1_BRG       (((FCY / UART1_BAUD)/16) - 1)
-//char txbuff[TX_BUFFER], rxbuff[RX_BUFFER];
-
 // Operational parameters
 #define ONE_HERTZ       (10000)  
 #define TWO_HERTZ       (5000)
@@ -42,22 +27,6 @@ char sysState;
 #define VALID_GLUELOW   (30000)         // Will be changed in menu
 #define VALID_GLUEFILL  (50000)
 #define VALID_FILLERR   (600000)        // Hopper fill error timeout - to be save in NV
-
-//// Serial comm. states
-//typedef enum{
-//    INI = 0,
-//    RDY,
-//    BUSY
-//}COM_STATE;
-
-//// Command intepreter states
-//typedef enum{
-//    CONNECT = 0,
-//    MENU,
-//    IO,
-//    SEND,
-//    ERROR
-//}HOST_CMD;
 
 // Process control
 #define PROCESS_DELAY   (30000)
@@ -104,48 +73,27 @@ char sysState;
 #define P3_DROP_AWAY       (200000)     // 20 seconds
 #define FILL_ON_MIN        (100000)     // 10 seconds
 
-// TODO: Probs unused
+// System states
+typedef enum{
+    SYS_INI = 0,
+    SYS_CONFIG,             // Loads NV memory
+    SYS_READY,
+    RUN_PROGRAM
+}SYSTEM_STATE;
+
 typedef struct{
-//    char stack;
-//    char t1;
-//    char t2;
-//    char t3;
-//    char t4;
-//    char t5;
-//    char t6;
-//    
-//    char cmd;
-//    int fills;
     int status;
-    char temp;
 }SYSTEM;
 SYSTEM sys;
 
+// System event handler variables
+char sysState;
 
-//// USB interface host command messages - Communication stuff
-//const char *msg_startup     = "\n\r *** DECODE AUTOMATION ***      \0";
-//const char *msg_version     = "\n\r    Autoloader Ver-1.00         \0";
-//const char *msg_emptyDel    = "\n\r Press 'E' enter 'empty' delay  \0";
-//const char *msg_lowLev      = "\n\r Press 'L' to adjust low level  \0";
-//const char *msg_contact     = "\n\r Press 'C' for contact details  \0";
-//const char *msg_monitor     = "\n\r Press 'M' for debug monitoring \0";
-//const char *msg_io_test     = "\n\r Press 'T' for I/O test         \0";
-//const char *msg_userErr     = "\n\r    Invalid selection!          \0";
-//const char *msg_debugRdy    = "\n\r READY.    The system will run when start is pressed              \0";
-//const char *msg_debugRun    = "\n\r MONTIORING.    Monitoring the glue level, engage host 'dry' contact         \0";
-//const char *msg_debugFill   = "\n\r HOPPER FILL.   Detected a low hopper glue level. Engage 'fill' solenoid     \0";
-//const char *msg_debugStFl   = "\n\r FILL STOP.     Disengage 'fill' solenoid     \0";
-//const char *msg_debugLid    = "\n\r SYSTEM HALT.   Detected the lid open. All outputs disengaged. Close to continue\0";
-//const char *msg_debugErr    = "\n\r SYSTEM ERROR.  Hopper fill timeout failure. Check hopper before proceeding  \0";
-//const char *msg_debugCls    = "\n\r Resuming...    Hopper lid closed  \0";
-
+// USB interface host command messages
 const char *autoLoaderMsgList      =   "                . CHECK HOPPER! . Fill Imminent .  Fill Attempt .   STAND-BY    .  Filling      .  Under-Temp   .  Level Low    .  Lid is open  .    CHECK      .   INSPECT     . SYSTEM HALTED .               .               .....";
-
-char display_offset, msg_flash, animation_count,animation_step = 0; // TODO: UNUSED?
 
 /* Scan machine inputs
  * Caller: Main
- * Move to: Stays in main
  */
 static void scan_MachineInputs()
 {
@@ -218,15 +166,7 @@ static void scan_MachineInputs()
         }
     }
 }
-/* What does this function do???
- * Variables:
- * lcd_msg - use in many other functions
- * lcdState - use in this function and process_LcdController()
- * buff - use in this function
- * 
- * Definition:
- * BUS_TRANSACTION - use in this function
- */
+
 static void process_OutputDevices()
 {
     if((lcd_msg == 0) && (lcdState == LCD_RDY))             
@@ -247,54 +187,7 @@ static void process_OutputDevices()
     }
 }
 
-//static void process_SerialComs()
-//{
-//    char i;
-//    switch(comTasks)
-//    {
-//        case INI:
-//        comTasks = RDY;
-//        rxMsg = 0, txMsg = 0;
-//        rxIndx = 0, txIndx = 0;
-//        break;
-//            
-//        case RDY:
-//        if(U1STAbits.URXDA == 1) 
-//        {
-//            i = U1RXREG;
-//            rxbuff[rxMsg++] = i;
-//        }
-//        if(txIndx != txMsg)    
-//        {
-//            comTasks = BUSY;
-//        }
-//        break;
-//            
-//        case BUSY:
-//        if(U1STAbits.URXDA == 1) 
-//        {
-//            i = U1RXREG;
-//            rxbuff[rxMsg++] = i;
-//        }
-//        if(U1STAbits.UTXBF == 0 && U1STAbits.TRMT == 1)
-//        {
-//            i = txbuff[txIndx++];
-//            U1TXREG = i;
-//            if(txIndx == txMsg)
-//            {
-//                txIndx = 0;
-//                txMsg = 0;
-//                comTasks = RDY;
-//            }
-//        }
-//        break;
-//    }
-//}
-//
 
-/* This function requires LCD_RDY_STATE which is modified by 
- * process_LcdController()
- */
 static void system_userInterface()
 {
     int i;
@@ -425,95 +318,6 @@ static void system_userInterface()
     }
 }
 
-///* This function set the transmit buffer depending on the receive buffer processed
-// * in process_SerialComs()
-// */
-//static void command_interpreter()
-//{
-//    char i;
-//    switch(cmdTasks)
-//    {
-//        case CONNECT:
-////        if(comTasks == RDY)   
-////        {
-////            strcpy(txbuff, msg_startup);
-////            txMsg = strlen(txbuff);
-////            cmdTasks = MENU;
-////        }
-//        break;
-//            
-//        case MENU:
-//        if(comTasks == RDY)
-//        {
-//            strcpy(txbuff, msg_version);
-//            txMsg = strlen(txbuff);
-//            cmdTasks = IO;
-//        }
-//        break;
-//        
-//        case IO:
-//        if(rxIndx != rxMsg)  
-//        {
-//            cmdTasks = SEND;
-//            i = rxbuff[rxIndx++];
-//            switch(i)
-//            {
-//                case 'E':case 'e':
-//                strcpy(txbuff, msg_emptyDel);
-//                
-//                break;
-//                
-//                case 'L': case 'l':
-//                strcpy(txbuff, msg_lowLev);
-//                
-//                break;
-//                
-//                case 'C': case 'c':
-//                strcpy(txbuff, msg_contact);
-//                
-//                break;
-//                
-//                case 'M': case 'm':
-//                strcpy(txbuff, msg_monitor);
-//                break;
-//                
-//                case 'I': case 'i':
-//                strcpy(txbuff, msg_io_test);
-//                
-//                break;
-//                
-//                default:
-//                strcpy(txbuff, msg_userErr);   
-//                cmdTasks = ERROR;
-//                break;
-//            }
-//        }
-//        break;
-//        
-//        case SEND:
-//        if(comTasks == RDY)
-//        {
-//            txMsg = strlen(txbuff);
-//            cmdTasks = IO;
-//        }
-//        break;
-//        
-//        case ERROR:
-//        if(comTasks == RDY)
-//        {
-//            txMsg = strlen(txbuff);
-//            cmdTasks = MENU;
-//        }
-//        break;
-//    }
-//}
-
-typedef enum{
-    SYS_INI = 0,
-    SYS_CONFIG,             // Loads NV memory
-    SYS_READY,
-    RUN_PROGRAM
-}SYSTEM_STATE;
 
 static char check_eventState(unsigned long val)
 {
@@ -703,20 +507,20 @@ int main(void)
     sysState = 0;
     while (1)
     {
-        scan_MachineInputs(); // stays in main
-        command_interpreter(); // stays in main
-        system_eventHandler(); // stays in main
-        system_userInterface(); // probs in hmi? or maybe its in main since its system level
+        scan_MachineInputs(); // main
+        command_interpreter(); // comm
+        system_eventHandler(); // main
+        system_userInterface(); // main
         
-        process_ToneGenerator(); // maybe in tone generator? Also has speaker driver
-        process_LcdController(); // probs in LCD
-        process_KeyController(); // probs in HMI
+        process_ToneGenerator(); // tone
+        process_LcdController(); // hmi
+        process_KeyController(); // hmi
         
-        process_OutputDevices(); // stays in main
-        process_DebugOutput(); // stays in main
-        process_SerialComs(); // not sure, maybe just leave it in main
+        process_OutputDevices(); // main
+        process_DebugOutput(); // main
+        process_SerialComs(); // comm
         
-        process_Backlight(); // probs in LCD or in main
+        process_Backlight(); // backlight
     }
     return 1; 
 }

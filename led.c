@@ -1,8 +1,6 @@
 // Some description about the file
 #include "led.h"
 
-//char led_state; // TODO: Why is this not defined as a specific char?
-// Still dont understand how this led_state works
 
 /* This function generate boot sequence for leds
  * Caller: hmi_GenerateBootScreen() */

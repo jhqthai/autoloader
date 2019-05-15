@@ -252,23 +252,6 @@ void hmi_GenerateLidErrorScreen(unsigned long tmr)
 /********************************** LCD HMI END ******************************/
 
 /* This function controls the state of the LCD controller.
- * lcdState - requires by process_OutputDevices
- * This function modify lcd_index, lcd_msg and lcdState which affect LCD_IDLE
- * and LCD_RDY_STATE, LCD_RDY_STATE is required by system_userInterface()
- * 
- * Variables: 
- * lcd_strobe - only used by this function 
- * t7 - only used by this function
- * config_1602A_2LnBLK - only use by this function
- * lcd_index - only use by this function
- * lcdState - use by this function and process_OutputDevices()
- * lcd_msg - use by many other functions
- * lcdbuff - use by many other functions
- * 
- * 
- * Definitions: 
- * LCD_PWRUP - only use by this function
- * 
  */
 extern volatile unsigned char lcd_strobe;
 void process_LcdController()

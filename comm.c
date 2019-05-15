@@ -1,17 +1,16 @@
 // Serial communication driver
 
 #include <xc.h>
+#include <string.h>
 // Local includes
 #include "comm.h"
-
-
 
 // Local serial comm. parameters
 #define TX_BUFFER       (128)
 #define RX_BUFFER       (255)
 #define UART1_BRG       (((FCY / UART1_BAUD)/16) - 1)
 
-// USB interface host command messages - Communication stuff
+// USB interface host command messages
 const char *msg_startup     = "\n\r *** DECODE AUTOMATION ***      \0";
 const char *msg_version     = "\n\r    Autoloader Ver-1.00         \0";
 const char *msg_emptyDel    = "\n\r Press 'E' enter 'empty' delay  \0";
@@ -28,7 +27,7 @@ const char *msg_debugLid    = "\n\r SYSTEM HALT.   Detected the lid open. All ou
 const char *msg_debugErr    = "\n\r SYSTEM ERROR.  Hopper fill timeout failure. Check hopper before proceeding  \0";
 const char *msg_debugCls    = "\n\r Resuming...    Hopper lid closed  \0";
 
-// Command intepreter states
+// Command interpreter states
 typedef enum{
     CONNECT = 0,
     MENU,

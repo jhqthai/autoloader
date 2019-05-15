@@ -31,6 +31,7 @@ unsigned char hmi_scanKeypad(void)
         keyValue = 0;
         return (x);
     }
+    //return -1; //? maybe
 }
 
 /* This function controls key state

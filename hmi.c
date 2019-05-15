@@ -52,7 +52,7 @@ void hmi_GenerateBootScreen(unsigned long tmr)
 }
 
 
-/* Load default state maybe? */
+// Load default state maybe?
 void load_defaults()
 {
     P1_value = DEFAULT_P1;
@@ -76,13 +76,6 @@ void hmi_SetupStateTimeout(unsigned long timeout)
 
 /****** LCD HMI ******/
  /* Control LCD display
- * Caller: system_userInterface()
- * Callees: displayTemperatureFunction(), hmi_GenerateImminentScreen(),
- * hmi_GenerateFillScreen, word2DecConverter(), hmi_GenerateLidErrorScreen()
- * 
- * Variable:
- * runTasks - use by mainly controllers; set by system_eventHandler() 
- * and check_HopperLidClosed()
  */
 void hmi_lcdController()
 {
@@ -243,7 +236,6 @@ void hmi_lampStackController()
 /****** Keypad HMI ******/
 /* Scan setup command
  * Caller: system_userInterface()
- * Move to: hmi.c probably...
  */
 void hmi_scanSetupCommand(char val)
 {
@@ -258,7 +250,6 @@ void hmi_scanSetupCommand(char val)
     }
 }
 
-/* Move to keypad.c maybe*/
 void hmi_setupL1KeyCommand()
 {
     char x;
