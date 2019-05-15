@@ -30,6 +30,7 @@ const char *lcd_setP4   = " SET P4         \xC0 Slide Open Del \x02\0";
 const char *lcd_setP5   = " SET P5         \xC0 Full Debnc Del \x02\0";
 const char *lcd_setP6   = " SET P6         \xC0 Its Bob & Rosie\x02\0";
 
+int fill_cntr; // process fill counter
 char lcdBuff[LCD_BUFFER];
 char lcdState, lcd_index, lcd_msg = 0;
 

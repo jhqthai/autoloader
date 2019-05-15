@@ -118,18 +118,18 @@ section                    address   length (PC units)   length (bytes) (dec)
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                       0x1000                   0            0x68  (104)
-.ndata                      0x1068                   0            0x42  (66)
-.nbss                       0x10aa                   0            0x20  (32)
-.ndata                      0x10ca                   0             0x2  (2)
-.nbss                       0x10cc                   0             0x4  (4)
-.ndata                      0x10d0                   0             0x2  (2)
-.nbss                       0x10d2                   0             0x4  (4)
-.bss                        0x10d6                   0           0x4b6  (1206)
-.data                       0x158c                   0            0x1c  (28)
-.bss                        0x15a8                   0             0x6  (6)
+.nbss                       0x1000                   0            0x44  (68)
+.ndata                      0x1044                   0            0x42  (66)
+.nbss                       0x1086                   0            0x42  (66)
+.ndata                      0x10c8                   0             0x2  (2)
+.nbss                       0x10ca                   0             0x4  (4)
+.ndata                      0x10ce                   0             0x2  (2)
+.nbss                       0x10d0                   0             0x4  (4)
+.bss                        0x10d4                   0           0x4b6  (1206)
+.data                       0x158a                   0            0x1c  (28)
+.bss                        0x15a6                   0             0x6  (6)
 
-                 Total "data" memory used (bytes):          0x5ae  (1454) 17%
+                 Total "data" memory used (bytes):          0x5ac  (1452) 17%
 
 
 Dynamic Memory Usage
@@ -137,9 +137,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                       0x15ae                              0x1a52  (6738)
+stack                       0x15ac                              0x1a54  (6740)
 
-                 Maximum dynamic memory (bytes):         0x1a52  (6738)
+                 Maximum dynamic memory (bytes):         0x1a54  (6740)
 
 
 External Symbols in Data Memory (by address):
@@ -162,183 +162,179 @@ External Symbols in Data Memory (by address):
                     0x103a                  _tone
                     0x103e                  _t_mask
                     0x1042                  _lcd_strobe
-                    0x1044                  _P1_value
-                    0x1046                  _P2_value
-                    0x1048                  _P3_value
-                    0x104a                  _P4_value
-                    0x104c                  _P5_value
-                    0x104e                  _P6_value
-                    0x1050                  _fill_cntr
-                    0x1052                  _lampState
-                    0x1053                  _uiState
-                    0x1054                  _hmiTask
-                    0x1055                  _uiTasks
-                    0x1056                  _comTasks
-                    0x1057                  _cmdTasks
-                    0x1058                  _cmdBuff
-                    0x1059                  _sysState
-                    0x105a                  _rxIndx
-                    0x105b                  _txIndx
-                    0x105c                  _rxMsg
-                    0x105d                  _txMsg
-                    0x105e                  _lamp_flash_count
-                    0x105f                  _scrn_state
-                    0x1060                  _lmp_state
-                    0x1061                  _runTasks
-                    0x1062                  _devState
-                    0x1063                  _flashRate
-                    0x1064                  _outputDevices
-                    0x1065                  _buff
-                    0x1066                  _inputDevices
-                    0x1068                  _lcd_frame
-                    0x106a                  _lcd_load
-                    0x106c                  _lcd_decode
-                    0x106e                  _config_1602A_2L_Blk
-                    0x1070                  _config_1602A_2LnBLK
-                    0x1072                  _config_1602A_2L_UL
-                    0x1074                  _lcd_ready
-                    0x1076                  _lcd_start
-                    0x1078                  _lcd_setup
-                    0x107a                  _lcd_fillMax
-                    0x107c                  _lcd_lowMax
-                    0x107e                  _lcd_setP1
-                    0x1080                  _lcd_setP2
-                    0x1082                  _lcd_setP3
-                    0x1084                  _lcd_setP4
-                    0x1086                  _lcd_setP5
-                    0x1088                  _lcd_setP6
-                    0x108a                  _msg_startup
-                    0x108c                  _msg_version
-                    0x108e                  _msg_emptyDel
-                    0x1090                  _msg_lowLev
-                    0x1092                  _msg_contact
-                    0x1094                  _msg_monitor
-                    0x1096                  _msg_io_test
-                    0x1098                  _msg_userErr
-                    0x109a                  _msg_debugRdy
-                    0x109c                  _msg_debugRun
-                    0x109e                  _msg_debugFill
-                    0x10a0                  _msg_debugStFl
-                    0x10a2                  _msg_debugLid
-                    0x10a4                  _msg_debugErr
-                    0x10a6                  _msg_debugCls
-                    0x10a8                  _autoLoaderMsgList
-                    0x10aa                  _wav_tasks
-                    0x10ac                  _wav_index
-                    0x10ae                  _wav_msg
-                    0x10b0                  _wav_tempo
-                    0x10b2                  _freq
-                    0x10b4                  _pitch
-                    0x10b6                  _tune
-                    0x10b8                  _testCounter
-                    0x10b9                  _display_offset
-                    0x10ba                  _msg_flash
-                    0x10bb                  _animation_count
-                    0x10bc                  _animation_step
-                    0x10be                  _keyBuff
-                    0x10bf                  _keyValue
-                    0x10c0                  _keyState
-                    0x10c6                  _lcdState
-                    0x10c7                  _lcd_index
-                    0x10c8                  _lcd_msg
-                    0x10c9                  _lcd_update
-                    0x10cc                  _TMR4_InterruptHandler
-                    0x10ce                  _TMR3_InterruptHandler
-                    0x10d0                  _hexAscii
-                    0x10d4                  _lmp_update
-                    0x10d6                  _wav
-                    0x12d4                  _txbuff
-                    0x1354                  _rxbuff
-                    0x1454                  _sys
-                    0x1462                  _lcdBuff
-                    0x1486                  _msgBuff
-                    0x158c                  _notes
-                    0x1598                  _tempo
-                    0x15a4                  _FlashKey
+                    0x1044                  _lcd_frame
+                    0x1046                  _lcd_load
+                    0x1048                  _lcd_decode
+                    0x104a                  _config_1602A_2L_Blk
+                    0x104c                  _config_1602A_2LnBLK
+                    0x104e                  _config_1602A_2L_UL
+                    0x1050                  _lcd_ready
+                    0x1052                  _lcd_start
+                    0x1054                  _lcd_setup
+                    0x1056                  _lcd_fillMax
+                    0x1058                  _lcd_lowMax
+                    0x105a                  _lcd_setP1
+                    0x105c                  _lcd_setP2
+                    0x105e                  _lcd_setP3
+                    0x1060                  _lcd_setP4
+                    0x1062                  _lcd_setP5
+                    0x1064                  _lcd_setP6
+                    0x1066                  _msg_startup
+                    0x1068                  _msg_version
+                    0x106a                  _msg_emptyDel
+                    0x106c                  _msg_lowLev
+                    0x106e                  _msg_contact
+                    0x1070                  _msg_monitor
+                    0x1072                  _msg_io_test
+                    0x1074                  _msg_userErr
+                    0x1076                  _msg_debugRdy
+                    0x1078                  _msg_debugRun
+                    0x107a                  _msg_debugFill
+                    0x107c                  _msg_debugStFl
+                    0x107e                  _msg_debugLid
+                    0x1080                  _msg_debugErr
+                    0x1082                  _msg_debugCls
+                    0x1084                  _autoLoaderMsgList
+                    0x1086                  _P1_value
+                    0x1088                  _P2_value
+                    0x108a                  _P3_value
+                    0x108c                  _P4_value
+                    0x108e                  _P5_value
+                    0x1090                  _P6_value
+                    0x1092                  _hmiTask
+                    0x1093                  _uiTasks
+                    0x1094                  _comTasks
+                    0x1095                  _cmdTasks
+                    0x1096                  _cmdBuff
+                    0x1097                  _rxIndx
+                    0x1098                  _txIndx
+                    0x1099                  _rxMsg
+                    0x109a                  _txMsg
+                    0x109b                  _scrn_state
+                    0x109c                  _lmp_state
+                    0x109d                  _uiState
+                    0x109e                  _runTasks
+                    0x109f                  _devState
+                    0x10a0                  _flashRate
+                    0x10a1                  _outputDevices
+                    0x10a2                  _buff
+                    0x10a3                  _inputDevices
+                    0x10a4                  _wav_tasks
+                    0x10a6                  _wav_index
+                    0x10a8                  _wav_msg
+                    0x10aa                  _wav_tempo
+                    0x10ac                  _freq
+                    0x10ae                  _pitch
+                    0x10b0                  _tune
+                    0x10b2                  _sysState
+                    0x10b3                  _lamp_flash_count
+                    0x10b4                  _testCounter
+                    0x10b5                  _display_offset
+                    0x10b6                  _msg_flash
+                    0x10b7                  _animation_count
+                    0x10b8                  _animation_step
+                    0x10ba                  _fill_cntr
+                    0x10bc                  _lcdState
+                    0x10bd                  _lcd_index
+                    0x10be                  _lcd_msg
+                    0x10bf                  _lcd_update
+                    0x10c0                  _keyBuff
+                    0x10c1                  _keyValue
+                    0x10c2                  _keyState
+                    0x10ca                  _TMR4_InterruptHandler
+                    0x10cc                  _TMR3_InterruptHandler
+                    0x10ce                  _hexAscii
+                    0x10d4                  _wav
+                    0x12d2                  _txbuff
+                    0x1352                  _rxbuff
+                    0x1452                  _sys
+                    0x1460                  _lcdBuff
+                    0x1484                  _msgBuff
+                    0x158a                  _notes
+                    0x1596                  _tempo
+                    0x15a2                  _FlashKey
 
 External Symbols in Data Memory (by name):
 
-                    0x15a4                  _FlashKey
-                    0x1044                  _P1_value
-                    0x1046                  _P2_value
-                    0x1048                  _P3_value
-                    0x104a                  _P4_value
-                    0x104c                  _P5_value
-                    0x104e                  _P6_value
-                    0x10ce                  _TMR3_InterruptHandler
-                    0x10cc                  _TMR4_InterruptHandler
-                    0x10bb                  _animation_count
-                    0x10bc                  _animation_step
-                    0x10a8                  _autoLoaderMsgList
-                    0x1065                  _buff
-                    0x1058                  _cmdBuff
-                    0x1057                  _cmdTasks
-                    0x1056                  _comTasks
-                    0x106e                  _config_1602A_2L_Blk
-                    0x1072                  _config_1602A_2L_UL
-                    0x1070                  _config_1602A_2LnBLK
-                    0x1062                  _devState
-                    0x10b9                  _display_offset
-                    0x1050                  _fill_cntr
-                    0x1063                  _flashRate
-                    0x10b2                  _freq
-                    0x10d0                  _hexAscii
-                    0x1054                  _hmiTask
-                    0x1066                  _inputDevices
-                    0x10be                  _keyBuff
-                    0x10c0                  _keyState
-                    0x10bf                  _keyValue
-                    0x1052                  _lampState
-                    0x105e                  _lamp_flash_count
-                    0x1462                  _lcdBuff
-                    0x10c6                  _lcdState
-                    0x106c                  _lcd_decode
-                    0x107a                  _lcd_fillMax
-                    0x1068                  _lcd_frame
-                    0x10c7                  _lcd_index
-                    0x106a                  _lcd_load
-                    0x107c                  _lcd_lowMax
-                    0x10c8                  _lcd_msg
-                    0x1074                  _lcd_ready
-                    0x107e                  _lcd_setP1
-                    0x1080                  _lcd_setP2
-                    0x1082                  _lcd_setP3
-                    0x1084                  _lcd_setP4
-                    0x1086                  _lcd_setP5
-                    0x1088                  _lcd_setP6
-                    0x1078                  _lcd_setup
-                    0x1076                  _lcd_start
+                    0x15a2                  _FlashKey
+                    0x1086                  _P1_value
+                    0x1088                  _P2_value
+                    0x108a                  _P3_value
+                    0x108c                  _P4_value
+                    0x108e                  _P5_value
+                    0x1090                  _P6_value
+                    0x10cc                  _TMR3_InterruptHandler
+                    0x10ca                  _TMR4_InterruptHandler
+                    0x10b7                  _animation_count
+                    0x10b8                  _animation_step
+                    0x1084                  _autoLoaderMsgList
+                    0x10a2                  _buff
+                    0x1096                  _cmdBuff
+                    0x1095                  _cmdTasks
+                    0x1094                  _comTasks
+                    0x104a                  _config_1602A_2L_Blk
+                    0x104e                  _config_1602A_2L_UL
+                    0x104c                  _config_1602A_2LnBLK
+                    0x109f                  _devState
+                    0x10b5                  _display_offset
+                    0x10ba                  _fill_cntr
+                    0x10a0                  _flashRate
+                    0x10ac                  _freq
+                    0x10ce                  _hexAscii
+                    0x1092                  _hmiTask
+                    0x10a3                  _inputDevices
+                    0x10c0                  _keyBuff
+                    0x10c2                  _keyState
+                    0x10c1                  _keyValue
+                    0x10b3                  _lamp_flash_count
+                    0x1460                  _lcdBuff
+                    0x10bc                  _lcdState
+                    0x1048                  _lcd_decode
+                    0x1056                  _lcd_fillMax
+                    0x1044                  _lcd_frame
+                    0x10bd                  _lcd_index
+                    0x1046                  _lcd_load
+                    0x1058                  _lcd_lowMax
+                    0x10be                  _lcd_msg
+                    0x1050                  _lcd_ready
+                    0x105a                  _lcd_setP1
+                    0x105c                  _lcd_setP2
+                    0x105e                  _lcd_setP3
+                    0x1060                  _lcd_setP4
+                    0x1062                  _lcd_setP5
+                    0x1064                  _lcd_setP6
+                    0x1054                  _lcd_setup
+                    0x1052                  _lcd_start
                     0x1042                  _lcd_strobe
-                    0x10c9                  _lcd_update
-                    0x1060                  _lmp_state
-                    0x10d4                  _lmp_update
-                    0x1486                  _msgBuff
-                    0x1092                  _msg_contact
-                    0x10a6                  _msg_debugCls
-                    0x10a4                  _msg_debugErr
-                    0x109e                  _msg_debugFill
-                    0x10a2                  _msg_debugLid
-                    0x109a                  _msg_debugRdy
-                    0x109c                  _msg_debugRun
-                    0x10a0                  _msg_debugStFl
-                    0x108e                  _msg_emptyDel
-                    0x10ba                  _msg_flash
-                    0x1096                  _msg_io_test
-                    0x1090                  _msg_lowLev
-                    0x1094                  _msg_monitor
-                    0x108a                  _msg_startup
-                    0x1098                  _msg_userErr
-                    0x108c                  _msg_version
-                    0x158c                  _notes
-                    0x1064                  _outputDevices
-                    0x10b4                  _pitch
-                    0x1061                  _runTasks
-                    0x105a                  _rxIndx
-                    0x105c                  _rxMsg
-                    0x1354                  _rxbuff
-                    0x105f                  _scrn_state
-                    0x1454                  _sys
-                    0x1059                  _sysState
+                    0x10bf                  _lcd_update
+                    0x109c                  _lmp_state
+                    0x1484                  _msgBuff
+                    0x106e                  _msg_contact
+                    0x1082                  _msg_debugCls
+                    0x1080                  _msg_debugErr
+                    0x107a                  _msg_debugFill
+                    0x107e                  _msg_debugLid
+                    0x1076                  _msg_debugRdy
+                    0x1078                  _msg_debugRun
+                    0x107c                  _msg_debugStFl
+                    0x106a                  _msg_emptyDel
+                    0x10b6                  _msg_flash
+                    0x1072                  _msg_io_test
+                    0x106c                  _msg_lowLev
+                    0x1070                  _msg_monitor
+                    0x1066                  _msg_startup
+                    0x1074                  _msg_userErr
+                    0x1068                  _msg_version
+                    0x158a                  _notes
+                    0x10a1                  _outputDevices
+                    0x10ae                  _pitch
+                    0x109e                  _runTasks
+                    0x1097                  _rxIndx
+                    0x1099                  _rxMsg
+                    0x1352                  _rxbuff
+                    0x109b                  _scrn_state
+                    0x1452                  _sys
+                    0x10b2                  _sysState
                     0x1002                  _t1
                     0x1026                  _t10
                     0x102a                  _t11
@@ -354,21 +350,21 @@ External Symbols in Data Memory (by name):
                     0x101e                  _t8
                     0x1022                  _t9
                     0x103e                  _t_mask
-                    0x1598                  _tempo
-                    0x10b8                  _testCounter
+                    0x1596                  _tempo
+                    0x10b4                  _testCounter
                     0x1000                  _tick
                     0x103a                  _tone
-                    0x10b6                  _tune
-                    0x105b                  _txIndx
-                    0x105d                  _txMsg
-                    0x12d4                  _txbuff
-                    0x1053                  _uiState
-                    0x1055                  _uiTasks
-                    0x10d6                  _wav
-                    0x10ac                  _wav_index
-                    0x10ae                  _wav_msg
-                    0x10aa                  _wav_tasks
-                    0x10b0                  _wav_tempo
+                    0x10b0                  _tune
+                    0x1098                  _txIndx
+                    0x109a                  _txMsg
+                    0x12d2                  _txbuff
+                    0x109d                  _uiState
+                    0x1093                  _uiTasks
+                    0x10d4                  _wav
+                    0x10a6                  _wav_index
+                    0x10a8                  _wav_msg
+                    0x10a4                  _wav_tasks
+                    0x10aa                  _wav_tempo
 
 External Symbols in Program Memory (by address):
 
@@ -732,7 +728,7 @@ __FOSCSEL
 
 __FGS             0x00affa          0x2
  *(__FGS.sec*)
- __FGS.sec        0x00affa          0x2 /CW/_FGSòö
+ __FGS.sec        0x00affa          0x2 /CW/_FGSHJê
                   0x00affa                  __FGS.sec
 
 __FUID0
@@ -750,7 +746,7 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x89a5
+.debug_info       0x000000       0x894c
  *(.debug_info)
  .debug_info      0x000000         0x91 build/default/production/mcc_generated_files/memory/flash.o
  .debug_info      0x000091        0x204 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -767,17 +763,17 @@ __FUID3
  .debug_info      0x003c6b        0x536 build/default/production/mcc_generated_files/tmr4.o
  .debug_info      0x0041a1        0x69d build/default/production/mcc_generated_files/tmr3.o
  .debug_info      0x00483e        0x2d6 build/default/production/hmi.o
- .debug_info      0x004b14       0x1493 build/default/production/main_3.o
- .debug_info      0x005fa7        0x581 build/default/production/common.o
- .debug_info      0x006528        0x83e build/default/production/keypad.o
- .debug_info      0x006d66        0x4f5 build/default/production/backlight.o
- .debug_info      0x00725b        0x60d build/default/production/tone.o
- .debug_info      0x007868        0xb95 build/default/production/lcd.o
- .debug_info      0x0083fd        0x34f build/default/production/led.o
- .debug_info      0x00874c        0x259 build/default/production/lamp.o
+ .debug_info      0x004b14       0x149d build/default/production/main_3.o
+ .debug_info      0x005fb1        0x51b build/default/production/common.o
+ .debug_info      0x0064cc        0x83e build/default/production/keypad.o
+ .debug_info      0x006d0a        0x4f5 build/default/production/backlight.o
+ .debug_info      0x0071ff        0x60d build/default/production/tone.o
+ .debug_info      0x00780c        0xb9a build/default/production/lcd.o
+ .debug_info      0x0083a6        0x34f build/default/production/led.o
+ .debug_info      0x0086f5        0x257 build/default/production/lamp.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000       0x16f2
+.debug_abbrev     0x000000       0x16f6
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x14 build/default/production/mcc_generated_files/memory/flash.o
  .debug_abbrev    0x000014         0x73 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -802,9 +798,9 @@ __FUID3
  .debug_abbrev    0x0012d3        0x127 build/default/production/tone.o
  .debug_abbrev    0x0013fa        0x1aa build/default/production/lcd.o
  .debug_abbrev    0x0015a4         0x99 build/default/production/led.o
- .debug_abbrev    0x00163d         0xb5 build/default/production/lamp.o
+ .debug_abbrev    0x00163d         0xb9 build/default/production/lamp.o
 
-.debug_line       0x000000       0x1b78
+.debug_line       0x000000       0x1b76
  *(.debug_line)
  .debug_line      0x000000        0x124 build/default/production/mcc_generated_files/memory/flash.o
  .debug_line      0x000124         0xce build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -829,7 +825,7 @@ __FUID3
  .debug_line      0x001656        0x123 build/default/production/tone.o
  .debug_line      0x001779        0x21d build/default/production/lcd.o
  .debug_line      0x001996        0x114 build/default/production/led.o
- .debug_line      0x001aaa         0xce build/default/production/lamp.o
+ .debug_line      0x001aaa         0xcc build/default/production/lamp.o
 
 .debug_frame      0x000000        0xeb8
  *(.debug_frame)
@@ -856,7 +852,7 @@ __FUID3
  .debug_frame     0x000de8         0x30 build/default/production/led.o
  .debug_frame     0x000e18         0xa0 build/default/production/lamp.o
 
-.debug_str        0x000000        0x46f
+.debug_str        0x000000        0x464
  *(.debug_str)
  .debug_str       0x000000          0xd build/default/production/mcc_generated_files/memory/flash_demo.o
  .debug_str       0x00000d         0x17 build/default/production/mcc_generated_files/reset.o
@@ -878,7 +874,7 @@ __FUID3
  .debug_str       0x00036e         0x1c build/default/production/tone.o
  .debug_str       0x00038a         0xb5 build/default/production/lcd.o
  .debug_str       0x00043f         0x12 build/default/production/led.o
- .debug_str       0x000451         0x1e build/default/production/lamp.o
+ .debug_str       0x000451         0x13 build/default/production/lamp.o
 
 .debug_loc
  *(.debug_loc)
@@ -887,7 +883,7 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0xf4b
+                  0x000000        0xf2e
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x20 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -918,21 +914,21 @@ __FUID3
  .debug_pubnames
                   0x000770         0x59 build/default/production/hmi.o
  .debug_pubnames
-                  0x0007c9        0x1a0 build/default/production/main_3.o
+                  0x0007c9        0x1c2 build/default/production/main_3.o
  .debug_pubnames
-                  0x000969        0x1d7 build/default/production/common.o
+                  0x00098b        0x199 build/default/production/common.o
  .debug_pubnames
-                  0x000b40        0x107 build/default/production/keypad.o
+                  0x000b24        0x107 build/default/production/keypad.o
  .debug_pubnames
-                  0x000c47         0x4c build/default/production/backlight.o
+                  0x000c2b         0x4c build/default/production/backlight.o
  .debug_pubnames
-                  0x000c93         0x9a build/default/production/tone.o
+                  0x000c77         0x9a build/default/production/tone.o
  .debug_pubnames
-                  0x000d2d        0x1ae build/default/production/lcd.o
+                  0x000d11        0x1bc build/default/production/lcd.o
  .debug_pubnames
-                  0x000edb         0x22 build/default/production/led.o
+                  0x000ecd         0x22 build/default/production/led.o
  .debug_pubnames
-                  0x000efd         0x4e build/default/production/lamp.o
+                  0x000eef         0x3f build/default/production/lamp.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -2205,7 +2201,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
 OUTPUT(dist/default/production/autoloader.X.production.elf elf32-pic30)
-LOAD /CW/_FGSòö
+LOAD /CW/_FGSHJê
 LOAD default_isr
 LOAD data_init
 
@@ -2315,7 +2311,7 @@ __c30_signature
  __c30_signature
                   0x000b36          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(strlen.EP_eo)
 
-.nbss               0x1000         0x68
+.nbss               0x1000         0x44
  .nbss              0x1000         0x44 build/default/production/mcc_generated_files/tmr2.o
                     0x1000                  _tick
                     0x1002                  _t1
@@ -2335,140 +2331,138 @@ __c30_signature
                     0x103a                  _tone
                     0x103e                  _t_mask
                     0x1042                  _lcd_strobe
- .nbss              0x1044         0x24 build/default/production/common.o
-                    0x1044                  _P1_value
-                    0x1046                  _P2_value
-                    0x1048                  _P3_value
-                    0x104a                  _P4_value
-                    0x104c                  _P5_value
-                    0x104e                  _P6_value
-                    0x1050                  _fill_cntr
-                    0x1052                  _lampState
-                    0x1053                  _uiState
-                    0x1054                  _hmiTask
-                    0x1055                  _uiTasks
-                    0x1056                  _comTasks
-                    0x1057                  _cmdTasks
-                    0x1058                  _cmdBuff
-                    0x1059                  _sysState
-                    0x105a                  _rxIndx
-                    0x105b                  _txIndx
-                    0x105c                  _rxMsg
-                    0x105d                  _txMsg
-                    0x105e                  _lamp_flash_count
-                    0x105f                  _scrn_state
-                    0x1060                  _lmp_state
-                    0x1061                  _runTasks
-                    0x1062                  _devState
-                    0x1063                  _flashRate
-                    0x1064                  _outputDevices
-                    0x1065                  _buff
-                    0x1066                  _inputDevices
 
-.ndata              0x1068         0x42
- .ndata             0x1068         0x22 build/default/production/lcd.o
-                    0x1068                  _lcd_frame
-                    0x106a                  _lcd_load
-                    0x106c                  _lcd_decode
-                    0x106e                  _config_1602A_2L_Blk
-                    0x1070                  _config_1602A_2LnBLK
-                    0x1072                  _config_1602A_2L_UL
-                    0x1074                  _lcd_ready
-                    0x1076                  _lcd_start
-                    0x1078                  _lcd_setup
-                    0x107a                  _lcd_fillMax
-                    0x107c                  _lcd_lowMax
-                    0x107e                  _lcd_setP1
-                    0x1080                  _lcd_setP2
-                    0x1082                  _lcd_setP3
-                    0x1084                  _lcd_setP4
-                    0x1086                  _lcd_setP5
-                    0x1088                  _lcd_setP6
- .ndata             0x108a         0x20 build/default/production/main_3.o
-                    0x108a                  _msg_startup
-                    0x108c                  _msg_version
-                    0x108e                  _msg_emptyDel
-                    0x1090                  _msg_lowLev
-                    0x1092                  _msg_contact
-                    0x1094                  _msg_monitor
-                    0x1096                  _msg_io_test
-                    0x1098                  _msg_userErr
-                    0x109a                  _msg_debugRdy
-                    0x109c                  _msg_debugRun
-                    0x109e                  _msg_debugFill
-                    0x10a0                  _msg_debugStFl
-                    0x10a2                  _msg_debugLid
-                    0x10a4                  _msg_debugErr
-                    0x10a6                  _msg_debugCls
-                    0x10a8                  _autoLoaderMsgList
+.ndata              0x1044         0x42
+ .ndata             0x1044         0x22 build/default/production/lcd.o
+                    0x1044                  _lcd_frame
+                    0x1046                  _lcd_load
+                    0x1048                  _lcd_decode
+                    0x104a                  _config_1602A_2L_Blk
+                    0x104c                  _config_1602A_2LnBLK
+                    0x104e                  _config_1602A_2L_UL
+                    0x1050                  _lcd_ready
+                    0x1052                  _lcd_start
+                    0x1054                  _lcd_setup
+                    0x1056                  _lcd_fillMax
+                    0x1058                  _lcd_lowMax
+                    0x105a                  _lcd_setP1
+                    0x105c                  _lcd_setP2
+                    0x105e                  _lcd_setP3
+                    0x1060                  _lcd_setP4
+                    0x1062                  _lcd_setP5
+                    0x1064                  _lcd_setP6
+ .ndata             0x1066         0x20 build/default/production/main_3.o
+                    0x1066                  _msg_startup
+                    0x1068                  _msg_version
+                    0x106a                  _msg_emptyDel
+                    0x106c                  _msg_lowLev
+                    0x106e                  _msg_contact
+                    0x1070                  _msg_monitor
+                    0x1072                  _msg_io_test
+                    0x1074                  _msg_userErr
+                    0x1076                  _msg_debugRdy
+                    0x1078                  _msg_debugRun
+                    0x107a                  _msg_debugFill
+                    0x107c                  _msg_debugStFl
+                    0x107e                  _msg_debugLid
+                    0x1080                  _msg_debugErr
+                    0x1082                  _msg_debugCls
+                    0x1084                  _autoLoaderMsgList
 
-.nbss               0x10aa         0x20
- .nbss              0x10aa          0xe build/default/production/tone.o
-                    0x10aa                  _wav_tasks
-                    0x10ac                  _wav_index
-                    0x10ae                  _wav_msg
-                    0x10b0                  _wav_tempo
-                    0x10b2                  _freq
-                    0x10b4                  _pitch
-                    0x10b6                  _tune
- .nbss              0x10b8          0x6 build/default/production/main_3.o
-                    0x10b8                  _testCounter
-                    0x10b9                  _display_offset
-                    0x10ba                  _msg_flash
-                    0x10bb                  _animation_count
-                    0x10bc                  _animation_step
- .nbss              0x10be          0x4 build/default/production/keypad.o
-                    0x10be                  _keyBuff
-                    0x10bf                  _keyValue
-                    0x10c0                  _keyState
- .nbss              0x10c2          0x4 build/default/production/backlight.o
- .nbss              0x10c6          0x4 build/default/production/lcd.o
-                    0x10c6                  _lcdState
-                    0x10c7                  _lcd_index
-                    0x10c8                  _lcd_msg
-                    0x10c9                  _lcd_update
+.nbss               0x1086         0x42
+ .nbss              0x1086         0x1e build/default/production/common.o
+                    0x1086                  _P1_value
+                    0x1088                  _P2_value
+                    0x108a                  _P3_value
+                    0x108c                  _P4_value
+                    0x108e                  _P5_value
+                    0x1090                  _P6_value
+                    0x1092                  _hmiTask
+                    0x1093                  _uiTasks
+                    0x1094                  _comTasks
+                    0x1095                  _cmdTasks
+                    0x1096                  _cmdBuff
+                    0x1097                  _rxIndx
+                    0x1098                  _txIndx
+                    0x1099                  _rxMsg
+                    0x109a                  _txMsg
+                    0x109b                  _scrn_state
+                    0x109c                  _lmp_state
+                    0x109d                  _uiState
+                    0x109e                  _runTasks
+                    0x109f                  _devState
+                    0x10a0                  _flashRate
+                    0x10a1                  _outputDevices
+                    0x10a2                  _buff
+                    0x10a3                  _inputDevices
+ .nbss              0x10a4          0xe build/default/production/tone.o
+                    0x10a4                  _wav_tasks
+                    0x10a6                  _wav_index
+                    0x10a8                  _wav_msg
+                    0x10aa                  _wav_tempo
+                    0x10ac                  _freq
+                    0x10ae                  _pitch
+                    0x10b0                  _tune
+ .nbss              0x10b2          0x8 build/default/production/main_3.o
+                    0x10b2                  _sysState
+                    0x10b3                  _lamp_flash_count
+                    0x10b4                  _testCounter
+                    0x10b5                  _display_offset
+                    0x10b6                  _msg_flash
+                    0x10b7                  _animation_count
+                    0x10b8                  _animation_step
+ .nbss              0x10ba          0x6 build/default/production/lcd.o
+                    0x10ba                  _fill_cntr
+                    0x10bc                  _lcdState
+                    0x10bd                  _lcd_index
+                    0x10be                  _lcd_msg
+                    0x10bf                  _lcd_update
+ .nbss              0x10c0          0x4 build/default/production/keypad.o
+                    0x10c0                  _keyBuff
+                    0x10c1                  _keyValue
+                    0x10c2                  _keyState
+ .nbss              0x10c4          0x4 build/default/production/backlight.o
 
-.ndata              0x10ca          0x2
- .ndata             0x10ca          0x2 build/default/production/mcc_generated_files/traps.o
+.ndata              0x10c8          0x2
+ .ndata             0x10c8          0x2 build/default/production/mcc_generated_files/traps.o
 
-.nbss               0x10cc          0x4
- .nbss              0x10cc          0x2 build/default/production/mcc_generated_files/tmr4.o
-                    0x10cc                  _TMR4_InterruptHandler
- .nbss              0x10ce          0x2 build/default/production/mcc_generated_files/tmr3.o
-                    0x10ce                  _TMR3_InterruptHandler
+.nbss               0x10ca          0x4
+ .nbss              0x10ca          0x2 build/default/production/mcc_generated_files/tmr4.o
+                    0x10ca                  _TMR4_InterruptHandler
+ .nbss              0x10cc          0x2 build/default/production/mcc_generated_files/tmr3.o
+                    0x10cc                  _TMR3_InterruptHandler
 
-.ndata              0x10d0          0x2
- .ndata             0x10d0          0x2 build/default/production/common.o
-                    0x10d0                  _hexAscii
+.ndata              0x10ce          0x2
+ .ndata             0x10ce          0x2 build/default/production/common.o
+                    0x10ce                  _hexAscii
 
-.nbss               0x10d2          0x4
- .nbss              0x10d2          0x2 build/default/production/led.o
- .nbss              0x10d4          0x2 build/default/production/lamp.o
-                    0x10d4                  _lmp_update
+.nbss               0x10d0          0x4
+ .nbss              0x10d0          0x2 build/default/production/led.o
+ .nbss              0x10d2          0x2 build/default/production/lamp.o
 
-.bss                0x10d6        0x4b6
- .bss               0x10d6        0x1fe build/default/production/tone.o
-                    0x10d6                  _wav
- .bss               0x12d4        0x18e build/default/production/main_3.o
-                    0x12d4                  _txbuff
-                    0x1354                  _rxbuff
-                    0x1454                  _sys
- .bss               0x1462        0x10a build/default/production/lcd.o
-                    0x1462                  _lcdBuff
-                    0x1486                  _msgBuff
- .bss               0x156c         0x20 build/default/production/mcc_generated_files/traps.o
+.bss                0x10d4        0x4b6
+ .bss               0x10d4        0x1fe build/default/production/tone.o
+                    0x10d4                  _wav
+ .bss               0x12d2        0x18e build/default/production/main_3.o
+                    0x12d2                  _txbuff
+                    0x1352                  _rxbuff
+                    0x1452                  _sys
+ .bss               0x1460        0x10a build/default/production/lcd.o
+                    0x1460                  _lcdBuff
+                    0x1484                  _msgBuff
+ .bss               0x156a         0x20 build/default/production/mcc_generated_files/traps.o
 
-.data               0x158c         0x1c
- .data              0x158c         0x18 build/default/production/tone.o
-                    0x158c                  _notes
-                    0x1598                  _tempo
- .data              0x15a4          0x4 build/default/production/mcc_generated_files/memory/flash.o
-                    0x15a4                  _FlashKey
+.data               0x158a         0x1c
+ .data              0x158a         0x18 build/default/production/tone.o
+                    0x158a                  _notes
+                    0x1596                  _tempo
+ .data              0x15a2          0x4 build/default/production/mcc_generated_files/memory/flash.o
+                    0x15a2                  _FlashKey
 
-.bss                0x15a8          0x6
- .bss               0x15a8          0x2 build/default/production/mcc_generated_files/tmr2.o
- .bss               0x15aa          0x2 build/default/production/mcc_generated_files/tmr4.o
- .bss               0x15ac          0x2 build/default/production/mcc_generated_files/tmr3.o
+.bss                0x15a6          0x6
+ .bss               0x15a6          0x2 build/default/production/mcc_generated_files/tmr2.o
+ .bss               0x15a8          0x2 build/default/production/mcc_generated_files/tmr4.o
+ .bss               0x15aa          0x2 build/default/production/mcc_generated_files/tmr3.o
 
 .ivt._OscillatorFail
                   0x000004          0x2

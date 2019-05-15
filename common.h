@@ -26,9 +26,11 @@ extern int P1_value, P2_value, P3_value, P4_value, P5_value, P6_value;
 
 
 /* LCD tasks*/
-extern int fill_cntr; //,lcd_flash_count,  lamp_tmr; // scrn_hdr, scrn_ftr;
-extern char lampState, uiState, hmiTask, comTasks, cmdTasks, cmdBuff, sysState, rxIndx, txIndx, rxMsg, txMsg; //uiTasks,
-extern char lamp_flash_count, scrn_state, lmp_state; //scrn_hdr, scrn_ftr; //, led_state
+//extern int fill_cntr; //,lcd_flash_count,  lamp_tmr; // scrn_hdr, scrn_ftr;
+extern char hmiTask, comTasks, cmdTasks, cmdBuff, rxIndx, txIndx, rxMsg, txMsg; //uiTasks, lampState
+
+// System control variables
+extern char scrn_state, lmp_state, uiState; //scrn_hdr, scrn_ftr; //, led_state
 
 /* Serial Comm's*/
 extern volatile unsigned long t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14;

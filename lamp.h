@@ -12,7 +12,7 @@
 extern "C" {
 #endif
     
-/* Lamp parameters */
+// Lamp parameters
 #define STATE_ON        (1)
 #define STATE_OFF       (0)
 #define LAMP_GRN        0x01

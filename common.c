@@ -10,9 +10,11 @@
 int P1_value, P2_value, P3_value, P4_value, P5_value, P6_value;
 
 /* LCD tasks*/
-int fill_cntr; //,lcd_flash_count,  lamp_tmr; // scrn_hdr, scrn_ftr;
-char lampState, uiState, hmiTask, uiTasks, comTasks, cmdTasks, cmdBuff, sysState, rxIndx, txIndx, rxMsg, txMsg;
-char lamp_flash_count, scrn_state, lmp_state; //scrn_hdr, scrn_ftr; //, led_state
+//int fill_cntr; //,lcd_flash_count,  lamp_tmr; // scrn_hdr, scrn_ftr;
+char hmiTask, uiTasks, comTasks, cmdTasks, cmdBuff, rxIndx, txIndx, rxMsg, txMsg; //lampState
+
+// System state variables
+char scrn_state, lmp_state, uiState; //scrn_hdr, scrn_ftr; //, led_state
 
 /* Machine states? */
 char runTasks, devState, flashRate = 0;

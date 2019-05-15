@@ -15,7 +15,11 @@
 #include "lcd.h"
 #include "lamp.h"
 
-
+/* Local main variables */
+// Event handler variables
+char sysState;
+// Toggle state variables
+char lamp_flash_count;
 
 // Serial comm's 
 #define TX_BUFFER       (128)

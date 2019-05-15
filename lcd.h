@@ -50,6 +50,7 @@ extern const char *lcd_setP4;
 extern const char *lcd_setP5;
 extern const char *lcd_setP6;
 
+extern int fill_cntr; // process fill counter
 extern char lcdBuff[]; // This might need to be declare in .c file instead?
 extern char lcdState, lcd_index, lcd_msg;
 

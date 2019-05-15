@@ -4,7 +4,6 @@
 
 /* Generate lamp imminent sequence 
  * Caller: hmi_lampStackController()
- * Move to: lamp.c probably
  */
 static void lampStack_imminentSeq(unsigned long tmr)
 {
@@ -36,7 +35,6 @@ static void lampStack_imminentSeq(unsigned long tmr)
 
 /* Generate lamp fill sequence 
  * Caller: hmi_lampStackController()
- * Move to: lamp.c probably
  */
 static void lampStack_fillSeq(unsigned long tmr)
 {
@@ -67,7 +65,6 @@ static void lampStack_fillSeq(unsigned long tmr)
 
 /* Generate lamp error sequence 
  * Caller: hmi_lampStackController()
- * Move to: lamp.c or lcd.c probably
  */
 static void lampStack_errorSeq(unsigned long tmr)
 {
@@ -129,13 +126,12 @@ static void lampStack_errorSeq(unsigned long tmr)
     }
 }
 
-/* Control lamps 
+/* Lamp control function
  * Caller: system_userInterface()
- * Move to: hmi.c
  */
-char lmp_update;
 void hmi_lampStackController()
 {
+    static char lmp_update;
     switch(runTasks)
     {
         case MC_READY:
@@ -209,10 +205,9 @@ void hmi_lampStackController()
     }
 }
 
-/********************************** LAMP END *********************************/
 
-/* This function is called by hmi_GenerateBootScreen() only 
- * but device_outputState() is called by other functions.
+/* This function is setup the lamp boot sequence
+ * Caller: hmi_GenerateBootScreen() 
  */
 void lamp_bootSeq()
 {
