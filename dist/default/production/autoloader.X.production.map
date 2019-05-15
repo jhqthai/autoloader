@@ -247,7 +247,6 @@ External Symbols in Data Memory (by address):
                     0x10cc                  _TMR4_InterruptHandler
                     0x10ce                  _TMR3_InterruptHandler
                     0x10d0                  _hexAscii
-                    0x10d2                  _led_state
                     0x10d4                  _lmp_update
                     0x10d6                  _wav
                     0x12d4                  _txbuff
@@ -315,7 +314,6 @@ External Symbols in Data Memory (by name):
                     0x1076                  _lcd_start
                     0x1042                  _lcd_strobe
                     0x10c9                  _lcd_update
-                    0x10d2                  _led_state
                     0x1060                  _lmp_state
                     0x10d4                  _lmp_update
                     0x1486                  _msgBuff
@@ -738,7 +736,7 @@ __FOSCSEL
 
 __FGS             0x00affa          0x2
  *(__FGS.sec*)
- __FGS.sec        0x00affa          0x2 /CW/_FGSÜû
+ __FGS.sec        0x00affa          0x2 /CW/_FGS¨	ÿ
                   0x00affa                  __FGS.sec
 
 __FUID0
@@ -756,7 +754,7 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x89fc
+.debug_info       0x000000       0x89f9
  *(.debug_info)
  .debug_info      0x000000         0x91 build/default/production/mcc_generated_files/memory/flash.o
  .debug_info      0x000091        0x204 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -779,11 +777,11 @@ __FUID3
  .debug_info      0x006d66        0x549 build/default/production/backlight.o
  .debug_info      0x0072af        0x60d build/default/production/tone.o
  .debug_info      0x0078bc        0xb95 build/default/production/lcd.o
- .debug_info      0x008451        0x352 build/default/production/led.o
- .debug_info      0x0087a3        0x259 build/default/production/lamp.o
+ .debug_info      0x008451        0x34f build/default/production/led.o
+ .debug_info      0x0087a0        0x259 build/default/production/lamp.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000       0x1736
+.debug_abbrev     0x000000       0x1725
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x14 build/default/production/mcc_generated_files/memory/flash.o
  .debug_abbrev    0x000014         0x73 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -807,10 +805,10 @@ __FUID3
  .debug_abbrev    0x0011d9        0x12d build/default/production/backlight.o
  .debug_abbrev    0x001306        0x127 build/default/production/tone.o
  .debug_abbrev    0x00142d        0x1aa build/default/production/lcd.o
- .debug_abbrev    0x0015d7         0xaa build/default/production/led.o
- .debug_abbrev    0x001681         0xb5 build/default/production/lamp.o
+ .debug_abbrev    0x0015d7         0x99 build/default/production/led.o
+ .debug_abbrev    0x001670         0xb5 build/default/production/lamp.o
 
-.debug_line       0x000000       0x1b97
+.debug_line       0x000000       0x1b8e
  *(.debug_line)
  .debug_line      0x000000        0x124 build/default/production/mcc_generated_files/memory/flash.o
  .debug_line      0x000124         0xce build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -834,8 +832,8 @@ __FUID3
  .debug_line      0x001550        0x11c build/default/production/backlight.o
  .debug_line      0x00166c        0x123 build/default/production/tone.o
  .debug_line      0x00178f        0x21d build/default/production/lcd.o
- .debug_line      0x0019ac        0x11d build/default/production/led.o
- .debug_line      0x001ac9         0xce build/default/production/lamp.o
+ .debug_line      0x0019ac        0x114 build/default/production/led.o
+ .debug_line      0x001ac0         0xce build/default/production/lamp.o
 
 .debug_frame      0x000000        0xed4
  *(.debug_frame)
@@ -862,7 +860,7 @@ __FUID3
  .debug_frame     0x000e04         0x30 build/default/production/led.o
  .debug_frame     0x000e34         0xa0 build/default/production/lamp.o
 
-.debug_str        0x000000        0x483
+.debug_str        0x000000        0x479
  *(.debug_str)
  .debug_str       0x000000          0xd build/default/production/mcc_generated_files/memory/flash_demo.o
  .debug_str       0x00000d         0x17 build/default/production/mcc_generated_files/reset.o
@@ -883,8 +881,8 @@ __FUID3
  .debug_str       0x00035c         0x1c build/default/production/backlight.o
  .debug_str       0x000378         0x1c build/default/production/tone.o
  .debug_str       0x000394         0xb5 build/default/production/lcd.o
- .debug_str       0x000449         0x1c build/default/production/led.o
- .debug_str       0x000465         0x1e build/default/production/lamp.o
+ .debug_str       0x000449         0x12 build/default/production/led.o
+ .debug_str       0x00045b         0x1e build/default/production/lamp.o
 
 .debug_loc
  *(.debug_loc)
@@ -893,7 +891,7 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0xf72
+                  0x000000        0xf64
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x20 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -936,9 +934,9 @@ __FUID3
  .debug_pubnames
                   0x000d46        0x1ae build/default/production/lcd.o
  .debug_pubnames
-                  0x000ef4         0x30 build/default/production/led.o
+                  0x000ef4         0x22 build/default/production/led.o
  .debug_pubnames
-                  0x000f24         0x4e build/default/production/lamp.o
+                  0x000f16         0x4e build/default/production/lamp.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -2211,7 +2209,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
 OUTPUT(dist/default/production/autoloader.X.production.elf elf32-pic30)
-LOAD /CW/_FGSÜû
+LOAD /CW/_FGS¨	ÿ
 LOAD default_isr
 LOAD data_init
 
@@ -2451,7 +2449,6 @@ __c30_signature
 
 .nbss               0x10d2          0x4
  .nbss              0x10d2          0x2 build/default/production/led.o
-                    0x10d2                  _led_state
  .nbss              0x10d4          0x2 build/default/production/lamp.o
                     0x10d4                  _lmp_update
 
