@@ -32,7 +32,6 @@ Command:
   build/default/production/mcc_generated_files/tmr3.o \
   build/default/production/main.o \
   build/default/production/hmi.o \
-  build/default/production/main_3.o \
   build/default/production/common.o \
   build/default/production/keypad.o \
   build/default/production/backlight.o \
@@ -78,9 +77,9 @@ c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(memcpy.EP_eo)
                               build/default/production/hmi.o (_memcpy)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(strcpy.EP_eo)
-                              build/default/production/hmi.o (_strcpy)
+                              build/default/production/main.o (_strcpy)
 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(strlen.EP_eo)
-                              build/default/production/hmi.o (_strlen)
+                              build/default/production/main.o (_strlen)
 
 
 Selected CodeGuard Options:
@@ -612,7 +611,6 @@ LOAD build/default/production/mcc_generated_files/tmr4.o
 LOAD build/default/production/mcc_generated_files/tmr3.o
 LOAD build/default/production/main.o
 LOAD build/default/production/hmi.o
-LOAD build/default/production/main_3.o
 LOAD build/default/production/common.o
 LOAD build/default/production/keypad.o
 LOAD build/default/production/backlight.o
@@ -708,7 +706,7 @@ __FOSCSEL
 
 __FGS             0x00affa          0x2
  *(__FGS.sec*)
- __FGS.sec        0x00affa          0x2 /CW/_FGSÀ·ä
+ __FGS.sec        0x00affa          0x2 /CW/_FGSp„è
                   0x00affa                  __FGS.sec
 
 __FUID0
@@ -726,7 +724,7 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x861d
+.debug_info       0x000000       0x861b
  *(.debug_info)
  .debug_info      0x000000         0x91 build/default/production/mcc_generated_files/memory/flash.o
  .debug_info      0x000091        0x204 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -742,19 +740,19 @@ __FUID3
  .debug_info      0x003610        0x65b build/default/production/mcc_generated_files/uart2.o
  .debug_info      0x003c6b        0x536 build/default/production/mcc_generated_files/tmr4.o
  .debug_info      0x0041a1        0x69d build/default/production/mcc_generated_files/tmr3.o
- .debug_info      0x00483e        0x796 build/default/production/hmi.o
- .debug_info      0x004fd4        0xd1e build/default/production/main_3.o
- .debug_info      0x005cf2        0x30a build/default/production/common.o
- .debug_info      0x005ffc        0x465 build/default/production/keypad.o
- .debug_info      0x006461        0x4f5 build/default/production/backlight.o
- .debug_info      0x006956        0x58c build/default/production/tone.o
- .debug_info      0x006ee2        0xb36 build/default/production/lcd.o
- .debug_info      0x007a18        0x34f build/default/production/led.o
- .debug_info      0x007d67        0x1b8 build/default/production/lamp.o
- .debug_info      0x007f1f        0x6fe build/default/production/comm.o
+ .debug_info      0x00483e        0xd1c build/default/production/main.o
+ .debug_info      0x00555a        0x796 build/default/production/hmi.o
+ .debug_info      0x005cf0        0x30a build/default/production/common.o
+ .debug_info      0x005ffa        0x465 build/default/production/keypad.o
+ .debug_info      0x00645f        0x4f5 build/default/production/backlight.o
+ .debug_info      0x006954        0x58c build/default/production/tone.o
+ .debug_info      0x006ee0        0xb36 build/default/production/lcd.o
+ .debug_info      0x007a16        0x34f build/default/production/led.o
+ .debug_info      0x007d65        0x1b8 build/default/production/lamp.o
+ .debug_info      0x007f1d        0x6fe build/default/production/comm.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000       0x1754
+.debug_abbrev     0x000000       0x1753
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x14 build/default/production/mcc_generated_files/memory/flash.o
  .debug_abbrev    0x000014         0x73 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -770,19 +768,18 @@ __FUID3
  .debug_abbrev    0x0008f7        0x102 build/default/production/mcc_generated_files/uart2.o
  .debug_abbrev    0x0009f9        0x169 build/default/production/mcc_generated_files/tmr4.o
  .debug_abbrev    0x000b62        0x169 build/default/production/mcc_generated_files/tmr3.o
- .debug_abbrev    0x000ccb          0x1 build/default/production/main.o
- .debug_abbrev    0x000ccc        0x10e build/default/production/hmi.o
- .debug_abbrev    0x000dda        0x1d2 build/default/production/main_3.o
- .debug_abbrev    0x000fac         0xa9 build/default/production/common.o
- .debug_abbrev    0x001055         0xd9 build/default/production/keypad.o
- .debug_abbrev    0x00112e         0xfa build/default/production/backlight.o
- .debug_abbrev    0x001228        0x130 build/default/production/tone.o
- .debug_abbrev    0x001358        0x183 build/default/production/lcd.o
- .debug_abbrev    0x0014db         0x99 build/default/production/led.o
- .debug_abbrev    0x001574         0x90 build/default/production/lamp.o
- .debug_abbrev    0x001604        0x150 build/default/production/comm.o
+ .debug_abbrev    0x000ccb        0x1d2 build/default/production/main.o
+ .debug_abbrev    0x000e9d        0x10e build/default/production/hmi.o
+ .debug_abbrev    0x000fab         0xa9 build/default/production/common.o
+ .debug_abbrev    0x001054         0xd9 build/default/production/keypad.o
+ .debug_abbrev    0x00112d         0xfa build/default/production/backlight.o
+ .debug_abbrev    0x001227        0x130 build/default/production/tone.o
+ .debug_abbrev    0x001357        0x183 build/default/production/lcd.o
+ .debug_abbrev    0x0014da         0x99 build/default/production/led.o
+ .debug_abbrev    0x001573         0x90 build/default/production/lamp.o
+ .debug_abbrev    0x001603        0x150 build/default/production/comm.o
 
-.debug_line       0x000000       0x1c61
+.debug_line       0x000000       0x1c45
  *(.debug_line)
  .debug_line      0x000000        0x124 build/default/production/mcc_generated_files/memory/flash.o
  .debug_line      0x000124         0xce build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -798,17 +795,16 @@ __FUID3
  .debug_line      0x000c69        0x116 build/default/production/mcc_generated_files/uart2.o
  .debug_line      0x000d7f        0x125 build/default/production/mcc_generated_files/tmr4.o
  .debug_line      0x000ea4        0x129 build/default/production/mcc_generated_files/tmr3.o
- .debug_line      0x000fcd         0x1a build/default/production/main.o
- .debug_line      0x000fe7        0x1c7 build/default/production/hmi.o
- .debug_line      0x0011ae        0x244 build/default/production/main_3.o
- .debug_line      0x0013f2         0x64 build/default/production/common.o
- .debug_line      0x001456        0x132 build/default/production/keypad.o
- .debug_line      0x001588        0x106 build/default/production/backlight.o
- .debug_line      0x00168e        0x121 build/default/production/tone.o
- .debug_line      0x0017af        0x1d5 build/default/production/lcd.o
- .debug_line      0x001984        0x112 build/default/production/led.o
- .debug_line      0x001a96         0x89 build/default/production/lamp.o
- .debug_line      0x001b1f        0x142 build/default/production/comm.o
+ .debug_line      0x000fcd        0x242 build/default/production/main.o
+ .debug_line      0x00120f        0x1c7 build/default/production/hmi.o
+ .debug_line      0x0013d6         0x64 build/default/production/common.o
+ .debug_line      0x00143a        0x132 build/default/production/keypad.o
+ .debug_line      0x00156c        0x106 build/default/production/backlight.o
+ .debug_line      0x001672        0x121 build/default/production/tone.o
+ .debug_line      0x001793        0x1d5 build/default/production/lcd.o
+ .debug_line      0x001968        0x112 build/default/production/led.o
+ .debug_line      0x001a7a         0x89 build/default/production/lamp.o
+ .debug_line      0x001b03        0x142 build/default/production/comm.o
 
 .debug_frame      0x000000        0xe78
  *(.debug_frame)
@@ -825,8 +821,8 @@ __FUID3
  .debug_frame     0x0005cc         0xbc build/default/production/mcc_generated_files/uart2.o
  .debug_frame     0x000688        0x148 build/default/production/mcc_generated_files/tmr4.o
  .debug_frame     0x0007d0        0x148 build/default/production/mcc_generated_files/tmr3.o
- .debug_frame     0x000918        0x180 build/default/production/hmi.o
- .debug_frame     0x000a98         0xf4 build/default/production/main_3.o
+ .debug_frame     0x000918         0xf4 build/default/production/main.o
+ .debug_frame     0x000a0c        0x180 build/default/production/hmi.o
  .debug_frame     0x000b8c         0x4c build/default/production/common.o
  .debug_frame     0x000bd8         0x4c build/default/production/keypad.o
  .debug_frame     0x000c24         0x4c build/default/production/backlight.o
@@ -850,8 +846,8 @@ __FUID3
  .debug_str       0x0000cd         0x15 build/default/production/mcc_generated_files/uart2.o
  .debug_str       0x0000e2          0xa build/default/production/mcc_generated_files/tmr4.o
  .debug_str       0x0000ec         0x13 build/default/production/mcc_generated_files/tmr3.o
- .debug_str       0x0000ff         0xa4 build/default/production/hmi.o
- .debug_str       0x0001a3         0xe2 build/default/production/main_3.o
+ .debug_str       0x0000ff         0xe2 build/default/production/main.o
+ .debug_str       0x0001e1         0xa4 build/default/production/hmi.o
  .debug_str       0x000285         0x17 build/default/production/common.o
  .debug_str       0x00029c         0x14 build/default/production/keypad.o
  .debug_str       0x0002b0         0x12 build/default/production/backlight.o
@@ -897,9 +893,9 @@ __FUID3
  .debug_pubnames
                   0x00063c        0x134 build/default/production/mcc_generated_files/tmr3.o
  .debug_pubnames
-                  0x000770        0x1a8 build/default/production/hmi.o
+                  0x000770         0x46 build/default/production/main.o
  .debug_pubnames
-                  0x000918         0x46 build/default/production/main_3.o
+                  0x0007b6        0x1a8 build/default/production/hmi.o
  .debug_pubnames
                   0x00095e         0xba build/default/production/common.o
  .debug_pubnames
@@ -951,9 +947,9 @@ __FUID3
  .debug_aranges
                   0x000170         0x18 build/default/production/mcc_generated_files/tmr3.o
  .debug_aranges
-                  0x000188         0x18 build/default/production/hmi.o
+                  0x000188         0x18 build/default/production/main.o
  .debug_aranges
-                  0x0001a0         0x18 build/default/production/main_3.o
+                  0x0001a0         0x18 build/default/production/hmi.o
  .debug_aranges
                   0x0001b8         0x18 build/default/production/common.o
  .debug_aranges
@@ -2190,7 +2186,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
 OUTPUT(dist/default/production/autoloader.X.production.elf elf32-pic30)
-LOAD /CW/_FGSÀ·ä
+LOAD /CW/_FGSp„è
 LOAD default_isr
 LOAD data_init
 
@@ -2223,9 +2219,9 @@ LOAD data_init
  .debug_pubtypes
                   0x000714         0x87 build/default/production/mcc_generated_files/tmr3.o
  .debug_pubtypes
-                  0x00079b         0x12 build/default/production/hmi.o
+                  0x00079b         0xc1 build/default/production/main.o
  .debug_pubtypes
-                  0x0007ad         0xc1 build/default/production/main_3.o
+                  0x00085c         0x12 build/default/production/hmi.o
  .debug_pubtypes
                   0x00086e         0x12 build/default/production/common.o
  .debug_pubtypes
@@ -2244,7 +2240,7 @@ LOAD data_init
                   0x000a8d         0x3e build/default/production/comm.o
 
 __c30_signature
-                  0x000acb         0xae
+                  0x000acb         0xa8
  __c30_signature
                   0x000acb          0x6 build/default/production/mcc_generated_files/memory/flash_demo.o
  __c30_signature
@@ -2276,33 +2272,31 @@ __c30_signature
  __c30_signature
                   0x000b1f          0x6 build/default/production/hmi.o
  __c30_signature
-                  0x000b25          0x6 build/default/production/main_3.o
+                  0x000b25          0x6 build/default/production/common.o
  __c30_signature
-                  0x000b2b          0x6 build/default/production/common.o
+                  0x000b2b          0x6 build/default/production/keypad.o
  __c30_signature
-                  0x000b31          0x6 build/default/production/keypad.o
+                  0x000b31          0x6 build/default/production/backlight.o
  __c30_signature
-                  0x000b37          0x6 build/default/production/backlight.o
+                  0x000b37          0x6 build/default/production/tone.o
  __c30_signature
-                  0x000b3d          0x6 build/default/production/tone.o
+                  0x000b3d          0x6 build/default/production/lcd.o
  __c30_signature
-                  0x000b43          0x6 build/default/production/lcd.o
+                  0x000b43          0x6 build/default/production/led.o
  __c30_signature
-                  0x000b49          0x6 build/default/production/led.o
+                  0x000b49          0x6 build/default/production/lamp.o
  __c30_signature
-                  0x000b4f          0x6 build/default/production/lamp.o
+                  0x000b4f          0x6 build/default/production/comm.o
  __c30_signature
-                  0x000b55          0x6 build/default/production/comm.o
+                  0x000b55          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extendedep.o)
  __c30_signature
-                  0x000b5b          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extendedep.o)
+                  0x000b5b          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.a(data_init_extended.o)
  __c30_signature
-                  0x000b61          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-pic30-elf.a(data_init_extended.o)
+                  0x000b61          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(memcpy.EP_eo)
  __c30_signature
-                  0x000b67          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(memcpy.EP_eo)
+                  0x000b67          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(strcpy.EP_eo)
  __c30_signature
-                  0x000b6d          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(strcpy.EP_eo)
- __c30_signature
-                  0x000b73          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(strlen.EP_eo)
+                  0x000b6d          0x6 c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a(strlen.EP_eo)
 
 .nbss               0x1000         0x44
  .nbss              0x1000         0x44 build/default/production/mcc_generated_files/tmr2.o
@@ -2392,7 +2386,7 @@ __c30_signature
                     0x10a9                  _txIndx
                     0x10aa                  _rxMsg
                     0x10ab                  _txMsg
- .nbss              0x10ac          0x4 build/default/production/main_3.o
+ .nbss              0x10ac          0x4 build/default/production/main.o
                     0x10ac                  _sys
                     0x10ae                  _sysState
  .nbss              0x10b0          0x4 build/default/production/keypad.o
@@ -2408,7 +2402,7 @@ __c30_signature
                     0x10bc                  _TMR3_InterruptHandler
 
 .ndata              0x10be          0x4
- .ndata             0x10be          0x2 build/default/production/main_3.o
+ .ndata             0x10be          0x2 build/default/production/main.o
                     0x10be                  _autoLoaderMsgList
  .ndata             0x10c0          0x2 build/default/production/common.o
                     0x10c0                  _hexAscii
@@ -2495,7 +2489,7 @@ __c30_signature
 .const              0x8420        0x63c load address 0x000420  
  .const             0x8420        0x306 build/default/production/comm.o
  .const             0x8726        0x210 build/default/production/lcd.o
- .const             0x8936         0xe6 build/default/production/main_3.o
+ .const             0x8936         0xe6 build/default/production/main.o
  .const             0x8a1c         0x18 build/default/production/tone.o
                     0x8a1c                  _notes
                     0x8a28                  _tempo
@@ -2518,7 +2512,7 @@ __c30_signature
                   0x000eb8                  _hmi_setupL4KeyCommand
                   0x000f48                  _hmi_setupL5KeyCommand
                   0x000fd8                  _hmi_setupL6KeyCommand
- .text            0x001066        0x506 build/default/production/main_3.o
+ .text            0x001066        0x506 build/default/production/main.o
                   0x00154e                  _main
  .text            0x00156c        0x408 build/default/production/lcd.o
                   0x00156c                  _lcd_bootSeq

@@ -24,7 +24,7 @@
 int P1_value, P2_value, P3_value, P4_value, P5_value, P6_value;
 
 /* Function to configure the system's state 
- * Calls when user interacts with key or when HMI is ready.
+ * Calls when user interacts with keypad or when HMI is ready.
  */
 void hmi_ConfigSystemState(char state)
 {

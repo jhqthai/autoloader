@@ -58,7 +58,6 @@
       <itemPath>main.c</itemPath>
       <itemPath>hmi.c</itemPath>
       <itemPath>hmi.h</itemPath>
-      <itemPath>main_3.c</itemPath>
       <itemPath>common.c</itemPath>
       <itemPath>common.h</itemPath>
       <itemPath>keypad.c</itemPath>
