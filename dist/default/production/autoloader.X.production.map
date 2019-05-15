@@ -738,7 +738,7 @@ __FOSCSEL
 
 __FGS             0x00affa          0x2
  *(__FGS.sec*)
- __FGS.sec        0x00affa          0x2 /CW/_FGSÈ­î
+ __FGS.sec        0x00affa          0x2 /CW/_FGSÜû
                   0x00affa                  __FGS.sec
 
 __FUID0
@@ -810,7 +810,7 @@ __FUID3
  .debug_abbrev    0x0015d7         0xaa build/default/production/led.o
  .debug_abbrev    0x001681         0xb5 build/default/production/lamp.o
 
-.debug_line       0x000000       0x1b95
+.debug_line       0x000000       0x1b97
  *(.debug_line)
  .debug_line      0x000000        0x124 build/default/production/mcc_generated_files/memory/flash.o
  .debug_line      0x000124         0xce build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -834,8 +834,8 @@ __FUID3
  .debug_line      0x001550        0x11c build/default/production/backlight.o
  .debug_line      0x00166c        0x123 build/default/production/tone.o
  .debug_line      0x00178f        0x21d build/default/production/lcd.o
- .debug_line      0x0019ac        0x11b build/default/production/led.o
- .debug_line      0x001ac7         0xce build/default/production/lamp.o
+ .debug_line      0x0019ac        0x11d build/default/production/led.o
+ .debug_line      0x001ac9         0xce build/default/production/lamp.o
 
 .debug_frame      0x000000        0xed4
  *(.debug_frame)
@@ -2211,7 +2211,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
 OUTPUT(dist/default/production/autoloader.X.production.elf elf32-pic30)
-LOAD /CW/_FGSÈ­î
+LOAD /CW/_FGSÜû
 LOAD default_isr
 LOAD data_init
 

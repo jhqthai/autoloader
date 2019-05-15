@@ -478,9 +478,6 @@ static void scan_MachineInputs()
  * 
  * Definition:
  * BUS_TRANSACTION - use in this function
- * 
- * 
- * 
  */
 static void process_OutputDevices()
 {

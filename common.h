@@ -68,7 +68,6 @@ typedef enum{
 /* I/O buffers?*/
 extern char outputDevices, buff, inputDevices; 
 
-
 // Function mainly used by lamp but is handled in system_eventHandler
 extern void device_outputState(char device, char state);
 
