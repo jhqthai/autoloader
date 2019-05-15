@@ -17,9 +17,10 @@ mcc_generated_files/uart2.h  \
 mcc_generated_files/tmr3.h  \
  mcc_generated_files/watchdog.h  \
 common.h  \
+comm.h  \
 hmi.h  \
 keypad.h  \
-backlight.h  \
- tone.h  \
+ backlight.h  \
+tone.h  \
 lcd.h  \
 lamp.h 
