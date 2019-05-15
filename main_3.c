@@ -18,8 +18,8 @@
 /* Local main variables */
 // Event handler variables
 char sysState;
-// Toggle state variables
-char lamp_flash_count;
+//// Toggle state variables
+//char lamp_flash_count;
 
 // Serial comm's 
 #define TX_BUFFER       (128)
@@ -351,29 +351,29 @@ static unsigned char memory_write()
 //    }
 //}
 
-/* TODO: UNUSED FUNCTION */
-static void device_ToggleState(char dev, int rate)
-{
-    int i;
-    char x;
-    i = rate;
-    x = dev;
-    if(t2 >= i)
-    {
-        t2 = 0;
-        if(devState > 0)
-        {
-            devState = 0;
-            lamp_flash_count++;
-            device_outputState(x, STATE_ON);
-        }
-        else
-        {
-            devState++;
-            device_outputState(x, STATE_OFF);
-        }
-    }
-}
+///* TODO: UNUSED FUNCTION */
+//static void device_ToggleState(char dev, int rate)
+//{
+//    int i;
+//    char x;
+//    i = rate;
+//    x = dev;
+//    if(t2 >= i)
+//    {
+//        t2 = 0;
+//        if(devState > 0)
+//        {
+//            devState = 0;
+//            lamp_flash_count++;
+//            device_outputState(x, STATE_ON);
+//        }
+//        else
+//        {
+//            devState++;
+//            device_outputState(x, STATE_OFF);
+//        }
+//    }
+//}
 
 
 char display_offset, msg_flash, animation_count,animation_step = 0;
