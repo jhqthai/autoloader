@@ -1,4 +1,4 @@
-// The file that I rip to pieces
+// main.c
 
 #include <xc.h>
 #include <string.h>
