@@ -1,17 +1,18 @@
+// Tone driver module
 #include <xc.h>
-
 #include "common.h"
 #include "tone.h"
 
-char wav_tasks;
+// Tone array
+const unsigned int notes[]   = {(191),(191),(170),(191),(143),(151)};
+const unsigned int tempo[]   = {(10000),(8000),(12000),(10000),(10000),(40000)};
 
-unsigned int wav[(255)], wav_index, wav_msg, wav_tempo = 0; // TODO: UNUSED
-unsigned int notes[]   = {(191),(191),(170),(191),(143),(151)}; // TODO: Make const
-unsigned int tempo[]   = {(10000),(8000),(12000),(10000),(10000),(40000)}; // TODO: Make const
+// Define global variables
+char wav_tasks; // Event variable
 
-unsigned int freq, pitch; // TODO: Make freq local variable, delete pitch -> no use
 static void wav_playTone(unsigned int tone)
 {
+    static unsigned int freq; // TODO: Why is this not defined as 0 initially?
     unsigned int i;
     i = tone;
     if(IFS0bits.T3IF)
@@ -20,20 +21,17 @@ static void wav_playTone(unsigned int tone)
         if(freq++ >= i)
         {
             freq = 0;
-            LATBbits.LATB8 = ~LATBbits.LATB8;       // Oscillate the tone pin
+            LATBbits.LATB8 = ~LATBbits.LATB8; // Oscillate the tone pin
         }
     }
 }
 
-/* Generate tone
+/* This function generates tone
  * Caller: main
- * Callee:
- * 
- * Variables: wave_tasks - modified by process_ToneGenerator() and system_eventHandler()
  */
-int tune = 0;
 void process_ToneGenerator()
 {
+    static int tune = 0;
     switch(wav_tasks)
     {
         case WAVE_INI:

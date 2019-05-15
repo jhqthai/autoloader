@@ -104,14 +104,14 @@ xc16-ld 1.36 (B)
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x220           0x330  (816)
-.const                       0x420               0x624           0x936  (2358)
-.text                        0xa44              0x13e6          0x1dd9  (7641)
-.NVM_flash                  0x1e2a               0x18a           0x24f  (591)
-.text                       0x1fb4               0x33e           0x4dd  (1245)
-.dinit                      0x22f2                0xd8           0x144  (324)
-.text                       0x23ca               0x65a           0x987  (2439)
+.const                       0x420               0x63c           0x95a  (2394)
+.text                        0xa5c              0x13e6          0x1dd9  (7641)
+.NVM_flash                  0x1e42               0x18a           0x24f  (591)
+.text                       0x1fcc               0x4c8           0x72c  (1836)
+.dinit                      0x2494                0xbc           0x11a  (282)
+.text                       0x2550               0x4d0           0x738  (1848)
 
-                 Total "program" memory used (bytes):         0x3c36  (15414) 23%
+                 Total "program" memory used (bytes):         0x3c30  (15408) 23%
 
 
 "data" Memory  [Origin = 0x1000, Length = 0x2000]
@@ -120,16 +120,16 @@ section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
 .nbss                       0x1000                   0            0x44  (68)
 .ndata                      0x1044                   0            0x42  (66)
-.nbss                       0x1086                   0            0x40  (64)
+.nbss                       0x1086                   0            0x3a  (58)
+.ndata                      0x10c0                   0             0x2  (2)
+.nbss                       0x10c2                   0             0x4  (4)
 .ndata                      0x10c6                   0             0x2  (2)
 .nbss                       0x10c8                   0             0x4  (4)
-.ndata                      0x10cc                   0             0x2  (2)
-.nbss                       0x10ce                   0             0x4  (4)
-.bss                        0x10d2                   0           0x4b6  (1206)
-.data                       0x1588                   0            0x1c  (28)
-.bss                        0x15a4                   0             0x6  (6)
+.bss                        0x10cc                   0           0x2b8  (696)
+.data                       0x1384                   0             0x4  (4)
+.bss                        0x1388                   0             0x6  (6)
 
-                 Total "data" memory used (bytes):          0x5aa  (1450) 17%
+                 Total "data" memory used (bytes):          0x38e  (910) 11%
 
 
 Dynamic Memory Usage
@@ -137,9 +137,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                       0x15aa                              0x1a56  (6742)
+stack                       0x138e                              0x1c72  (7282)
 
-                 Maximum dynamic memory (bytes):         0x1a56  (6742)
+                 Maximum dynamic memory (bytes):         0x1c72  (7282)
 
 
 External Symbols in Data Memory (by address):
@@ -220,52 +220,46 @@ External Symbols in Data Memory (by address):
                     0x10a2                  _buff
                     0x10a3                  _inputDevices
                     0x10a4                  _wav_tasks
-                    0x10a6                  _wav_index
-                    0x10a8                  _wav_msg
-                    0x10aa                  _wav_tempo
-                    0x10ac                  _freq
-                    0x10ae                  _pitch
-                    0x10b0                  _tune
-                    0x10b2                  _sysState
-                    0x10b3                  _testCounter
-                    0x10b4                  _display_offset
-                    0x10b5                  _msg_flash
-                    0x10b6                  _animation_count
-                    0x10b7                  _animation_step
-                    0x10b8                  _fill_cntr
-                    0x10ba                  _lcdState
-                    0x10bb                  _lcd_index
-                    0x10bc                  _lcd_msg
-                    0x10bd                  _lcd_update
-                    0x10be                  _keyBuff
-                    0x10bf                  _keyValue
-                    0x10c0                  _keyState
-                    0x10c8                  _TMR4_InterruptHandler
-                    0x10ca                  _TMR3_InterruptHandler
-                    0x10cc                  _hexAscii
-                    0x10d2                  _wav
-                    0x12d0                  _txbuff
-                    0x1350                  _rxbuff
-                    0x1450                  _sys
-                    0x145e                  _lcdBuff
-                    0x1482                  _msgBuff
-                    0x1588                  _notes
-                    0x1594                  _tempo
-                    0x15a0                  _FlashKey
+                    0x10a6                  _freq
+                    0x10a8                  _pitch
+                    0x10aa                  _tune
+                    0x10ac                  _sysState
+                    0x10ad                  _testCounter
+                    0x10ae                  _display_offset
+                    0x10af                  _msg_flash
+                    0x10b0                  _animation_count
+                    0x10b1                  _animation_step
+                    0x10b2                  _fill_cntr
+                    0x10b4                  _lcdState
+                    0x10b5                  _lcd_index
+                    0x10b6                  _lcd_msg
+                    0x10b7                  _lcd_update
+                    0x10b8                  _keyBuff
+                    0x10b9                  _keyValue
+                    0x10ba                  _keyState
+                    0x10c2                  _TMR4_InterruptHandler
+                    0x10c4                  _TMR3_InterruptHandler
+                    0x10c6                  _hexAscii
+                    0x10cc                  _txbuff
+                    0x114c                  _rxbuff
+                    0x124c                  _sys
+                    0x125a                  _lcdBuff
+                    0x127e                  _msgBuff
+                    0x1384                  _FlashKey
 
 External Symbols in Data Memory (by name):
 
-                    0x15a0                  _FlashKey
+                    0x1384                  _FlashKey
                     0x1086                  _P1_value
                     0x1088                  _P2_value
                     0x108a                  _P3_value
                     0x108c                  _P4_value
                     0x108e                  _P5_value
                     0x1090                  _P6_value
-                    0x10ca                  _TMR3_InterruptHandler
-                    0x10c8                  _TMR4_InterruptHandler
-                    0x10b6                  _animation_count
-                    0x10b7                  _animation_step
+                    0x10c4                  _TMR3_InterruptHandler
+                    0x10c2                  _TMR4_InterruptHandler
+                    0x10b0                  _animation_count
+                    0x10b1                  _animation_step
                     0x1084                  _autoLoaderMsgList
                     0x10a2                  _buff
                     0x1096                  _cmdBuff
@@ -275,25 +269,25 @@ External Symbols in Data Memory (by name):
                     0x104e                  _config_1602A_2L_UL
                     0x104c                  _config_1602A_2LnBLK
                     0x109f                  _devState
-                    0x10b4                  _display_offset
-                    0x10b8                  _fill_cntr
+                    0x10ae                  _display_offset
+                    0x10b2                  _fill_cntr
                     0x10a0                  _flashRate
-                    0x10ac                  _freq
-                    0x10cc                  _hexAscii
+                    0x10a6                  _freq
+                    0x10c6                  _hexAscii
                     0x1092                  _hmiTask
                     0x10a3                  _inputDevices
-                    0x10be                  _keyBuff
-                    0x10c0                  _keyState
-                    0x10bf                  _keyValue
-                    0x145e                  _lcdBuff
-                    0x10ba                  _lcdState
+                    0x10b8                  _keyBuff
+                    0x10ba                  _keyState
+                    0x10b9                  _keyValue
+                    0x125a                  _lcdBuff
+                    0x10b4                  _lcdState
                     0x1048                  _lcd_decode
                     0x1056                  _lcd_fillMax
                     0x1044                  _lcd_frame
-                    0x10bb                  _lcd_index
+                    0x10b5                  _lcd_index
                     0x1046                  _lcd_load
                     0x1058                  _lcd_lowMax
-                    0x10bc                  _lcd_msg
+                    0x10b6                  _lcd_msg
                     0x1050                  _lcd_ready
                     0x105a                  _lcd_setP1
                     0x105c                  _lcd_setP2
@@ -304,9 +298,9 @@ External Symbols in Data Memory (by name):
                     0x1054                  _lcd_setup
                     0x1052                  _lcd_start
                     0x1042                  _lcd_strobe
-                    0x10bd                  _lcd_update
+                    0x10b7                  _lcd_update
                     0x109c                  _lmp_state
-                    0x1482                  _msgBuff
+                    0x127e                  _msgBuff
                     0x106e                  _msg_contact
                     0x1082                  _msg_debugCls
                     0x1080                  _msg_debugErr
@@ -316,23 +310,22 @@ External Symbols in Data Memory (by name):
                     0x1078                  _msg_debugRun
                     0x107c                  _msg_debugStFl
                     0x106a                  _msg_emptyDel
-                    0x10b5                  _msg_flash
+                    0x10af                  _msg_flash
                     0x1072                  _msg_io_test
                     0x106c                  _msg_lowLev
                     0x1070                  _msg_monitor
                     0x1066                  _msg_startup
                     0x1074                  _msg_userErr
                     0x1068                  _msg_version
-                    0x1588                  _notes
                     0x10a1                  _outputDevices
-                    0x10ae                  _pitch
+                    0x10a8                  _pitch
                     0x109e                  _runTasks
                     0x1097                  _rxIndx
                     0x1099                  _rxMsg
-                    0x1350                  _rxbuff
+                    0x114c                  _rxbuff
                     0x109b                  _scrn_state
-                    0x1450                  _sys
-                    0x10b2                  _sysState
+                    0x124c                  _sys
+                    0x10ac                  _sysState
                     0x1002                  _t1
                     0x1026                  _t10
                     0x102a                  _t11
@@ -348,21 +341,16 @@ External Symbols in Data Memory (by name):
                     0x101e                  _t8
                     0x1022                  _t9
                     0x103e                  _t_mask
-                    0x1594                  _tempo
-                    0x10b3                  _testCounter
+                    0x10ad                  _testCounter
                     0x1000                  _tick
                     0x103a                  _tone
-                    0x10b0                  _tune
+                    0x10aa                  _tune
                     0x1098                  _txIndx
                     0x109a                  _txMsg
-                    0x12d0                  _txbuff
+                    0x10cc                  _txbuff
                     0x109d                  _uiState
                     0x1093                  _uiTasks
-                    0x10d2                  _wav
-                    0x10a6                  _wav_index
-                    0x10a8                  _wav_msg
                     0x10a4                  _wav_tasks
-                    0x10aa                  _wav_tempo
 
 External Symbols in Program Memory (by address):
 
@@ -382,176 +370,178 @@ External Symbols in Program Memory (by address):
                   0x0003fa                  _memcpy
                   0x000408                  _strcpy
                   0x000414                  _strlen
-                  0x000a1c                  _LCD_BLL
-                  0x00112c                  _main
-                  0x00114a                  _lcd_bootSeq
-                  0x0013ee                  _hmi_lcdController
-                  0x0014fc                  _process_LcdController
-                  0x00168a                  _hmi_scanSetupCommand
-                  0x0016aa                  _hmi_setupL1KeyCommand
-                  0x00173a                  _hmi_setupL2KeyCommand
-                  0x0017ca                  _hmi_setupL3KeyCommand
-                  0x00185a                  _hmi_setupL4KeyCommand
-                  0x0018ea                  _hmi_setupL5KeyCommand
-                  0x00197a                  _hmi_setupL6KeyCommand
-                  0x001a08                  _process_KeyController
-                  0x001ce8                  _hmi_lampStackController
-                  0x001de6                  _lamp_bootSeq
-                  0x001e2c                  _FLASH_Unlock
-                  0x001e36                  _MEM_Unlock
-                  0x001e40                  _FLASH_Lock
-                  0x001e4c                  _MEM_Lock
-                  0x001e5a                  _FLASH_SendNvmKey
-                  0x001e78                  _FLASH_ReadWord24
-                  0x001e86                  _MEM_ReadWord24
-                  0x001e94                  _FLASH_ReadWord16
-                  0x001ea0                  _MEM_ReadWord16
-                  0x001eac                  _FLASH_ErasePage
-                  0x001ef0                  _MEMORY_SegmentErase
-                  0x001f34                  _FLASH_WriteDoubleWord24
-                  0x001f6c                  _FLASH_WriteDoubleWord16
-                  0x001fa4                  _FLASH_GetErasePageOffset
-                  0x001faa                  _FLASH_GetErasePageAddress
-                  0x001fb4                  _device_outputState
-                  0x001fdc                  _word2DecConverter
-                  0x0020ac                  _hmi_ConfigSystemState
-                  0x0020cc                  _RESET_GetCause
-                  0x0021d8                  _RESET_CauseClearAll
-                  0x0021e0                  _FlashDemo
-                  0x00240e                  _process_ToneGenerator
-                  0x002490                  _PIN_MANAGER_Initialize
-                  0x002554                  _TMR3_Initialize
-                  0x00256a                  _TMR3_Tasks_16BitOperation
-                  0x00258c                  _TMR3_Period16BitSet
-                  0x00259e                  _TMR3_Period16BitGet
-                  0x0025a6                  _TMR3_Counter16BitSet
-                  0x0025b8                  _TMR3_Counter16BitGet
-                  0x0025c0                  _TMR3_Start
-                  0x0025ce                  _TMR3_Stop
-                  0x0025d6                  _TMR3_GetElapsedThenClear
-                  0x0025ee                  _TMR3_SoftwareCounterGet
-                  0x0025fa                  _TMR3_SoftwareCounterClear
-                  0x002606                  _TMR2_Initialize
-                  0x00261a                  _TMR2_Period16BitSet
-                  0x00262c                  _TMR2_Period16BitGet
-                  0x002634                  _TMR2_Counter16BitSet
-                  0x002646                  _TMR2_Counter16BitGet
-                  0x002654                  _TMR2_SetInterruptHandler
-                  0x002660                  _TMR2_Start
-                  0x002670                  _TMR2_Stop
-                  0x00267a                  _TMR2_GetElapsedThenClear
-                  0x002692                  _TMR2_SoftwareCounterGet
-                  0x00269e                  _TMR2_SoftwareCounterClear
-                  0x0026aa                  _TMR4_Initialize
-                  0x0026c0                  _TMR4_Tasks_16BitOperation
-                  0x0026c6                  _TMR4_Period16BitSet
-                  0x0026d8                  _TMR4_Period16BitGet
-                  0x0026e0                  _TMR4_Counter16BitSet
-                  0x0026f2                  _TMR4_Counter16BitGet
-                  0x0026fa                  _TMR4_Start
-                  0x002708                  _TMR4_Stop
-                  0x002710                  _TMR4_GetElapsedThenClear
-                  0x002728                  _TMR4_SoftwareCounterGet
-                  0x002734                  _TMR4_SoftwareCounterClear
-                  0x002740                  _led_bootSeq
-                  0x0027b8                  _set_backlight_level
-                  0x0027c6                  _process_Backlight
-                  0x00282e                  _UART1_Initialize
-                  0x002840                  _UART1_Read
-                  0x00285e                  _UART1_Write
-                  0x002876                  _UART1_StatusGet
-                  0x00287e                  _UART1_Enable
-                  0x002888                  _UART1_Disable
-                  0x002892                  _UART2_Initialize
-                  0x0028a4                  _UART2_Read
-                  0x0028c2                  _UART2_Write
-                  0x0028da                  _UART2_StatusGet
-                  0x0028e2                  _UART2_Enable
-                  0x0028ec                  _UART2_Disable
-                  0x0028f6                  _hmi_GenerateBootScreen
-                  0x00291a                  _load_defaults
-                  0x002938                  _hmi_SetupStateTimeout
-                  0x002956                  _CLOCK_Initialize
-                  0x0029c4                  _SYSTEM_Initialize
-                  0x0029de                  _OSCILLATOR_Initialize
-                  0x0029e6                  _SYSTEM_GetResetCause
-                  0x0029f6                  _SYSTEM_ResetCauseClearAll
-                  0x002a14                  _INTERRUPT_Initialize
+                  0x000a1c                  _notes
+                  0x000a28                  _tempo
+                  0x000a34                  _LCD_BLL
+                  0x001144                  _main
+                  0x001162                  _lcd_bootSeq
+                  0x001406                  _hmi_lcdController
+                  0x001514                  _process_LcdController
+                  0x0016a2                  _hmi_scanSetupCommand
+                  0x0016c2                  _hmi_setupL1KeyCommand
+                  0x001752                  _hmi_setupL2KeyCommand
+                  0x0017e2                  _hmi_setupL3KeyCommand
+                  0x001872                  _hmi_setupL4KeyCommand
+                  0x001902                  _hmi_setupL5KeyCommand
+                  0x001992                  _hmi_setupL6KeyCommand
+                  0x001a20                  _process_KeyController
+                  0x001d00                  _hmi_lampStackController
+                  0x001dfe                  _lamp_bootSeq
+                  0x001e44                  _FLASH_Unlock
+                  0x001e4e                  _MEM_Unlock
+                  0x001e58                  _FLASH_Lock
+                  0x001e64                  _MEM_Lock
+                  0x001e72                  _FLASH_SendNvmKey
+                  0x001e90                  _FLASH_ReadWord24
+                  0x001e9e                  _MEM_ReadWord24
+                  0x001eac                  _FLASH_ReadWord16
+                  0x001eb8                  _MEM_ReadWord16
+                  0x001ec4                  _FLASH_ErasePage
+                  0x001f08                  _MEMORY_SegmentErase
+                  0x001f4c                  _FLASH_WriteDoubleWord24
+                  0x001f84                  _FLASH_WriteDoubleWord16
+                  0x001fbc                  _FLASH_GetErasePageOffset
+                  0x001fc2                  _FLASH_GetErasePageAddress
+                  0x001fcc                  _device_outputState
+                  0x001ff4                  _word2DecConverter
+                  0x0020c4                  _hmi_ConfigSystemState
+                  0x0020e4                  _RESET_GetCause
+                  0x0021f0                  _RESET_CauseClearAll
+                  0x0021f8                  _FlashDemo
+                  0x00234e                  _process_ToneGenerator
+                  0x0023d0                  _PIN_MANAGER_Initialize
+                  0x002550                  _TMR3_Initialize
+                  0x002566                  _TMR3_Tasks_16BitOperation
+                  0x002588                  _TMR3_Period16BitSet
+                  0x00259a                  _TMR3_Period16BitGet
+                  0x0025a2                  _TMR3_Counter16BitSet
+                  0x0025b4                  _TMR3_Counter16BitGet
+                  0x0025bc                  _TMR3_Start
+                  0x0025ca                  _TMR3_Stop
+                  0x0025d2                  _TMR3_GetElapsedThenClear
+                  0x0025ea                  _TMR3_SoftwareCounterGet
+                  0x0025f6                  _TMR3_SoftwareCounterClear
+                  0x002602                  _TMR2_Initialize
+                  0x002616                  _TMR2_Period16BitSet
+                  0x002628                  _TMR2_Period16BitGet
+                  0x002630                  _TMR2_Counter16BitSet
+                  0x002642                  _TMR2_Counter16BitGet
+                  0x002650                  _TMR2_SetInterruptHandler
+                  0x00265c                  _TMR2_Start
+                  0x00266c                  _TMR2_Stop
+                  0x002676                  _TMR2_GetElapsedThenClear
+                  0x00268e                  _TMR2_SoftwareCounterGet
+                  0x00269a                  _TMR2_SoftwareCounterClear
+                  0x0026a6                  _TMR4_Initialize
+                  0x0026bc                  _TMR4_Tasks_16BitOperation
+                  0x0026c2                  _TMR4_Period16BitSet
+                  0x0026d4                  _TMR4_Period16BitGet
+                  0x0026dc                  _TMR4_Counter16BitSet
+                  0x0026ee                  _TMR4_Counter16BitGet
+                  0x0026f6                  _TMR4_Start
+                  0x002704                  _TMR4_Stop
+                  0x00270c                  _TMR4_GetElapsedThenClear
+                  0x002724                  _TMR4_SoftwareCounterGet
+                  0x002730                  _TMR4_SoftwareCounterClear
+                  0x00273c                  _led_bootSeq
+                  0x0027b4                  _set_backlight_level
+                  0x0027c2                  _process_Backlight
+                  0x00282a                  _UART1_Initialize
+                  0x00283c                  _UART1_Read
+                  0x00285a                  _UART1_Write
+                  0x002872                  _UART1_StatusGet
+                  0x00287a                  _UART1_Enable
+                  0x002884                  _UART1_Disable
+                  0x00288e                  _UART2_Initialize
+                  0x0028a0                  _UART2_Read
+                  0x0028be                  _UART2_Write
+                  0x0028d6                  _UART2_StatusGet
+                  0x0028de                  _UART2_Enable
+                  0x0028e8                  _UART2_Disable
+                  0x0028f2                  _hmi_GenerateBootScreen
+                  0x002916                  _load_defaults
+                  0x002934                  _hmi_SetupStateTimeout
+                  0x002952                  _CLOCK_Initialize
+                  0x0029c0                  _SYSTEM_Initialize
+                  0x0029da                  _OSCILLATOR_Initialize
+                  0x0029e2                  _SYSTEM_GetResetCause
+                  0x0029f2                  _SYSTEM_ResetCauseClearAll
+                  0x002a10                  _INTERRUPT_Initialize
                   0x00affa                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x002956                  _CLOCK_Initialize
-                  0x001eac                  _FLASH_ErasePage
-                  0x001faa                  _FLASH_GetErasePageAddress
-                  0x001fa4                  _FLASH_GetErasePageOffset
-                  0x001e40                  _FLASH_Lock
-                  0x001e94                  _FLASH_ReadWord16
-                  0x001e78                  _FLASH_ReadWord24
-                  0x001e5a                  _FLASH_SendNvmKey
-                  0x001e2c                  _FLASH_Unlock
-                  0x001f6c                  _FLASH_WriteDoubleWord16
-                  0x001f34                  _FLASH_WriteDoubleWord24
-                  0x0021e0                  _FlashDemo
-                  0x002a14                  _INTERRUPT_Initialize
-                  0x000a1c                  _LCD_BLL
-                  0x001ef0                  _MEMORY_SegmentErase
-                  0x001e4c                  _MEM_Lock
-                  0x001ea0                  _MEM_ReadWord16
-                  0x001e86                  _MEM_ReadWord24
-                  0x001e36                  _MEM_Unlock
-                  0x0029de                  _OSCILLATOR_Initialize
-                  0x002490                  _PIN_MANAGER_Initialize
-                  0x0021d8                  _RESET_CauseClearAll
-                  0x0020cc                  _RESET_GetCause
-                  0x0029e6                  _SYSTEM_GetResetCause
-                  0x0029c4                  _SYSTEM_Initialize
-                  0x0029f6                  _SYSTEM_ResetCauseClearAll
-                  0x002646                  _TMR2_Counter16BitGet
-                  0x002634                  _TMR2_Counter16BitSet
-                  0x00267a                  _TMR2_GetElapsedThenClear
-                  0x002606                  _TMR2_Initialize
-                  0x00262c                  _TMR2_Period16BitGet
-                  0x00261a                  _TMR2_Period16BitSet
-                  0x002654                  _TMR2_SetInterruptHandler
-                  0x00269e                  _TMR2_SoftwareCounterClear
-                  0x002692                  _TMR2_SoftwareCounterGet
-                  0x002660                  _TMR2_Start
-                  0x002670                  _TMR2_Stop
-                  0x0025b8                  _TMR3_Counter16BitGet
-                  0x0025a6                  _TMR3_Counter16BitSet
-                  0x0025d6                  _TMR3_GetElapsedThenClear
-                  0x002554                  _TMR3_Initialize
-                  0x00259e                  _TMR3_Period16BitGet
-                  0x00258c                  _TMR3_Period16BitSet
-                  0x0025fa                  _TMR3_SoftwareCounterClear
-                  0x0025ee                  _TMR3_SoftwareCounterGet
-                  0x0025c0                  _TMR3_Start
-                  0x0025ce                  _TMR3_Stop
-                  0x00256a                  _TMR3_Tasks_16BitOperation
-                  0x0026f2                  _TMR4_Counter16BitGet
-                  0x0026e0                  _TMR4_Counter16BitSet
-                  0x002710                  _TMR4_GetElapsedThenClear
-                  0x0026aa                  _TMR4_Initialize
-                  0x0026d8                  _TMR4_Period16BitGet
-                  0x0026c6                  _TMR4_Period16BitSet
-                  0x002734                  _TMR4_SoftwareCounterClear
-                  0x002728                  _TMR4_SoftwareCounterGet
-                  0x0026fa                  _TMR4_Start
-                  0x002708                  _TMR4_Stop
-                  0x0026c0                  _TMR4_Tasks_16BitOperation
-                  0x002888                  _UART1_Disable
-                  0x00287e                  _UART1_Enable
-                  0x00282e                  _UART1_Initialize
-                  0x002840                  _UART1_Read
-                  0x002876                  _UART1_StatusGet
-                  0x00285e                  _UART1_Write
-                  0x0028ec                  _UART2_Disable
-                  0x0028e2                  _UART2_Enable
-                  0x002892                  _UART2_Initialize
-                  0x0028a4                  _UART2_Read
-                  0x0028da                  _UART2_StatusGet
-                  0x0028c2                  _UART2_Write
+                  0x002952                  _CLOCK_Initialize
+                  0x001ec4                  _FLASH_ErasePage
+                  0x001fc2                  _FLASH_GetErasePageAddress
+                  0x001fbc                  _FLASH_GetErasePageOffset
+                  0x001e58                  _FLASH_Lock
+                  0x001eac                  _FLASH_ReadWord16
+                  0x001e90                  _FLASH_ReadWord24
+                  0x001e72                  _FLASH_SendNvmKey
+                  0x001e44                  _FLASH_Unlock
+                  0x001f84                  _FLASH_WriteDoubleWord16
+                  0x001f4c                  _FLASH_WriteDoubleWord24
+                  0x0021f8                  _FlashDemo
+                  0x002a10                  _INTERRUPT_Initialize
+                  0x000a34                  _LCD_BLL
+                  0x001f08                  _MEMORY_SegmentErase
+                  0x001e64                  _MEM_Lock
+                  0x001eb8                  _MEM_ReadWord16
+                  0x001e9e                  _MEM_ReadWord24
+                  0x001e4e                  _MEM_Unlock
+                  0x0029da                  _OSCILLATOR_Initialize
+                  0x0023d0                  _PIN_MANAGER_Initialize
+                  0x0021f0                  _RESET_CauseClearAll
+                  0x0020e4                  _RESET_GetCause
+                  0x0029e2                  _SYSTEM_GetResetCause
+                  0x0029c0                  _SYSTEM_Initialize
+                  0x0029f2                  _SYSTEM_ResetCauseClearAll
+                  0x002642                  _TMR2_Counter16BitGet
+                  0x002630                  _TMR2_Counter16BitSet
+                  0x002676                  _TMR2_GetElapsedThenClear
+                  0x002602                  _TMR2_Initialize
+                  0x002628                  _TMR2_Period16BitGet
+                  0x002616                  _TMR2_Period16BitSet
+                  0x002650                  _TMR2_SetInterruptHandler
+                  0x00269a                  _TMR2_SoftwareCounterClear
+                  0x00268e                  _TMR2_SoftwareCounterGet
+                  0x00265c                  _TMR2_Start
+                  0x00266c                  _TMR2_Stop
+                  0x0025b4                  _TMR3_Counter16BitGet
+                  0x0025a2                  _TMR3_Counter16BitSet
+                  0x0025d2                  _TMR3_GetElapsedThenClear
+                  0x002550                  _TMR3_Initialize
+                  0x00259a                  _TMR3_Period16BitGet
+                  0x002588                  _TMR3_Period16BitSet
+                  0x0025f6                  _TMR3_SoftwareCounterClear
+                  0x0025ea                  _TMR3_SoftwareCounterGet
+                  0x0025bc                  _TMR3_Start
+                  0x0025ca                  _TMR3_Stop
+                  0x002566                  _TMR3_Tasks_16BitOperation
+                  0x0026ee                  _TMR4_Counter16BitGet
+                  0x0026dc                  _TMR4_Counter16BitSet
+                  0x00270c                  _TMR4_GetElapsedThenClear
+                  0x0026a6                  _TMR4_Initialize
+                  0x0026d4                  _TMR4_Period16BitGet
+                  0x0026c2                  _TMR4_Period16BitSet
+                  0x002730                  _TMR4_SoftwareCounterClear
+                  0x002724                  _TMR4_SoftwareCounterGet
+                  0x0026f6                  _TMR4_Start
+                  0x002704                  _TMR4_Stop
+                  0x0026bc                  _TMR4_Tasks_16BitOperation
+                  0x002884                  _UART1_Disable
+                  0x00287a                  _UART1_Enable
+                  0x00282a                  _UART1_Initialize
+                  0x00283c                  _UART1_Read
+                  0x002872                  _UART1_StatusGet
+                  0x00285a                  _UART1_Write
+                  0x0028e8                  _UART2_Disable
+                  0x0028de                  _UART2_Enable
+                  0x00288e                  _UART2_Initialize
+                  0x0028a0                  _UART2_Read
+                  0x0028d6                  _UART2_StatusGet
+                  0x0028be                  _UART2_Write
                   0x00030c                  __AddressError
                   0x00031c                  __DMACError
                   0x0003f4                  __DefaultInterrupt
@@ -566,33 +556,35 @@ External Symbols in Program Memory (by name):
                   0x000248                  __data_init_extended
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x001fb4                  _device_outputState
-                  0x0020ac                  _hmi_ConfigSystemState
-                  0x0028f6                  _hmi_GenerateBootScreen
-                  0x002938                  _hmi_SetupStateTimeout
-                  0x001ce8                  _hmi_lampStackController
-                  0x0013ee                  _hmi_lcdController
-                  0x00168a                  _hmi_scanSetupCommand
-                  0x0016aa                  _hmi_setupL1KeyCommand
-                  0x00173a                  _hmi_setupL2KeyCommand
-                  0x0017ca                  _hmi_setupL3KeyCommand
-                  0x00185a                  _hmi_setupL4KeyCommand
-                  0x0018ea                  _hmi_setupL5KeyCommand
-                  0x00197a                  _hmi_setupL6KeyCommand
-                  0x001de6                  _lamp_bootSeq
-                  0x00114a                  _lcd_bootSeq
-                  0x002740                  _led_bootSeq
-                  0x00291a                  _load_defaults
-                  0x00112c                  _main
+                  0x001fcc                  _device_outputState
+                  0x0020c4                  _hmi_ConfigSystemState
+                  0x0028f2                  _hmi_GenerateBootScreen
+                  0x002934                  _hmi_SetupStateTimeout
+                  0x001d00                  _hmi_lampStackController
+                  0x001406                  _hmi_lcdController
+                  0x0016a2                  _hmi_scanSetupCommand
+                  0x0016c2                  _hmi_setupL1KeyCommand
+                  0x001752                  _hmi_setupL2KeyCommand
+                  0x0017e2                  _hmi_setupL3KeyCommand
+                  0x001872                  _hmi_setupL4KeyCommand
+                  0x001902                  _hmi_setupL5KeyCommand
+                  0x001992                  _hmi_setupL6KeyCommand
+                  0x001dfe                  _lamp_bootSeq
+                  0x001162                  _lcd_bootSeq
+                  0x00273c                  _led_bootSeq
+                  0x002916                  _load_defaults
+                  0x001144                  _main
                   0x0003fa                  _memcpy
-                  0x0027c6                  _process_Backlight
-                  0x001a08                  _process_KeyController
-                  0x0014fc                  _process_LcdController
-                  0x00240e                  _process_ToneGenerator
-                  0x0027b8                  _set_backlight_level
+                  0x000a1c                  _notes
+                  0x0027c2                  _process_Backlight
+                  0x001a20                  _process_KeyController
+                  0x001514                  _process_LcdController
+                  0x00234e                  _process_ToneGenerator
+                  0x0027b4                  _set_backlight_level
                   0x000408                  _strcpy
                   0x000414                  _strlen
-                  0x001fdc                  _word2DecConverter
+                  0x000a28                  _tempo
+                  0x001ff4                  _word2DecConverter
 
 Memory Configuration
 
@@ -726,7 +718,7 @@ __FOSCSEL
 
 __FGS             0x00affa          0x2
  *(__FGS.sec*)
- __FGS.sec        0x00affa          0x2 /CW/_FGS°Kè
+ __FGS.sec        0x00affa          0x2 /CW/_FGSü
                   0x00affa                  __FGS.sec
 
 __FUID0
@@ -744,7 +736,7 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x889b
+.debug_info       0x000000       0x8847
  *(.debug_info)
  .debug_info      0x000000         0x91 build/default/production/mcc_generated_files/memory/flash.o
  .debug_info      0x000091        0x204 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -765,13 +757,13 @@ __FUID3
  .debug_info      0x005f00        0x51b build/default/production/common.o
  .debug_info      0x00641b        0x83e build/default/production/keypad.o
  .debug_info      0x006c59        0x4f5 build/default/production/backlight.o
- .debug_info      0x00714e        0x60d build/default/production/tone.o
- .debug_info      0x00775b        0xb9a build/default/production/lcd.o
- .debug_info      0x0082f5        0x34f build/default/production/led.o
- .debug_info      0x008644        0x257 build/default/production/lamp.o
+ .debug_info      0x00714e        0x5b9 build/default/production/tone.o
+ .debug_info      0x007707        0xb9a build/default/production/lcd.o
+ .debug_info      0x0082a1        0x34f build/default/production/led.o
+ .debug_info      0x0085f0        0x257 build/default/production/lamp.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000       0x16f6
+.debug_abbrev     0x000000       0x16fd
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x14 build/default/production/mcc_generated_files/memory/flash.o
  .debug_abbrev    0x000014         0x73 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -793,10 +785,10 @@ __FUID3
  .debug_abbrev    0x000f95         0xc1 build/default/production/common.o
  .debug_abbrev    0x001056        0x183 build/default/production/keypad.o
  .debug_abbrev    0x0011d9         0xfa build/default/production/backlight.o
- .debug_abbrev    0x0012d3        0x127 build/default/production/tone.o
- .debug_abbrev    0x0013fa        0x1aa build/default/production/lcd.o
- .debug_abbrev    0x0015a4         0x99 build/default/production/led.o
- .debug_abbrev    0x00163d         0xb9 build/default/production/lamp.o
+ .debug_abbrev    0x0012d3        0x12e build/default/production/tone.o
+ .debug_abbrev    0x001401        0x1aa build/default/production/lcd.o
+ .debug_abbrev    0x0015ab         0x99 build/default/production/led.o
+ .debug_abbrev    0x001644         0xb9 build/default/production/lamp.o
 
 .debug_line       0x000000       0x1b69
  *(.debug_line)
@@ -881,7 +873,7 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0xf19
+                  0x000000        0xee9
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x20 build/default/production/mcc_generated_files/memory/flash_demo.o
@@ -920,13 +912,13 @@ __FUID3
  .debug_pubnames
                   0x000c16         0x4c build/default/production/backlight.o
  .debug_pubnames
-                  0x000c62         0x9a build/default/production/tone.o
+                  0x000c62         0x6a build/default/production/tone.o
  .debug_pubnames
-                  0x000cfc        0x1bc build/default/production/lcd.o
+                  0x000ccc        0x1bc build/default/production/lcd.o
  .debug_pubnames
-                  0x000eb8         0x22 build/default/production/led.o
+                  0x000e88         0x22 build/default/production/led.o
  .debug_pubnames
-                  0x000eda         0x3f build/default/production/lamp.o
+                  0x000eaa         0x3f build/default/production/lamp.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -2199,7 +2191,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.36/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
 OUTPUT(dist/default/production/autoloader.X.production.elf elf32-pic30)
-LOAD /CW/_FGS°Kè
+LOAD /CW/_FGSü
 LOAD default_isr
 LOAD data_init
 
@@ -2367,7 +2359,7 @@ __c30_signature
                     0x1082                  _msg_debugCls
                     0x1084                  _autoLoaderMsgList
 
-.nbss               0x1086         0x40
+.nbss               0x1086         0x3a
  .nbss              0x1086         0x1e build/default/production/common.o
                     0x1086                  _P1_value
                     0x1088                  _P2_value
@@ -2393,73 +2385,65 @@ __c30_signature
                     0x10a1                  _outputDevices
                     0x10a2                  _buff
                     0x10a3                  _inputDevices
- .nbss              0x10a4          0xe build/default/production/tone.o
+ .nbss              0x10a4          0x8 build/default/production/tone.o
                     0x10a4                  _wav_tasks
-                    0x10a6                  _wav_index
-                    0x10a8                  _wav_msg
-                    0x10aa                  _wav_tempo
-                    0x10ac                  _freq
-                    0x10ae                  _pitch
-                    0x10b0                  _tune
- .nbss              0x10b2          0x6 build/default/production/main_3.o
-                    0x10b2                  _sysState
-                    0x10b3                  _testCounter
-                    0x10b4                  _display_offset
-                    0x10b5                  _msg_flash
-                    0x10b6                  _animation_count
-                    0x10b7                  _animation_step
- .nbss              0x10b8          0x6 build/default/production/lcd.o
-                    0x10b8                  _fill_cntr
-                    0x10ba                  _lcdState
-                    0x10bb                  _lcd_index
-                    0x10bc                  _lcd_msg
-                    0x10bd                  _lcd_update
- .nbss              0x10be          0x4 build/default/production/keypad.o
-                    0x10be                  _keyBuff
-                    0x10bf                  _keyValue
-                    0x10c0                  _keyState
- .nbss              0x10c2          0x4 build/default/production/backlight.o
+                    0x10a6                  _freq
+                    0x10a8                  _pitch
+                    0x10aa                  _tune
+ .nbss              0x10ac          0x6 build/default/production/main_3.o
+                    0x10ac                  _sysState
+                    0x10ad                  _testCounter
+                    0x10ae                  _display_offset
+                    0x10af                  _msg_flash
+                    0x10b0                  _animation_count
+                    0x10b1                  _animation_step
+ .nbss              0x10b2          0x6 build/default/production/lcd.o
+                    0x10b2                  _fill_cntr
+                    0x10b4                  _lcdState
+                    0x10b5                  _lcd_index
+                    0x10b6                  _lcd_msg
+                    0x10b7                  _lcd_update
+ .nbss              0x10b8          0x4 build/default/production/keypad.o
+                    0x10b8                  _keyBuff
+                    0x10b9                  _keyValue
+                    0x10ba                  _keyState
+ .nbss              0x10bc          0x4 build/default/production/backlight.o
+
+.ndata              0x10c0          0x2
+ .ndata             0x10c0          0x2 build/default/production/mcc_generated_files/traps.o
+
+.nbss               0x10c2          0x4
+ .nbss              0x10c2          0x2 build/default/production/mcc_generated_files/tmr4.o
+                    0x10c2                  _TMR4_InterruptHandler
+ .nbss              0x10c4          0x2 build/default/production/mcc_generated_files/tmr3.o
+                    0x10c4                  _TMR3_InterruptHandler
 
 .ndata              0x10c6          0x2
- .ndata             0x10c6          0x2 build/default/production/mcc_generated_files/traps.o
+ .ndata             0x10c6          0x2 build/default/production/common.o
+                    0x10c6                  _hexAscii
 
 .nbss               0x10c8          0x4
- .nbss              0x10c8          0x2 build/default/production/mcc_generated_files/tmr4.o
-                    0x10c8                  _TMR4_InterruptHandler
- .nbss              0x10ca          0x2 build/default/production/mcc_generated_files/tmr3.o
-                    0x10ca                  _TMR3_InterruptHandler
+ .nbss              0x10c8          0x2 build/default/production/led.o
+ .nbss              0x10ca          0x2 build/default/production/lamp.o
 
-.ndata              0x10cc          0x2
- .ndata             0x10cc          0x2 build/default/production/common.o
-                    0x10cc                  _hexAscii
+.bss                0x10cc        0x2b8
+ .bss               0x10cc        0x18e build/default/production/main_3.o
+                    0x10cc                  _txbuff
+                    0x114c                  _rxbuff
+                    0x124c                  _sys
+ .bss               0x125a        0x10a build/default/production/lcd.o
+                    0x125a                  _lcdBuff
+                    0x127e                  _msgBuff
+ .bss               0x1364         0x20 build/default/production/mcc_generated_files/traps.o
 
-.nbss               0x10ce          0x4
- .nbss              0x10ce          0x2 build/default/production/led.o
- .nbss              0x10d0          0x2 build/default/production/lamp.o
+.data               0x1384          0x4
+ .data              0x1384          0x4 build/default/production/mcc_generated_files/memory/flash.o
+                    0x1384                  _FlashKey
 
-.bss                0x10d2        0x4b6
- .bss               0x10d2        0x1fe build/default/production/tone.o
-                    0x10d2                  _wav
- .bss               0x12d0        0x18e build/default/production/main_3.o
-                    0x12d0                  _txbuff
-                    0x1350                  _rxbuff
-                    0x1450                  _sys
- .bss               0x145e        0x10a build/default/production/lcd.o
-                    0x145e                  _lcdBuff
-                    0x1482                  _msgBuff
- .bss               0x1568         0x20 build/default/production/mcc_generated_files/traps.o
-
-.data               0x1588         0x1c
- .data              0x1588         0x18 build/default/production/tone.o
-                    0x1588                  _notes
-                    0x1594                  _tempo
- .data              0x15a0          0x4 build/default/production/mcc_generated_files/memory/flash.o
-                    0x15a0                  _FlashKey
-
-.bss                0x15a4          0x6
- .bss               0x15a4          0x2 build/default/production/mcc_generated_files/tmr2.o
- .bss               0x15a6          0x2 build/default/production/mcc_generated_files/tmr4.o
- .bss               0x15a8          0x2 build/default/production/mcc_generated_files/tmr3.o
+.bss                0x1388          0x6
+ .bss               0x1388          0x2 build/default/production/mcc_generated_files/tmr2.o
+ .bss               0x138a          0x2 build/default/production/mcc_generated_files/tmr4.o
+ .bss               0x138c          0x2 build/default/production/mcc_generated_files/tmr3.o
 
 .ivt._OscillatorFail
                   0x000004          0x2
@@ -2519,141 +2503,144 @@ __c30_signature
  .ivt._T2Interrupt
                   0x000022          0x2 build/default/production/mcc_generated_files/tmr2.o
 
-.const              0x8420        0x624 load address 0x000420  
+.const              0x8420        0x63c load address 0x000420  
  .const             0x8420        0x3ec build/default/production/main_3.o
  .const             0x880c        0x210 build/default/production/lcd.o
- .const             0x8a1c         0x16 build/default/production/backlight.o
-                    0x8a1c                  _LCD_BLL
- .const             0x8a32         0x12 build/default/production/common.o
+ .const             0x8a1c         0x18 build/default/production/tone.o
+                    0x8a1c                  _notes
+                    0x8a28                  _tempo
+ .const             0x8a34         0x16 build/default/production/backlight.o
+                    0x8a34                  _LCD_BLL
+ .const             0x8a4a         0x12 build/default/production/common.o
 
-.text             0x000a44       0x13e6
- .text            0x000a44        0x706 build/default/production/main_3.o
-                  0x00112c                  _main
- .text            0x00114a        0x516 build/default/production/lcd.o
-                  0x00114a                  _lcd_bootSeq
-                  0x0013ee                  _hmi_lcdController
-                  0x0014fc                  _process_LcdController
- .text            0x001660        0x4b4 build/default/production/keypad.o
-                  0x00168a                  _hmi_scanSetupCommand
-                  0x0016aa                  _hmi_setupL1KeyCommand
-                  0x00173a                  _hmi_setupL2KeyCommand
-                  0x0017ca                  _hmi_setupL3KeyCommand
-                  0x00185a                  _hmi_setupL4KeyCommand
-                  0x0018ea                  _hmi_setupL5KeyCommand
-                  0x00197a                  _hmi_setupL6KeyCommand
-                  0x001a08                  _process_KeyController
- .text            0x001b14        0x316 build/default/production/lamp.o
-                  0x001ce8                  _hmi_lampStackController
-                  0x001de6                  _lamp_bootSeq
+.text             0x000a5c       0x13e6
+ .text            0x000a5c        0x706 build/default/production/main_3.o
+                  0x001144                  _main
+ .text            0x001162        0x516 build/default/production/lcd.o
+                  0x001162                  _lcd_bootSeq
+                  0x001406                  _hmi_lcdController
+                  0x001514                  _process_LcdController
+ .text            0x001678        0x4b4 build/default/production/keypad.o
+                  0x0016a2                  _hmi_scanSetupCommand
+                  0x0016c2                  _hmi_setupL1KeyCommand
+                  0x001752                  _hmi_setupL2KeyCommand
+                  0x0017e2                  _hmi_setupL3KeyCommand
+                  0x001872                  _hmi_setupL4KeyCommand
+                  0x001902                  _hmi_setupL5KeyCommand
+                  0x001992                  _hmi_setupL6KeyCommand
+                  0x001a20                  _process_KeyController
+ .text            0x001b2c        0x316 build/default/production/lamp.o
+                  0x001d00                  _hmi_lampStackController
+                  0x001dfe                  _lamp_bootSeq
 
-.NVM_flash        0x001e2a        0x18a
- .NVM_flash       0x001e2a        0x18a build/default/production/mcc_generated_files/memory/flash.o
-                  0x001e2c                  _FLASH_Unlock
-                  0x001e36                  _MEM_Unlock
-                  0x001e40                  _FLASH_Lock
-                  0x001e4c                  _MEM_Lock
-                  0x001e5a                  _FLASH_SendNvmKey
-                  0x001e78                  _FLASH_ReadWord24
-                  0x001e86                  _MEM_ReadWord24
-                  0x001e94                  _FLASH_ReadWord16
-                  0x001ea0                  _MEM_ReadWord16
-                  0x001eac                  _FLASH_ErasePage
-                  0x001ef0                  _MEMORY_SegmentErase
-                  0x001f34                  _FLASH_WriteDoubleWord24
-                  0x001f6c                  _FLASH_WriteDoubleWord16
-                  0x001fa4                  _FLASH_GetErasePageOffset
-                  0x001faa                  _FLASH_GetErasePageAddress
+.NVM_flash        0x001e42        0x18a
+ .NVM_flash       0x001e42        0x18a build/default/production/mcc_generated_files/memory/flash.o
+                  0x001e44                  _FLASH_Unlock
+                  0x001e4e                  _MEM_Unlock
+                  0x001e58                  _FLASH_Lock
+                  0x001e64                  _MEM_Lock
+                  0x001e72                  _FLASH_SendNvmKey
+                  0x001e90                  _FLASH_ReadWord24
+                  0x001e9e                  _MEM_ReadWord24
+                  0x001eac                  _FLASH_ReadWord16
+                  0x001eb8                  _MEM_ReadWord16
+                  0x001ec4                  _FLASH_ErasePage
+                  0x001f08                  _MEMORY_SegmentErase
+                  0x001f4c                  _FLASH_WriteDoubleWord24
+                  0x001f84                  _FLASH_WriteDoubleWord16
+                  0x001fbc                  _FLASH_GetErasePageOffset
+                  0x001fc2                  _FLASH_GetErasePageAddress
 
-.text             0x001fb4        0x33e
- .text            0x001fb4        0x118 build/default/production/common.o
-                  0x001fb4                  _device_outputState
-                  0x001fdc                  _word2DecConverter
-                  0x0020ac                  _hmi_ConfigSystemState
- .text            0x0020cc        0x114 build/default/production/mcc_generated_files/reset.o
-                  0x0020cc                  _RESET_GetCause
-                  0x0020d4                  _RESET_CauseHandler
-                  0x0021d8                  _RESET_CauseClearAll
- .text            0x0021e0        0x112 build/default/production/mcc_generated_files/memory/flash_demo.o
-                  0x0021e0                  _FlashDemo
+.text             0x001fcc        0x4c8
+ .text            0x001fcc        0x118 build/default/production/common.o
+                  0x001fcc                  _device_outputState
+                  0x001ff4                  _word2DecConverter
+                  0x0020c4                  _hmi_ConfigSystemState
+ .text            0x0020e4        0x114 build/default/production/mcc_generated_files/reset.o
+                  0x0020e4                  _RESET_GetCause
+                  0x0020ec                  _RESET_CauseHandler
+                  0x0021f0                  _RESET_CauseClearAll
+ .text            0x0021f8        0x112 build/default/production/mcc_generated_files/memory/flash_demo.o
+                  0x0021f8                  _FlashDemo
+ .text            0x00230a         0xc6 build/default/production/tone.o
+                  0x00234e                  _process_ToneGenerator
+ .text            0x0023d0         0xc4 build/default/production/mcc_generated_files/pin_manager.o
+                  0x0023d0                  _PIN_MANAGER_Initialize
 
-.dinit            0x0022f2         0xd8
- .dinit           0x0022f2         0xd8 data_init
+.dinit            0x002494         0xbc
+ .dinit           0x002494         0xbc data_init
 
-.text             0x0023ca        0x65a
- .text            0x0023ca         0xc6 build/default/production/tone.o
-                  0x00240e                  _process_ToneGenerator
- .text            0x002490         0xc4 build/default/production/mcc_generated_files/pin_manager.o
-                  0x002490                  _PIN_MANAGER_Initialize
- .text            0x002554         0xb2 build/default/production/mcc_generated_files/tmr3.o
-                  0x002554                  _TMR3_Initialize
-                  0x00256a                  _TMR3_Tasks_16BitOperation
-                  0x00258c                  _TMR3_Period16BitSet
-                  0x00259e                  _TMR3_Period16BitGet
-                  0x0025a6                  _TMR3_Counter16BitSet
-                  0x0025b8                  _TMR3_Counter16BitGet
-                  0x0025c0                  _TMR3_Start
-                  0x0025ce                  _TMR3_Stop
-                  0x0025d6                  _TMR3_GetElapsedThenClear
-                  0x0025ee                  _TMR3_SoftwareCounterGet
-                  0x0025fa                  _TMR3_SoftwareCounterClear
- .text            0x002606         0xa4 build/default/production/mcc_generated_files/tmr2.o
-                  0x002606                  _TMR2_Initialize
-                  0x00261a                  _TMR2_Period16BitSet
-                  0x00262c                  _TMR2_Period16BitGet
-                  0x002634                  _TMR2_Counter16BitSet
-                  0x002646                  _TMR2_Counter16BitGet
-                  0x00264e                  _TMR2_CallBack
-                  0x002654                  _TMR2_SetInterruptHandler
-                  0x002660                  _TMR2_Start
-                  0x002670                  _TMR2_Stop
-                  0x00267a                  _TMR2_GetElapsedThenClear
-                  0x002692                  _TMR2_SoftwareCounterGet
-                  0x00269e                  _TMR2_SoftwareCounterClear
- .text            0x0026aa         0x96 build/default/production/mcc_generated_files/tmr4.o
-                  0x0026aa                  _TMR4_Initialize
-                  0x0026c0                  _TMR4_Tasks_16BitOperation
-                  0x0026c6                  _TMR4_Period16BitSet
-                  0x0026d8                  _TMR4_Period16BitGet
-                  0x0026e0                  _TMR4_Counter16BitSet
-                  0x0026f2                  _TMR4_Counter16BitGet
-                  0x0026fa                  _TMR4_Start
-                  0x002708                  _TMR4_Stop
-                  0x002710                  _TMR4_GetElapsedThenClear
-                  0x002728                  _TMR4_SoftwareCounterGet
-                  0x002734                  _TMR4_SoftwareCounterClear
- .text            0x002740         0x78 build/default/production/led.o
-                  0x002740                  _led_bootSeq
- .text            0x0027b8         0x76 build/default/production/backlight.o
-                  0x0027b8                  _set_backlight_level
-                  0x0027c6                  _process_Backlight
- .text            0x00282e         0x64 build/default/production/mcc_generated_files/uart1.o
-                  0x00282e                  _UART1_Initialize
-                  0x002840                  _UART1_Read
-                  0x00285e                  _UART1_Write
-                  0x002876                  _UART1_StatusGet
-                  0x00287e                  _UART1_Enable
-                  0x002888                  _UART1_Disable
- .text            0x002892         0x64 build/default/production/mcc_generated_files/uart2.o
-                  0x002892                  _UART2_Initialize
-                  0x0028a4                  _UART2_Read
-                  0x0028c2                  _UART2_Write
-                  0x0028da                  _UART2_StatusGet
-                  0x0028e2                  _UART2_Enable
-                  0x0028ec                  _UART2_Disable
- .text            0x0028f6         0x60 build/default/production/hmi.o
-                  0x0028f6                  _hmi_GenerateBootScreen
-                  0x00291a                  _load_defaults
-                  0x002938                  _hmi_SetupStateTimeout
- .text            0x002956         0x50 build/default/production/mcc_generated_files/clock.o
-                  0x002956                  _CLOCK_Initialize
- .text            0x0029a6         0x38 build/default/production/mcc_generated_files/system.o
-                  0x0029c4                  _SYSTEM_Initialize
- .text            0x0029de         0x20 build/default/production/mcc_generated_files/mcc.o
-                  0x0029de                  _OSCILLATOR_Initialize
-                  0x0029e6                  _SYSTEM_GetResetCause
-                  0x0029ee                  _SYSTEM_ResetCauseHandler
-                  0x0029f6                  _SYSTEM_ResetCauseClearAll
- .text            0x0029fe         0x16 build/default/production/mcc_generated_files/traps.o
-                  0x0029fe                  _TRAPS_halt_on_error
- .text            0x002a14         0x10 build/default/production/mcc_generated_files/interrupt_manager.o
-                  0x002a14                  _INTERRUPT_Initialize
+.text             0x002550        0x4d0
+ .text            0x002550         0xb2 build/default/production/mcc_generated_files/tmr3.o
+                  0x002550                  _TMR3_Initialize
+                  0x002566                  _TMR3_Tasks_16BitOperation
+                  0x002588                  _TMR3_Period16BitSet
+                  0x00259a                  _TMR3_Period16BitGet
+                  0x0025a2                  _TMR3_Counter16BitSet
+                  0x0025b4                  _TMR3_Counter16BitGet
+                  0x0025bc                  _TMR3_Start
+                  0x0025ca                  _TMR3_Stop
+                  0x0025d2                  _TMR3_GetElapsedThenClear
+                  0x0025ea                  _TMR3_SoftwareCounterGet
+                  0x0025f6                  _TMR3_SoftwareCounterClear
+ .text            0x002602         0xa4 build/default/production/mcc_generated_files/tmr2.o
+                  0x002602                  _TMR2_Initialize
+                  0x002616                  _TMR2_Period16BitSet
+                  0x002628                  _TMR2_Period16BitGet
+                  0x002630                  _TMR2_Counter16BitSet
+                  0x002642                  _TMR2_Counter16BitGet
+                  0x00264a                  _TMR2_CallBack
+                  0x002650                  _TMR2_SetInterruptHandler
+                  0x00265c                  _TMR2_Start
+                  0x00266c                  _TMR2_Stop
+                  0x002676                  _TMR2_GetElapsedThenClear
+                  0x00268e                  _TMR2_SoftwareCounterGet
+                  0x00269a                  _TMR2_SoftwareCounterClear
+ .text            0x0026a6         0x96 build/default/production/mcc_generated_files/tmr4.o
+                  0x0026a6                  _TMR4_Initialize
+                  0x0026bc                  _TMR4_Tasks_16BitOperation
+                  0x0026c2                  _TMR4_Period16BitSet
+                  0x0026d4                  _TMR4_Period16BitGet
+                  0x0026dc                  _TMR4_Counter16BitSet
+                  0x0026ee                  _TMR4_Counter16BitGet
+                  0x0026f6                  _TMR4_Start
+                  0x002704                  _TMR4_Stop
+                  0x00270c                  _TMR4_GetElapsedThenClear
+                  0x002724                  _TMR4_SoftwareCounterGet
+                  0x002730                  _TMR4_SoftwareCounterClear
+ .text            0x00273c         0x78 build/default/production/led.o
+                  0x00273c                  _led_bootSeq
+ .text            0x0027b4         0x76 build/default/production/backlight.o
+                  0x0027b4                  _set_backlight_level
+                  0x0027c2                  _process_Backlight
+ .text            0x00282a         0x64 build/default/production/mcc_generated_files/uart1.o
+                  0x00282a                  _UART1_Initialize
+                  0x00283c                  _UART1_Read
+                  0x00285a                  _UART1_Write
+                  0x002872                  _UART1_StatusGet
+                  0x00287a                  _UART1_Enable
+                  0x002884                  _UART1_Disable
+ .text            0x00288e         0x64 build/default/production/mcc_generated_files/uart2.o
+                  0x00288e                  _UART2_Initialize
+                  0x0028a0                  _UART2_Read
+                  0x0028be                  _UART2_Write
+                  0x0028d6                  _UART2_StatusGet
+                  0x0028de                  _UART2_Enable
+                  0x0028e8                  _UART2_Disable
+ .text            0x0028f2         0x60 build/default/production/hmi.o
+                  0x0028f2                  _hmi_GenerateBootScreen
+                  0x002916                  _load_defaults
+                  0x002934                  _hmi_SetupStateTimeout
+ .text            0x002952         0x50 build/default/production/mcc_generated_files/clock.o
+                  0x002952                  _CLOCK_Initialize
+ .text            0x0029a2         0x38 build/default/production/mcc_generated_files/system.o
+                  0x0029c0                  _SYSTEM_Initialize
+ .text            0x0029da         0x20 build/default/production/mcc_generated_files/mcc.o
+                  0x0029da                  _OSCILLATOR_Initialize
+                  0x0029e2                  _SYSTEM_GetResetCause
+                  0x0029ea                  _SYSTEM_ResetCauseHandler
+                  0x0029f2                  _SYSTEM_ResetCauseClearAll
+ .text            0x0029fa         0x16 build/default/production/mcc_generated_files/traps.o
+                  0x0029fa                  _TRAPS_halt_on_error
+ .text            0x002a10         0x10 build/default/production/mcc_generated_files/interrupt_manager.o
+                  0x002a10                  _INTERRUPT_Initialize
