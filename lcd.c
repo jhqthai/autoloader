@@ -372,7 +372,7 @@ void hmi_lcdController()
             break;
     }
 }
-/********************************** LCD HMI END **********************************/
+/********************************** LCD HMI END ******************************/
 
 /* This function controls the state of the LCD controller.
  * lcdState - requires by process_OutputDevices
